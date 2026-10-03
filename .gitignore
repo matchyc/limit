@@ -22,3 +22,8 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
+# Local experiment environments
+experiments/**/venv/
+experiments/**/.venv/
+**/.venv/

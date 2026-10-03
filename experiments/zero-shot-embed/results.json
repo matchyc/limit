@@ -1,0 +1,5570 @@
+{
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dim": 384,
+  "similarity": "cosine",
+  "device": {
+    "cuda_visible_devices": "1",
+    "torch_device": "cuda:0",
+    "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "capability": [
+      12,
+      0
+    ]
+  },
+  "software": {
+    "torch": "2.10.0+cu128",
+    "sentence_transformers": "6.1.0",
+    "numpy": "2.5.3"
+  },
+  "wall_time_seconds": 21.689,
+  "timings_seconds": {
+    "model_load": 1.811,
+    "embed_queries": 0.215,
+    "embed_small_documents": 0.022,
+    "embed_full_documents": 16.837,
+    "scoring_and_metrics": 0.937,
+    "total": 21.689
+  },
+  "protocol": {
+    "queries": "data/limit-small/queries.jsonl (identical to data/limit/queries.jsonl)",
+    "relevance": "data/limit-small/qrels.jsonl, exactly 2 gold documents per query",
+    "recall": "macro-average over queries of |gold \u2229 top-k| / |gold|. percent = 100 * fraction.",
+    "tie_break": "higher cosine first; equal cosine broken by ascending document id",
+    "drowning": "corpus = all 46 limit-small documents, followed by a nested prefix of numpy Generator(seed=0).permutation of the 50000 full-corpus rows. Added sizes 0, 100, 1000, 10000, 50000.",
+    "document_text": "title + text, titles are empty so this is the text field",
+    "query_text": "raw query text, no instruction prefix",
+    "tf32": false
+  },
+  "truncation": {
+    "small_corpus": {
+      "max_seq_length": 256,
+      "n": 46,
+      "min": 143,
+      "median": 161,
+      "max": 173,
+      "n_truncated": 0,
+      "frac_truncated": 0.0
+    },
+    "full_corpus_every_25th": {
+      "max_seq_length": 256,
+      "n": 2000,
+      "min": 136,
+      "median": 161,
+      "max": 184,
+      "n_truncated": 0,
+      "frac_truncated": 0.0
+    }
+  },
+  "limit_small": {
+    "n_documents": 46,
+    "n_queries": 1000,
+    "recall": {
+      "2": {
+        "fraction": 0.162,
+        "percent": 16.2
+      },
+      "10": {
+        "fraction": 0.4805,
+        "percent": 48.05
+      },
+      "20": {
+        "fraction": 0.6945,
+        "percent": 69.45
+      }
+    }
+  },
+  "drowning_curve": [
+    {
+      "added_documents": 0,
+      "total_documents": 46,
+      "recall": {
+        "2": {
+          "fraction": 0.162,
+          "percent": 16.2
+        },
+        "10": {
+          "fraction": 0.4805,
+          "percent": 48.05
+        }
+      }
+    },
+    {
+      "added_documents": 100,
+      "total_documents": 146,
+      "recall": {
+        "2": {
+          "fraction": 0.0655,
+          "percent": 6.55
+        },
+        "10": {
+          "fraction": 0.222,
+          "percent": 22.2
+        }
+      }
+    },
+    {
+      "added_documents": 1000,
+      "total_documents": 1046,
+      "recall": {
+        "2": {
+          "fraction": 0.0205,
+          "percent": 2.05
+        },
+        "10": {
+          "fraction": 0.0605,
+          "percent": 6.05
+        }
+      }
+    },
+    {
+      "added_documents": 10000,
+      "total_documents": 10046,
+      "recall": {
+        "2": {
+          "fraction": 0.004,
+          "percent": 0.4
+        },
+        "10": {
+          "fraction": 0.0165,
+          "percent": 1.65
+        }
+      }
+    },
+    {
+      "added_documents": 50000,
+      "total_documents": 50046,
+      "recall": {
+        "2": {
+          "fraction": 0.0,
+          "percent": 0.0
+        },
+        "10": {
+          "fraction": 0.004,
+          "percent": 0.4
+        }
+      }
+    }
+  ],
+  "lexical_content_word_baseline": {
+    "description": "Rank the 46 documents by how many attribute content words they share. Equal counts break by ascending document id. This is a CPU check, included in wall time.",
+    "n_documents": 46,
+    "n_queries": 1000,
+    "recall": {
+      "2": {
+        "fraction": 0.972,
+        "percent": 97.2
+      },
+      "10": {
+        "fraction": 0.993,
+        "percent": 99.3
+      },
+      "20": {
+        "fraction": 0.996,
+        "percent": 99.6
+      }
+    },
+    "fraction_both_golds_in_top2": 0.959
+  },
+  "dataset_facts": {
+    "gold_documents_containing_all_attribute_content_words": {
+      "n": 1990,
+      "of": 1990,
+      "fraction": 1.0
+    },
+    "attributes_with_no_content_word": [
+      "Ham",
+      "Pop Art",
+      "Yo-yos",
+      "Law",
+      "Uno"
+    ],
+    "mean_fraction_of_nongold_small_docs_sharing_an_attribute_content_word": 0.044518,
+    "note": "Content-word containment is counted only when the attribute has at least one alphanumeric token longer than 3 characters. Attributes with no such token are listed separately. Empty attribute word sets do not count as a match."
+  },
+  "diagnostic": {
+    "corpus": "limit-small (46 documents)",
+    "n_queries": 200,
+    "seed": 0,
+    "selection": "numpy Generator(0).choice without replacement, then sorted",
+    "content_word": "alphanumeric token of length > 3, lowercased. Compared between the query attribute (text inside 'Who likes ...?') and the top-ranked non-gold document.",
+    "summary": {
+      "recall_at_2": {
+        "fraction": 0.17,
+        "percent": 17.0
+      },
+      "recall_at_10": {
+        "fraction": 0.4975,
+        "percent": 49.75
+      },
+      "fraction_top1_is_gold": 0.16,
+      "fraction_both_golds_in_top2": 0.02,
+      "better_gold_rank": {
+        "mean": 7.3,
+        "median": 4.5,
+        "histogram": {
+          "1": 32,
+          "2": 32,
+          "3-5": 48,
+          "6-10": 37,
+          "11-20": 38,
+          "21+": 13
+        }
+      },
+      "worse_gold_rank": {
+        "mean": 20.77,
+        "median": 18.5,
+        "histogram": {
+          "1": 0,
+          "2": 4,
+          "3-5": 16,
+          "6-10": 30,
+          "11-20": 55,
+          "21+": 95
+        }
+      },
+      "fraction_top_wrong_shares_content_word": 0.095,
+      "mean_shared_content_words_with_top_wrong": 0.105,
+      "mean_fraction_nongold_docs_sharing_a_content_word": 0.051136,
+      "n_top1_wrong": 168,
+      "fraction_top1_wrong_whose_top_wrong_shares_content_word": 0.10119
+    },
+    "queries": [
+      {
+        "query_id": "query_2",
+        "attribute": "Oceanic Trenches",
+        "attribute_content_words": [
+          "oceanic",
+          "trenches"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Geneva Durben",
+            "rank": 1,
+            "cosine": 0.3027
+          },
+          {
+            "corpus_id": "Flor Lemaire",
+            "rank": 12,
+            "cosine": 0.2197
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Jerrod Dumpit",
+          "rank": 2,
+          "cosine": 0.2714,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_4",
+        "attribute": "Disco Music",
+        "attribute_content_words": [
+          "disco",
+          "music"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Shelvia Goike",
+            "rank": 7,
+            "cosine": 0.2277
+          },
+          {
+            "corpus_id": "Geneva Durben",
+            "rank": 13,
+            "cosine": 0.2142
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Riya Hayhoe",
+          "rank": 1,
+          "cosine": 0.2578,
+          "shares_content_word": true,
+          "shared_words": [
+            "music"
+          ]
+        }
+      },
+      {
+        "query_id": "query_7",
+        "attribute": "Chairs",
+        "attribute_content_words": [
+          "chairs"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Geneva Durben",
+            "rank": 24,
+            "cosine": 0.1596
+          },
+          {
+            "corpus_id": "Gladstone Oonk",
+            "rank": 36,
+            "cosine": 0.1351
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Armand Schweda",
+          "rank": 1,
+          "cosine": 0.2241,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_13",
+        "attribute": "Soy Sauce",
+        "attribute_content_words": [
+          "sauce"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Geneva Durben",
+            "rank": 14,
+            "cosine": 0.1967
+          },
+          {
+            "corpus_id": "Jerrod Dumpit",
+            "rank": 27,
+            "cosine": 0.1452
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Riya Hayhoe",
+          "rank": 1,
+          "cosine": 0.3109,
+          "shares_content_word": true,
+          "shared_words": [
+            "sauce"
+          ]
+        }
+      },
+      {
+        "query_id": "query_14",
+        "attribute": "Elm Trees",
+        "attribute_content_words": [
+          "trees"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Amaris Grow",
+            "rank": 2,
+            "cosine": 0.3969
+          },
+          {
+            "corpus_id": "Geneva Durben",
+            "rank": 17,
+            "cosine": 0.3011
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Theola Laudermilk",
+          "rank": 1,
+          "cosine": 0.406,
+          "shares_content_word": true,
+          "shared_words": [
+            "trees"
+          ]
+        }
+      },
+      {
+        "query_id": "query_15",
+        "attribute": "Barley",
+        "attribute_content_words": [
+          "barley"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Geneva Durben",
+            "rank": 13,
+            "cosine": 0.2619
+          },
+          {
+            "corpus_id": "Marcellus Meachum",
+            "rank": 29,
+            "cosine": 0.1963
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Nathaniel Robens",
+          "rank": 1,
+          "cosine": 0.3716,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_18",
+        "attribute": "Limes",
+        "attribute_content_words": [
+          "limes"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Laurine Bellizzi",
+            "rank": 17,
+            "cosine": 0.2801
+          },
+          {
+            "corpus_id": "Geneva Durben",
+            "rank": 35,
+            "cosine": 0.2152
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3501,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_23",
+        "attribute": "Asymmetry",
+        "attribute_content_words": [
+          "asymmetry"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 1,
+            "cosine": 0.1951
+          },
+          {
+            "corpus_id": "Geneva Durben",
+            "rank": 12,
+            "cosine": 0.152
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 2,
+          "cosine": 0.192,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_27",
+        "attribute": "Alligators",
+        "attribute_content_words": [
+          "alligators"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Geneva Durben",
+            "rank": 9,
+            "cosine": 0.2307
+          },
+          {
+            "corpus_id": "Jerrie Roupe",
+            "rank": 29,
+            "cosine": 0.1829
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.2866,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_33",
+        "attribute": "Fables",
+        "attribute_content_words": [
+          "fables"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Geneva Durben",
+            "rank": 1,
+            "cosine": 0.3739
+          },
+          {
+            "corpus_id": "Chaney Gertman",
+            "rank": 17,
+            "cosine": 0.2747
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Jacey Gnatek",
+          "rank": 2,
+          "cosine": 0.3396,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_43",
+        "attribute": "The Aztec Empire",
+        "attribute_content_words": [
+          "aztec",
+          "empire"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Geneva Durben",
+            "rank": 1,
+            "cosine": 0.3822
+          },
+          {
+            "corpus_id": "Chadwick Frisella",
+            "rank": 7,
+            "cosine": 0.2335
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Nathen Saadia",
+          "rank": 2,
+          "cosine": 0.3027,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_45",
+        "attribute": "Dragon Fruits",
+        "attribute_content_words": [
+          "dragon",
+          "fruits"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Dorathea Bastress",
+            "rank": 4,
+            "cosine": 0.3782
+          },
+          {
+            "corpus_id": "Armand Schweda",
+            "rank": 35,
+            "cosine": 0.2621
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3998,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_47",
+        "attribute": "Mops",
+        "attribute_content_words": [
+          "mops"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Pate Lindley",
+            "rank": 1,
+            "cosine": 0.2812
+          },
+          {
+            "corpus_id": "Dorathea Bastress",
+            "rank": 3,
+            "cosine": 0.2535
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chadwick Frisella",
+          "rank": 2,
+          "cosine": 0.2793,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_53",
+        "attribute": "the Minnesota Twins",
+        "attribute_content_words": [
+          "minnesota",
+          "twins"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Dorathea Bastress",
+            "rank": 8,
+            "cosine": 0.1447
+          },
+          {
+            "corpus_id": "Tisha Ghent",
+            "rank": 9,
+            "cosine": 0.1355
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.2402,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_60",
+        "attribute": "the Houston Astros",
+        "attribute_content_words": [
+          "astros",
+          "houston"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Dorathea Bastress",
+            "rank": 2,
+            "cosine": 0.2979
+          },
+          {
+            "corpus_id": "Wellington Hinn",
+            "rank": 5,
+            "cosine": 0.2274
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.3266,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_63",
+        "attribute": "Mussels",
+        "attribute_content_words": [
+          "mussels"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Dorathea Bastress",
+            "rank": 14,
+            "cosine": 0.296
+          },
+          {
+            "corpus_id": "Agnes Reap",
+            "rank": 23,
+            "cosine": 0.2785
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Jerrod Dumpit",
+          "rank": 1,
+          "cosine": 0.3768,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_67",
+        "attribute": "Cymbals",
+        "attribute_content_words": [
+          "cymbals"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Dorathea Bastress",
+            "rank": 4,
+            "cosine": 0.2289
+          },
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 32,
+            "cosine": 0.1312
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.2724,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_71",
+        "attribute": "Puzzle Video Games",
+        "attribute_content_words": [
+          "games",
+          "puzzle",
+          "video"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Dorathea Bastress",
+            "rank": 2,
+            "cosine": 0.2936
+          },
+          {
+            "corpus_id": "Jerrie Roupe",
+            "rank": 9,
+            "cosine": 0.2491
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Jacey Gnatek",
+          "rank": 1,
+          "cosine": 0.3556,
+          "shares_content_word": true,
+          "shared_words": [
+            "games",
+            "video"
+          ]
+        }
+      },
+      {
+        "query_id": "query_74",
+        "attribute": "Apple Cider",
+        "attribute_content_words": [
+          "apple",
+          "cider"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Nathaniel Robens",
+            "rank": 7,
+            "cosine": 0.2261
+          },
+          {
+            "corpus_id": "Dorathea Bastress",
+            "rank": 16,
+            "cosine": 0.1956
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.279,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_75",
+        "attribute": "Crows",
+        "attribute_content_words": [
+          "crows"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Tarik Hollfelder",
+            "rank": 1,
+            "cosine": 0.3376
+          },
+          {
+            "corpus_id": "Dorathea Bastress",
+            "rank": 18,
+            "cosine": 0.2363
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Ovid Rahm",
+          "rank": 2,
+          "cosine": 0.3038,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_81",
+        "attribute": "Cobras",
+        "attribute_content_words": [
+          "cobras"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Dorathea Bastress",
+            "rank": 2,
+            "cosine": 0.2177
+          },
+          {
+            "corpus_id": "Darwyn Raio",
+            "rank": 5,
+            "cosine": 0.2062
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.2314,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_84",
+        "attribute": "Picture Frames",
+        "attribute_content_words": [
+          "frames",
+          "picture"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Dorathea Bastress",
+            "rank": 4,
+            "cosine": 0.2081
+          },
+          {
+            "corpus_id": "Elam Mejiamejia",
+            "rank": 45,
+            "cosine": 0.0936
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chadwick Frisella",
+          "rank": 1,
+          "cosine": 0.2152,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_99",
+        "attribute": "Barbershop quartets",
+        "attribute_content_words": [
+          "barbershop",
+          "quartets"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 4,
+            "cosine": 0.2568
+          },
+          {
+            "corpus_id": "Armand Schweda",
+            "rank": 8,
+            "cosine": 0.2189
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Cristy Walford",
+          "rank": 1,
+          "cosine": 0.2983,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_104",
+        "attribute": "Monarch Butterflies",
+        "attribute_content_words": [
+          "butterflies",
+          "monarch"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Georgette Cagna",
+            "rank": 6,
+            "cosine": 0.327
+          },
+          {
+            "corpus_id": "Armand Schweda",
+            "rank": 12,
+            "cosine": 0.2934
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Marcellus Meachum",
+          "rank": 1,
+          "cosine": 0.343,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_112",
+        "attribute": "Community",
+        "attribute_content_words": [
+          "community"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Nathen Saadia",
+            "rank": 16,
+            "cosine": 0.1509
+          },
+          {
+            "corpus_id": "Armand Schweda",
+            "rank": 38,
+            "cosine": 0.0978
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Dorathea Bastress",
+          "rank": 1,
+          "cosine": 0.2514,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_116",
+        "attribute": "Mandolins",
+        "attribute_content_words": [
+          "mandolins"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Armand Schweda",
+            "rank": 1,
+            "cosine": 0.352
+          },
+          {
+            "corpus_id": "Gaetano Argel",
+            "rank": 5,
+            "cosine": 0.3094
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 2,
+          "cosine": 0.3348,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_117",
+        "attribute": "Saiga Antelopes",
+        "attribute_content_words": [
+          "antelopes",
+          "saiga"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Nathaniel Robens",
+            "rank": 6,
+            "cosine": 0.291
+          },
+          {
+            "corpus_id": "Armand Schweda",
+            "rank": 23,
+            "cosine": 0.228
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Tarik Hollfelder",
+          "rank": 1,
+          "cosine": 0.3186,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_129",
+        "attribute": "Gecko Lizards",
+        "attribute_content_words": [
+          "gecko",
+          "lizards"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Armand Schweda",
+            "rank": 17,
+            "cosine": 0.2185
+          },
+          {
+            "corpus_id": "Aliza Uhlrich",
+            "rank": 33,
+            "cosine": 0.1724
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Flor Lemaire",
+          "rank": 1,
+          "cosine": 0.3103,
+          "shares_content_word": true,
+          "shared_words": [
+            "lizards"
+          ]
+        }
+      },
+      {
+        "query_id": "query_137",
+        "attribute": "Historical Fiction",
+        "attribute_content_words": [
+          "fiction",
+          "historical"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ofelia Rosselot",
+            "rank": 8,
+            "cosine": 0.2071
+          },
+          {
+            "corpus_id": "Flor Lemaire",
+            "rank": 14,
+            "cosine": 0.1748
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.2978,
+          "shares_content_word": true,
+          "shared_words": [
+            "fiction"
+          ]
+        }
+      },
+      {
+        "query_id": "query_141",
+        "attribute": "Gladiolus",
+        "attribute_content_words": [
+          "gladiolus"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 12,
+            "cosine": 0.2409
+          },
+          {
+            "corpus_id": "Flor Lemaire",
+            "rank": 29,
+            "cosine": 0.2062
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Nathaniel Robens",
+          "rank": 1,
+          "cosine": 0.3314,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_146",
+        "attribute": "Raspberries",
+        "attribute_content_words": [
+          "raspberries"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Georgette Cagna",
+            "rank": 2,
+            "cosine": 0.3781
+          },
+          {
+            "corpus_id": "Flor Lemaire",
+            "rank": 16,
+            "cosine": 0.3047
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Cristy Walford",
+          "rank": 1,
+          "cosine": 0.4038,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_147",
+        "attribute": "Handbags",
+        "attribute_content_words": [
+          "handbags"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Laurine Bellizzi",
+            "rank": 1,
+            "cosine": 0.2324
+          },
+          {
+            "corpus_id": "Flor Lemaire",
+            "rank": 3,
+            "cosine": 0.1861
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Gladstone Oonk",
+          "rank": 2,
+          "cosine": 0.1918,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_180",
+        "attribute": "the Kansas City Chiefs",
+        "attribute_content_words": [
+          "chiefs",
+          "city",
+          "kansas"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Pate Lindley",
+            "rank": 1,
+            "cosine": 0.2952
+          },
+          {
+            "corpus_id": "Herminia Caranto",
+            "rank": 5,
+            "cosine": 0.18
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 2,
+          "cosine": 0.2444,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_183",
+        "attribute": "Ham",
+        "attribute_content_words": [],
+        "gold": [
+          {
+            "corpus_id": "Pate Lindley",
+            "rank": 9,
+            "cosine": 0.2534
+          },
+          {
+            "corpus_id": "Jerrod Dumpit",
+            "rank": 32,
+            "cosine": 0.1913
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chaney Gertman",
+          "rank": 1,
+          "cosine": 0.3292,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_185",
+        "attribute": "Meteors",
+        "attribute_content_words": [
+          "meteors"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Marcellus Meachum",
+            "rank": 5,
+            "cosine": 0.2593
+          },
+          {
+            "corpus_id": "Pate Lindley",
+            "rank": 28,
+            "cosine": 0.2145
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Tarik Hollfelder",
+          "rank": 1,
+          "cosine": 0.2705,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_186",
+        "attribute": "Comedy Literature",
+        "attribute_content_words": [
+          "comedy",
+          "literature"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Wellington Hinn",
+            "rank": 1,
+            "cosine": 0.3909
+          },
+          {
+            "corpus_id": "Pate Lindley",
+            "rank": 13,
+            "cosine": 0.254
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 2,
+          "cosine": 0.3457,
+          "shares_content_word": true,
+          "shared_words": [
+            "literature"
+          ]
+        }
+      },
+      {
+        "query_id": "query_203",
+        "attribute": "Spades",
+        "attribute_content_words": [
+          "spades"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Chaney Gertman",
+            "rank": 8,
+            "cosine": 0.1918
+          },
+          {
+            "corpus_id": "Pate Lindley",
+            "rank": 23,
+            "cosine": 0.1552
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Ruby Gaskin",
+          "rank": 1,
+          "cosine": 0.2333,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_211",
+        "attribute": "Escape Rooms",
+        "attribute_content_words": [
+          "escape",
+          "rooms"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Celia Marszalek",
+            "rank": 4,
+            "cosine": 0.1856
+          },
+          {
+            "corpus_id": "Pate Lindley",
+            "rank": 31,
+            "cosine": 0.1234
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.2447,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_216",
+        "attribute": "Tambourines",
+        "attribute_content_words": [
+          "tambourines"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Bronson Saelee",
+            "rank": 3,
+            "cosine": 0.3437
+          },
+          {
+            "corpus_id": "Shelvia Goike",
+            "rank": 4,
+            "cosine": 0.3429
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Gladstone Oonk",
+          "rank": 1,
+          "cosine": 0.3751,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_218",
+        "attribute": "Edamame",
+        "attribute_content_words": [
+          "edamame"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Shelvia Goike",
+            "rank": 5,
+            "cosine": 0.2487
+          },
+          {
+            "corpus_id": "Ofelia Rosselot",
+            "rank": 7,
+            "cosine": 0.2413
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.3145,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_222",
+        "attribute": "Herbalism",
+        "attribute_content_words": [
+          "herbalism"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Shelvia Goike",
+            "rank": 4,
+            "cosine": 0.2525
+          },
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 17,
+            "cosine": 0.1929
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Nathaniel Robens",
+          "rank": 1,
+          "cosine": 0.3097,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_224",
+        "attribute": "Bushcraft",
+        "attribute_content_words": [
+          "bushcraft"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Shelvia Goike",
+            "rank": 21,
+            "cosine": 0.2118
+          },
+          {
+            "corpus_id": "Amaris Grow",
+            "rank": 41,
+            "cosine": 0.1494
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Ruby Gaskin",
+          "rank": 1,
+          "cosine": 0.3187,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_227",
+        "attribute": "The Iron Age",
+        "attribute_content_words": [
+          "iron"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Shelvia Goike",
+            "rank": 9,
+            "cosine": 0.1509
+          },
+          {
+            "corpus_id": "Georgette Cagna",
+            "rank": 13,
+            "cosine": 0.1332
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.1866,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_235",
+        "attribute": "Jasmine",
+        "attribute_content_words": [
+          "jasmine"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Nathen Saadia",
+            "rank": 20,
+            "cosine": 0.1461
+          },
+          {
+            "corpus_id": "Shelvia Goike",
+            "rank": 31,
+            "cosine": 0.1233
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Celia Marszalek",
+          "rank": 1,
+          "cosine": 0.2371,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_247",
+        "attribute": "Twinkies",
+        "attribute_content_words": [
+          "twinkies"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Darwyn Raio",
+            "rank": 5,
+            "cosine": 0.2627
+          },
+          {
+            "corpus_id": "Shelvia Goike",
+            "rank": 12,
+            "cosine": 0.2343
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chaney Gertman",
+          "rank": 1,
+          "cosine": 0.287,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_251",
+        "attribute": "Asafoetida",
+        "attribute_content_words": [
+          "asafoetida"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Celia Marszalek",
+            "rank": 14,
+            "cosine": 0.2964
+          },
+          {
+            "corpus_id": "Shelvia Goike",
+            "rank": 21,
+            "cosine": 0.2776
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3881,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_270",
+        "attribute": "Environmental Science",
+        "attribute_content_words": [
+          "environmental",
+          "science"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Mathew Weierke",
+            "rank": 2,
+            "cosine": 0.2397
+          },
+          {
+            "corpus_id": "Ovid Rahm",
+            "rank": 5,
+            "cosine": 0.2206
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Theola Laudermilk",
+          "rank": 1,
+          "cosine": 0.2768,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_273",
+        "attribute": "Ash Trees",
+        "attribute_content_words": [
+          "trees"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ovid Rahm",
+            "rank": 3,
+            "cosine": 0.3733
+          },
+          {
+            "corpus_id": "Flo Zaugg",
+            "rank": 35,
+            "cosine": 0.2483
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Darwyn Raio",
+          "rank": 1,
+          "cosine": 0.3897,
+          "shares_content_word": true,
+          "shared_words": [
+            "trees"
+          ]
+        }
+      },
+      {
+        "query_id": "query_277",
+        "attribute": "Okra",
+        "attribute_content_words": [
+          "okra"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ovid Rahm",
+            "rank": 13,
+            "cosine": 0.1936
+          },
+          {
+            "corpus_id": "Camisha Bogosian",
+            "rank": 19,
+            "cosine": 0.1665
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.307,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_284",
+        "attribute": "Paleontology",
+        "attribute_content_words": [
+          "paleontology"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Eustace Comment",
+            "rank": 5,
+            "cosine": 0.3152
+          },
+          {
+            "corpus_id": "Ovid Rahm",
+            "rank": 7,
+            "cosine": 0.3143
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Ofelia Rosselot",
+          "rank": 1,
+          "cosine": 0.3466,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_285",
+        "attribute": "Acrylic Painting",
+        "attribute_content_words": [
+          "acrylic",
+          "painting"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ovid Rahm",
+            "rank": 2,
+            "cosine": 0.2413
+          },
+          {
+            "corpus_id": "Terrell Varadarajan",
+            "rank": 27,
+            "cosine": 0.1706
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.2643,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_292",
+        "attribute": "Renaissance Art",
+        "attribute_content_words": [
+          "renaissance"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ovid Rahm",
+            "rank": 19,
+            "cosine": 0.2292
+          },
+          {
+            "corpus_id": "Chadwick Frisella",
+            "rank": 28,
+            "cosine": 0.2061
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.3821,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_300",
+        "attribute": "The Viking Age",
+        "attribute_content_words": [
+          "viking"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Bronson Saelee",
+            "rank": 1,
+            "cosine": 0.2632
+          },
+          {
+            "corpus_id": "Jerrod Dumpit",
+            "rank": 3,
+            "cosine": 0.2391
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Tarik Hollfelder",
+          "rank": 2,
+          "cosine": 0.2556,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_305",
+        "attribute": "The Scent of a Campfire",
+        "attribute_content_words": [
+          "campfire",
+          "scent"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Bronson Saelee",
+            "rank": 3,
+            "cosine": 0.2779
+          },
+          {
+            "corpus_id": "Laurine Bellizzi",
+            "rank": 6,
+            "cosine": 0.2571
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chaney Gertman",
+          "rank": 1,
+          "cosine": 0.3226,
+          "shares_content_word": true,
+          "shared_words": [
+            "scent"
+          ]
+        }
+      },
+      {
+        "query_id": "query_314",
+        "attribute": "Stalagmites",
+        "attribute_content_words": [
+          "stalagmites"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jerrie Roupe",
+            "rank": 33,
+            "cosine": 0.2366
+          },
+          {
+            "corpus_id": "Bronson Saelee",
+            "rank": 36,
+            "cosine": 0.2258
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Sheree Riddley",
+          "rank": 1,
+          "cosine": 0.3748,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_325",
+        "attribute": "Millipedes",
+        "attribute_content_words": [
+          "millipedes"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Bronson Saelee",
+            "rank": 21,
+            "cosine": 0.2508
+          },
+          {
+            "corpus_id": "Eudora Cervero",
+            "rank": 24,
+            "cosine": 0.2422
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3274,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_326",
+        "attribute": "Angel Food Cakes",
+        "attribute_content_words": [
+          "angel",
+          "cakes",
+          "food"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jacey Gnatek",
+            "rank": 1,
+            "cosine": 0.3849
+          },
+          {
+            "corpus_id": "Bronson Saelee",
+            "rank": 6,
+            "cosine": 0.3301
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 2,
+          "cosine": 0.3777,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_333",
+        "attribute": "Italian Ice",
+        "attribute_content_words": [
+          "italian"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Tisha Ghent",
+            "rank": 11,
+            "cosine": 0.2719
+          },
+          {
+            "corpus_id": "Gladstone Oonk",
+            "rank": 24,
+            "cosine": 0.2323
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.338,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_336",
+        "attribute": "Early Modern Period",
+        "attribute_content_words": [
+          "early",
+          "modern",
+          "period"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Gladstone Oonk",
+            "rank": 3,
+            "cosine": 0.2849
+          },
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 8,
+            "cosine": 0.2664
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.3003,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_339",
+        "attribute": "Earrings",
+        "attribute_content_words": [
+          "earrings"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Marcellus Meachum",
+            "rank": 3,
+            "cosine": 0.2118
+          },
+          {
+            "corpus_id": "Gladstone Oonk",
+            "rank": 33,
+            "cosine": 0.1474
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Laurine Bellizzi",
+          "rank": 1,
+          "cosine": 0.2273,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_342",
+        "attribute": "Llamas",
+        "attribute_content_words": [
+          "llamas"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Laurine Bellizzi",
+            "rank": 12,
+            "cosine": 0.2597
+          },
+          {
+            "corpus_id": "Gladstone Oonk",
+            "rank": 31,
+            "cosine": 0.2202
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Riya Hayhoe",
+          "rank": 1,
+          "cosine": 0.3489,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_348",
+        "attribute": "Lo-fi music",
+        "attribute_content_words": [
+          "music"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Flo Zaugg",
+            "rank": 4,
+            "cosine": 0.2366
+          },
+          {
+            "corpus_id": "Gladstone Oonk",
+            "rank": 39,
+            "cosine": 0.0841
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Wellington Hinn",
+          "rank": 1,
+          "cosine": 0.2858,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_355",
+        "attribute": "Sea shanties",
+        "attribute_content_words": [
+          "shanties"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Tarik Hollfelder",
+            "rank": 4,
+            "cosine": 0.269
+          },
+          {
+            "corpus_id": "Gladstone Oonk",
+            "rank": 25,
+            "cosine": 0.2137
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.299,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_357",
+        "attribute": "Polo Shirts",
+        "attribute_content_words": [
+          "polo",
+          "shirts"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Chaney Gertman",
+            "rank": 2,
+            "cosine": 0.2117
+          },
+          {
+            "corpus_id": "Gladstone Oonk",
+            "rank": 3,
+            "cosine": 0.2111
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Laurine Bellizzi",
+          "rank": 1,
+          "cosine": 0.2144,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_361",
+        "attribute": "Bison",
+        "attribute_content_words": [
+          "bison"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Darwyn Raio",
+            "rank": 19,
+            "cosine": 0.2743
+          },
+          {
+            "corpus_id": "Gladstone Oonk",
+            "rank": 32,
+            "cosine": 0.2364
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Cristy Walford",
+          "rank": 1,
+          "cosine": 0.3965,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_366",
+        "attribute": "International Relations",
+        "attribute_content_words": [
+          "international",
+          "relations"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Aliza Uhlrich",
+            "rank": 2,
+            "cosine": 0.1392
+          },
+          {
+            "corpus_id": "Gladstone Oonk",
+            "rank": 7,
+            "cosine": 0.0962
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Nathen Saadia",
+          "rank": 1,
+          "cosine": 0.1411,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_369",
+        "attribute": "Bee-eaters",
+        "attribute_content_words": [
+          "eaters"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ofelia Rosselot",
+            "rank": 6,
+            "cosine": 0.3405
+          },
+          {
+            "corpus_id": "Tisha Ghent",
+            "rank": 34,
+            "cosine": 0.2632
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3792,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_372",
+        "attribute": "Nautiluses",
+        "attribute_content_words": [
+          "nautiluses"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ofelia Rosselot",
+            "rank": 3,
+            "cosine": 0.3024
+          },
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 27,
+            "cosine": 0.2472
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3337,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_383",
+        "attribute": "Clams",
+        "attribute_content_words": [
+          "clams"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ofelia Rosselot",
+            "rank": 22,
+            "cosine": 0.3008
+          },
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 33,
+            "cosine": 0.2854
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Darwyn Raio",
+          "rank": 1,
+          "cosine": 0.385,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_387",
+        "attribute": "Poetry Writing",
+        "attribute_content_words": [
+          "poetry",
+          "writing"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ofelia Rosselot",
+            "rank": 3,
+            "cosine": 0.2698
+          },
+          {
+            "corpus_id": "Jerrie Roupe",
+            "rank": 10,
+            "cosine": 0.2333
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Wellington Hinn",
+          "rank": 1,
+          "cosine": 0.2992,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_392",
+        "attribute": "Poplar Trees",
+        "attribute_content_words": [
+          "poplar",
+          "trees"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Riya Hayhoe",
+            "rank": 10,
+            "cosine": 0.3376
+          },
+          {
+            "corpus_id": "Ofelia Rosselot",
+            "rank": 14,
+            "cosine": 0.3065
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Sheree Riddley",
+          "rank": 1,
+          "cosine": 0.39,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_393",
+        "attribute": "The Scent of Baking Bread",
+        "attribute_content_words": [
+          "baking",
+          "bread",
+          "scent"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Chaney Gertman",
+            "rank": 1,
+            "cosine": 0.3354
+          },
+          {
+            "corpus_id": "Ofelia Rosselot",
+            "rank": 2,
+            "cosine": 0.3291
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 3,
+          "cosine": 0.3244,
+          "shares_content_word": true,
+          "shared_words": [
+            "baking"
+          ]
+        }
+      },
+      {
+        "query_id": "query_402",
+        "attribute": "Cellos",
+        "attribute_content_words": [
+          "cellos"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Aliza Uhlrich",
+            "rank": 9,
+            "cosine": 0.2705
+          },
+          {
+            "corpus_id": "Ofelia Rosselot",
+            "rank": 11,
+            "cosine": 0.2624
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Celia Marszalek",
+          "rank": 1,
+          "cosine": 0.3236,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_403",
+        "attribute": "Lilies",
+        "attribute_content_words": [
+          "lilies"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ofelia Rosselot",
+            "rank": 5,
+            "cosine": 0.3197
+          },
+          {
+            "corpus_id": "Chadwick Frisella",
+            "rank": 29,
+            "cosine": 0.2284
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Cristy Walford",
+          "rank": 1,
+          "cosine": 0.3386,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_404",
+        "attribute": "Journalists",
+        "attribute_content_words": [
+          "journalists"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ofelia Rosselot",
+            "rank": 2,
+            "cosine": 0.1912
+          },
+          {
+            "corpus_id": "Theola Laudermilk",
+            "rank": 13,
+            "cosine": 0.159
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.2319,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_405",
+        "attribute": "Ethics",
+        "attribute_content_words": [
+          "ethics"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Herminia Caranto",
+            "rank": 13,
+            "cosine": 0.1145
+          },
+          {
+            "corpus_id": "Tisha Ghent",
+            "rank": 36,
+            "cosine": 0.0658
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chadwick Frisella",
+          "rank": 1,
+          "cosine": 0.1856,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_409",
+        "attribute": "Caramel deLites",
+        "attribute_content_words": [
+          "caramel",
+          "delites"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Amaris Grow",
+            "rank": 7,
+            "cosine": 0.3134
+          },
+          {
+            "corpus_id": "Tisha Ghent",
+            "rank": 10,
+            "cosine": 0.3028
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.4103,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_410",
+        "attribute": "Ambient Music",
+        "attribute_content_words": [
+          "ambient",
+          "music"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Marcellus Meachum",
+            "rank": 5,
+            "cosine": 0.2638
+          },
+          {
+            "corpus_id": "Tisha Ghent",
+            "rank": 35,
+            "cosine": 0.1761
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Dorathea Bastress",
+          "rank": 1,
+          "cosine": 0.3097,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_411",
+        "attribute": "Phase 10",
+        "attribute_content_words": [
+          "phase"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Wellington Hinn",
+            "rank": 1,
+            "cosine": 0.1763
+          },
+          {
+            "corpus_id": "Tisha Ghent",
+            "rank": 15,
+            "cosine": 0.1006
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Ruby Gaskin",
+          "rank": 2,
+          "cosine": 0.1652,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_416",
+        "attribute": "Habaneros",
+        "attribute_content_words": [
+          "habaneros"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Mathew Weierke",
+            "rank": 24,
+            "cosine": 0.2142
+          },
+          {
+            "corpus_id": "Tisha Ghent",
+            "rank": 45,
+            "cosine": 0.1487
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Tarik Hollfelder",
+          "rank": 1,
+          "cosine": 0.3169,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_424",
+        "attribute": "Toothbrushes",
+        "attribute_content_words": [
+          "toothbrushes"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Gaetano Argel",
+            "rank": 21,
+            "cosine": 0.1737
+          },
+          {
+            "corpus_id": "Tisha Ghent",
+            "rank": 24,
+            "cosine": 0.1678
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Linzy Recknor",
+          "rank": 1,
+          "cosine": 0.2455,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_441",
+        "attribute": "Refrigerators",
+        "attribute_content_words": [
+          "refrigerators"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Herminia Caranto",
+            "rank": 20,
+            "cosine": 0.1892
+          },
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 26,
+            "cosine": 0.177
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chadwick Frisella",
+          "rank": 1,
+          "cosine": 0.2764,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_444",
+        "attribute": "Dominoes",
+        "attribute_content_words": [
+          "dominoes"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Marcellus Meachum",
+            "rank": 5,
+            "cosine": 0.3236
+          },
+          {
+            "corpus_id": "Herminia Caranto",
+            "rank": 14,
+            "cosine": 0.2846
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3778,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_445",
+        "attribute": "Sichuan Peppercorns",
+        "attribute_content_words": [
+          "peppercorns",
+          "sichuan"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Herminia Caranto",
+            "rank": 2,
+            "cosine": 0.3459
+          },
+          {
+            "corpus_id": "Wellington Hinn",
+            "rank": 23,
+            "cosine": 0.2507
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Flo Zaugg",
+          "rank": 1,
+          "cosine": 0.3491,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_447",
+        "attribute": "Wardrobes",
+        "attribute_content_words": [
+          "wardrobes"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Laurine Bellizzi",
+            "rank": 2,
+            "cosine": 0.3202
+          },
+          {
+            "corpus_id": "Herminia Caranto",
+            "rank": 33,
+            "cosine": 0.1735
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Celia Marszalek",
+          "rank": 1,
+          "cosine": 0.3206,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_449",
+        "attribute": "the Los Angeles Rams",
+        "attribute_content_words": [
+          "angeles",
+          "rams"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Sheree Riddley",
+            "rank": 8,
+            "cosine": 0.1401
+          },
+          {
+            "corpus_id": "Herminia Caranto",
+            "rank": 11,
+            "cosine": 0.1286
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.2894,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_452",
+        "attribute": "Crayfish",
+        "attribute_content_words": [
+          "crayfish"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Herminia Caranto",
+            "rank": 15,
+            "cosine": 0.272
+          },
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 25,
+            "cosine": 0.2481
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.3535,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_457",
+        "attribute": "Begonias",
+        "attribute_content_words": [
+          "begonias"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Herminia Caranto",
+            "rank": 1,
+            "cosine": 0.3785
+          },
+          {
+            "corpus_id": "Camisha Bogosian",
+            "rank": 2,
+            "cosine": 0.3743
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Nathen Saadia",
+          "rank": 3,
+          "cosine": 0.3693,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_458",
+        "attribute": "Topaz",
+        "attribute_content_words": [
+          "topaz"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Gaetano Argel",
+            "rank": 2,
+            "cosine": 0.2267
+          },
+          {
+            "corpus_id": "Herminia Caranto",
+            "rank": 38,
+            "cosine": 0.0835
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.2348,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_467",
+        "attribute": "Cross-country Skiing",
+        "attribute_content_words": [
+          "country",
+          "cross",
+          "skiing"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Eudora Cervero",
+            "rank": 15,
+            "cosine": 0.141
+          },
+          {
+            "corpus_id": "Herminia Caranto",
+            "rank": 16,
+            "cosine": 0.1409
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Nathen Saadia",
+          "rank": 1,
+          "cosine": 0.2344,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_474",
+        "attribute": "Carpenter Ants",
+        "attribute_content_words": [
+          "ants",
+          "carpenter"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 13,
+            "cosine": 0.2876
+          },
+          {
+            "corpus_id": "Linzy Recknor",
+            "rank": 23,
+            "cosine": 0.259
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Jacey Gnatek",
+          "rank": 1,
+          "cosine": 0.3556,
+          "shares_content_word": true,
+          "shared_words": [
+            "ants"
+          ]
+        }
+      },
+      {
+        "query_id": "query_479",
+        "attribute": "Tailors",
+        "attribute_content_words": [
+          "tailors"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Linzy Recknor",
+            "rank": 5,
+            "cosine": 0.2078
+          },
+          {
+            "corpus_id": "Georgette Cagna",
+            "rank": 6,
+            "cosine": 0.1864
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Celia Marszalek",
+          "rank": 1,
+          "cosine": 0.2607,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_493",
+        "attribute": "Scallops",
+        "attribute_content_words": [
+          "scallops"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Linzy Recknor",
+            "rank": 8,
+            "cosine": 0.315
+          },
+          {
+            "corpus_id": "Tarik Hollfelder",
+            "rank": 10,
+            "cosine": 0.3093
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Armand Schweda",
+          "rank": 1,
+          "cosine": 0.4008,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_501",
+        "attribute": "Layer Cakes",
+        "attribute_content_words": [
+          "cakes",
+          "layer"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jacey Gnatek",
+            "rank": 1,
+            "cosine": 0.3558
+          },
+          {
+            "corpus_id": "Linzy Recknor",
+            "rank": 5,
+            "cosine": 0.2821
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 2,
+          "cosine": 0.3555,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_504",
+        "attribute": "Composing Music",
+        "attribute_content_words": [
+          "composing",
+          "music"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Aliza Uhlrich",
+            "rank": 1,
+            "cosine": 0.3036
+          },
+          {
+            "corpus_id": "Linzy Recknor",
+            "rank": 21,
+            "cosine": 0.1844
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Wellington Hinn",
+          "rank": 2,
+          "cosine": 0.2808,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_510",
+        "attribute": "Pinball",
+        "attribute_content_words": [
+          "pinball"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Wellington Hinn",
+            "rank": 5,
+            "cosine": 0.2115
+          },
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 37,
+            "cosine": 0.1048
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Ruby Gaskin",
+          "rank": 1,
+          "cosine": 0.2384,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_511",
+        "attribute": "Tape Dispensers",
+        "attribute_content_words": [
+          "dispensers",
+          "tape"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Georgette Cagna",
+            "rank": 2,
+            "cosine": 0.1964
+          },
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 12,
+            "cosine": 0.1563
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chadwick Frisella",
+          "rank": 1,
+          "cosine": 0.2144,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_514",
+        "attribute": "Word Searches",
+        "attribute_content_words": [
+          "searches",
+          "word"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 1,
+            "cosine": 0.3611
+          },
+          {
+            "corpus_id": "Sheree Riddley",
+            "rank": 13,
+            "cosine": 0.2688
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Ofelia Rosselot",
+          "rank": 2,
+          "cosine": 0.3106,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_516",
+        "attribute": "Financiers",
+        "attribute_content_words": [
+          "financiers"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Casimiro Steo",
+            "rank": 8,
+            "cosine": 0.1475
+          },
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 16,
+            "cosine": 0.1154
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chadwick Frisella",
+          "rank": 1,
+          "cosine": 0.2256,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_522",
+        "attribute": "Love",
+        "attribute_content_words": [
+          "love"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 20,
+            "cosine": 0.1056
+          },
+          {
+            "corpus_id": "Camisha Bogosian",
+            "rank": 38,
+            "cosine": 0.0774
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Theola Laudermilk",
+          "rank": 1,
+          "cosine": 0.1624,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_523",
+        "attribute": "Potter Wasps",
+        "attribute_content_words": [
+          "potter",
+          "wasps"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 2,
+            "cosine": 0.3233
+          },
+          {
+            "corpus_id": "Gaetano Argel",
+            "rank": 27,
+            "cosine": 0.2579
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Jacey Gnatek",
+          "rank": 1,
+          "cosine": 0.3361,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_525",
+        "attribute": "Statistics",
+        "attribute_content_words": [
+          "statistics"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Tarik Hollfelder",
+            "rank": 12,
+            "cosine": 0.1178
+          },
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 14,
+            "cosine": 0.1115
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Flor Lemaire",
+          "rank": 1,
+          "cosine": 0.1784,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_526",
+        "attribute": "Electric Guitars",
+        "attribute_content_words": [
+          "electric",
+          "guitars"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Riya Hayhoe",
+            "rank": 13,
+            "cosine": 0.1606
+          },
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 20,
+            "cosine": 0.149
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.2416,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_538",
+        "attribute": "Clue",
+        "attribute_content_words": [
+          "clue"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Theola Laudermilk",
+            "rank": 3,
+            "cosine": 0.2801
+          },
+          {
+            "corpus_id": "Vinie Relford",
+            "rank": 9,
+            "cosine": 0.2592
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Ofelia Rosselot",
+          "rank": 1,
+          "cosine": 0.2903,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_548",
+        "attribute": "Wrenches",
+        "attribute_content_words": [
+          "wrenches"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jerrod Dumpit",
+            "rank": 2,
+            "cosine": 0.197
+          },
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 7,
+            "cosine": 0.1818
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Gladstone Oonk",
+          "rank": 1,
+          "cosine": 0.2041,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_552",
+        "attribute": "Opals",
+        "attribute_content_words": [
+          "opals"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jerrie Roupe",
+            "rank": 2,
+            "cosine": 0.3085
+          },
+          {
+            "corpus_id": "Jerrod Dumpit",
+            "rank": 30,
+            "cosine": 0.2106
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Tarik Hollfelder",
+          "rank": 1,
+          "cosine": 0.3155,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_558",
+        "attribute": "Iguanas",
+        "attribute_content_words": [
+          "iguanas"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Chaney Gertman",
+            "rank": 17,
+            "cosine": 0.2318
+          },
+          {
+            "corpus_id": "Jerrod Dumpit",
+            "rank": 28,
+            "cosine": 0.2157
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Riya Hayhoe",
+          "rank": 1,
+          "cosine": 0.3281,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_559",
+        "attribute": "Ostriches",
+        "attribute_content_words": [
+          "ostriches"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jerrod Dumpit",
+            "rank": 12,
+            "cosine": 0.2877
+          },
+          {
+            "corpus_id": "Cristy Walford",
+            "rank": 26,
+            "cosine": 0.2689
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Armand Schweda",
+          "rank": 1,
+          "cosine": 0.351,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_567",
+        "attribute": "Librarians",
+        "attribute_content_words": [
+          "librarians"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Aliza Uhlrich",
+            "rank": 2,
+            "cosine": 0.2966
+          },
+          {
+            "corpus_id": "Jerrod Dumpit",
+            "rank": 8,
+            "cosine": 0.2455
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Laurine Bellizzi",
+          "rank": 1,
+          "cosine": 0.3112,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_577",
+        "attribute": "Cleaners",
+        "attribute_content_words": [
+          "cleaners"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Casimiro Steo",
+            "rank": 10,
+            "cosine": 0.2272
+          },
+          {
+            "corpus_id": "Amaris Grow",
+            "rank": 45,
+            "cosine": 0.1139
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chadwick Frisella",
+          "rank": 1,
+          "cosine": 0.263,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_588",
+        "attribute": "Matcha Lattes",
+        "attribute_content_words": [
+          "lattes",
+          "matcha"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Chaney Gertman",
+            "rank": 9,
+            "cosine": 0.2344
+          },
+          {
+            "corpus_id": "Amaris Grow",
+            "rank": 37,
+            "cosine": 0.1544
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Armand Schweda",
+          "rank": 1,
+          "cosine": 0.3052,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_591",
+        "attribute": "Jelly",
+        "attribute_content_words": [
+          "jelly"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Terrell Varadarajan",
+            "rank": 6,
+            "cosine": 0.2684
+          },
+          {
+            "corpus_id": "Amaris Grow",
+            "rank": 20,
+            "cosine": 0.2333
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3709,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_592",
+        "attribute": "Hazelnut Flavor",
+        "attribute_content_words": [
+          "flavor",
+          "hazelnut"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Amaris Grow",
+            "rank": 1,
+            "cosine": 0.2847
+          },
+          {
+            "corpus_id": "Darwyn Raio",
+            "rank": 11,
+            "cosine": 0.2343
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Cristy Walford",
+          "rank": 2,
+          "cosine": 0.2812,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_593",
+        "attribute": "Scissors",
+        "attribute_content_words": [
+          "scissors"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Eudora Cervero",
+            "rank": 4,
+            "cosine": 0.2265
+          },
+          {
+            "corpus_id": "Amaris Grow",
+            "rank": 44,
+            "cosine": 0.137
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chadwick Frisella",
+          "rank": 1,
+          "cosine": 0.2504,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_595",
+        "attribute": "Tourmaline",
+        "attribute_content_words": [
+          "tourmaline"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Amaris Grow",
+            "rank": 22,
+            "cosine": 0.1927
+          },
+          {
+            "corpus_id": "Elam Mejiamejia",
+            "rank": 36,
+            "cosine": 0.1704
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.2993,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_597",
+        "attribute": "Young Adult Fiction",
+        "attribute_content_words": [
+          "adult",
+          "fiction",
+          "young"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Aliza Uhlrich",
+            "rank": 1,
+            "cosine": 0.3491
+          },
+          {
+            "corpus_id": "Amaris Grow",
+            "rank": 9,
+            "cosine": 0.2202
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Maryann Bohnsack",
+          "rank": 2,
+          "cosine": 0.278,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_605",
+        "attribute": "Malachite",
+        "attribute_content_words": [
+          "malachite"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Mathew Weierke",
+            "rank": 41,
+            "cosine": 0.2018
+          },
+          {
+            "corpus_id": "Marcellus Meachum",
+            "rank": 45,
+            "cosine": 0.1643
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.3471,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_607",
+        "attribute": "Ocean Sunfish",
+        "attribute_content_words": [
+          "ocean",
+          "sunfish"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Marcellus Meachum",
+            "rank": 6,
+            "cosine": 0.2613
+          },
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 39,
+            "cosine": 0.1672
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.3373,
+          "shares_content_word": true,
+          "shared_words": [
+            "ocean"
+          ]
+        }
+      },
+      {
+        "query_id": "query_610",
+        "attribute": "Nostalgia",
+        "attribute_content_words": [
+          "nostalgia"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Marcellus Meachum",
+            "rank": 10,
+            "cosine": 0.1832
+          },
+          {
+            "corpus_id": "Ruby Gaskin",
+            "rank": 15,
+            "cosine": 0.1735
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Laurine Bellizzi",
+          "rank": 1,
+          "cosine": 0.2178,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_626",
+        "attribute": "Poetry Slams",
+        "attribute_content_words": [
+          "poetry",
+          "slams"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Aliza Uhlrich",
+            "rank": 3,
+            "cosine": 0.3192
+          },
+          {
+            "corpus_id": "Marcellus Meachum",
+            "rank": 5,
+            "cosine": 0.2854
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Wellington Hinn",
+          "rank": 1,
+          "cosine": 0.3318,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_628",
+        "attribute": "Blue-ringed Octopus",
+        "attribute_content_words": [
+          "blue",
+          "octopus",
+          "ringed"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Marcellus Meachum",
+            "rank": 1,
+            "cosine": 0.316
+          },
+          {
+            "corpus_id": "Theola Laudermilk",
+            "rank": 16,
+            "cosine": 0.2192
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 2,
+          "cosine": 0.3114,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_634",
+        "attribute": "Hornbills",
+        "attribute_content_words": [
+          "hornbills"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Casimiro Steo",
+            "rank": 18,
+            "cosine": 0.2337
+          },
+          {
+            "corpus_id": "Wellington Hinn",
+            "rank": 35,
+            "cosine": 0.193
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.3474,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_636",
+        "attribute": "Bread Puddings",
+        "attribute_content_words": [
+          "bread",
+          "puddings"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Flo Zaugg",
+            "rank": 15,
+            "cosine": 0.2706
+          },
+          {
+            "corpus_id": "Wellington Hinn",
+            "rank": 17,
+            "cosine": 0.2689
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3631,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_639",
+        "attribute": "Poppy Seed",
+        "attribute_content_words": [
+          "poppy",
+          "seed"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Wellington Hinn",
+            "rank": 19,
+            "cosine": 0.1921
+          },
+          {
+            "corpus_id": "Jerrie Roupe",
+            "rank": 25,
+            "cosine": 0.1687
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.295,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_646",
+        "attribute": "Putty Knives",
+        "attribute_content_words": [
+          "knives",
+          "putty"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Wellington Hinn",
+            "rank": 4,
+            "cosine": 0.2372
+          },
+          {
+            "corpus_id": "Cristy Walford",
+            "rank": 11,
+            "cosine": 0.2107
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Armand Schweda",
+          "rank": 1,
+          "cosine": 0.2817,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_650",
+        "attribute": "Holly Trees",
+        "attribute_content_words": [
+          "holly",
+          "trees"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Wellington Hinn",
+            "rank": 22,
+            "cosine": 0.253
+          },
+          {
+            "corpus_id": "Eudora Cervero",
+            "rank": 31,
+            "cosine": 0.2276
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Sheree Riddley",
+          "rank": 1,
+          "cosine": 0.335,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_656",
+        "attribute": "Pavements Ants",
+        "attribute_content_words": [
+          "ants",
+          "pavements"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Wellington Hinn",
+            "rank": 8,
+            "cosine": 0.2946
+          },
+          {
+            "corpus_id": "Theola Laudermilk",
+            "rank": 29,
+            "cosine": 0.2462
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Ruby Gaskin",
+          "rank": 1,
+          "cosine": 0.3263,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_658",
+        "attribute": "Gelato",
+        "attribute_content_words": [
+          "gelato"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Georgette Cagna",
+            "rank": 3,
+            "cosine": 0.3018
+          },
+          {
+            "corpus_id": "Agnes Reap",
+            "rank": 26,
+            "cosine": 0.1929
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Gaetano Argel",
+          "rank": 1,
+          "cosine": 0.3184,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_670",
+        "attribute": "Kombucha",
+        "attribute_content_words": [
+          "kombucha"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Georgette Cagna",
+            "rank": 4,
+            "cosine": 0.2887
+          },
+          {
+            "corpus_id": "Tarik Hollfelder",
+            "rank": 6,
+            "cosine": 0.2744
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Riya Hayhoe",
+          "rank": 1,
+          "cosine": 0.3263,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_676",
+        "attribute": "Umbrellas",
+        "attribute_content_words": [
+          "umbrellas"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Darwyn Raio",
+            "rank": 1,
+            "cosine": 0.3246
+          },
+          {
+            "corpus_id": "Georgette Cagna",
+            "rank": 2,
+            "cosine": 0.3087
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Gladstone Oonk",
+          "rank": 3,
+          "cosine": 0.293,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_681",
+        "attribute": "Tempeh",
+        "attribute_content_words": [
+          "tempeh"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Georgette Cagna",
+            "rank": 2,
+            "cosine": 0.2915
+          },
+          {
+            "corpus_id": "Aliza Uhlrich",
+            "rank": 5,
+            "cosine": 0.2696
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Cristy Walford",
+          "rank": 1,
+          "cosine": 0.318,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_688",
+        "attribute": "Thrifting",
+        "attribute_content_words": [
+          "thrifting"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Laurine Bellizzi",
+            "rank": 1,
+            "cosine": 0.3103
+          },
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 3,
+            "cosine": 0.2527
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Celia Marszalek",
+          "rank": 2,
+          "cosine": 0.2542,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_692",
+        "attribute": "Sandals",
+        "attribute_content_words": [
+          "sandals"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Laurine Bellizzi",
+            "rank": 2,
+            "cosine": 0.2824
+          },
+          {
+            "corpus_id": "Jerrie Roupe",
+            "rank": 11,
+            "cosine": 0.2333
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Armand Schweda",
+          "rank": 1,
+          "cosine": 0.2951,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_703",
+        "attribute": "Interior Design",
+        "attribute_content_words": [
+          "design",
+          "interior"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Eudora Cervero",
+            "rank": 11,
+            "cosine": 0.1612
+          },
+          {
+            "corpus_id": "Laurine Bellizzi",
+            "rank": 14,
+            "cosine": 0.1579
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.2049,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_704",
+        "attribute": "Science Fiction Literature",
+        "attribute_content_words": [
+          "fiction",
+          "literature",
+          "science"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Laurine Bellizzi",
+            "rank": 3,
+            "cosine": 0.285
+          },
+          {
+            "corpus_id": "Jacey Gnatek",
+            "rank": 7,
+            "cosine": 0.2501
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Maryann Bohnsack",
+          "rank": 1,
+          "cosine": 0.3088,
+          "shares_content_word": true,
+          "shared_words": [
+            "literature"
+          ]
+        }
+      },
+      {
+        "query_id": "query_708",
+        "attribute": "the Arizona Cardinals",
+        "attribute_content_words": [
+          "arizona",
+          "cardinals"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Chadwick Frisella",
+            "rank": 13,
+            "cosine": 0.1399
+          },
+          {
+            "corpus_id": "Laurine Bellizzi",
+            "rank": 16,
+            "cosine": 0.1241
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.2481,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_709",
+        "attribute": "Dungeons & Dragons",
+        "attribute_content_words": [
+          "dragons",
+          "dungeons"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Theola Laudermilk",
+            "rank": 1,
+            "cosine": 0.1986
+          },
+          {
+            "corpus_id": "Laurine Bellizzi",
+            "rank": 26,
+            "cosine": 0.0938
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Dorathea Bastress",
+          "rank": 2,
+          "cosine": 0.1896,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_713",
+        "attribute": "Lard",
+        "attribute_content_words": [
+          "lard"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 23,
+            "cosine": 0.2011
+          },
+          {
+            "corpus_id": "Agnes Reap",
+            "rank": 39,
+            "cosine": 0.1427
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chaney Gertman",
+          "rank": 1,
+          "cosine": 0.2908,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_714",
+        "attribute": "Hematite",
+        "attribute_content_words": [
+          "hematite"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Flo Zaugg",
+            "rank": 11,
+            "cosine": 0.2251
+          },
+          {
+            "corpus_id": "Agnes Reap",
+            "rank": 44,
+            "cosine": 0.1512
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.2956,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_716",
+        "attribute": "Cobblers",
+        "attribute_content_words": [
+          "cobblers"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ruby Gaskin",
+            "rank": 9,
+            "cosine": 0.2244
+          },
+          {
+            "corpus_id": "Agnes Reap",
+            "rank": 31,
+            "cosine": 0.1387
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Linzy Recknor",
+          "rank": 1,
+          "cosine": 0.2646,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_719",
+        "attribute": "Utility Knives",
+        "attribute_content_words": [
+          "knives",
+          "utility"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Agnes Reap",
+            "rank": 9,
+            "cosine": 0.2069
+          },
+          {
+            "corpus_id": "Gaetano Argel",
+            "rank": 20,
+            "cosine": 0.187
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Armand Schweda",
+          "rank": 1,
+          "cosine": 0.2681,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_720",
+        "attribute": "Manatees",
+        "attribute_content_words": [
+          "manatees"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Nathaniel Robens",
+            "rank": 3,
+            "cosine": 0.3599
+          },
+          {
+            "corpus_id": "Agnes Reap",
+            "rank": 9,
+            "cosine": 0.3254
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Theola Laudermilk",
+          "rank": 1,
+          "cosine": 0.3601,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_723",
+        "attribute": "Zebras",
+        "attribute_content_words": [
+          "zebras"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Agnes Reap",
+            "rank": 11,
+            "cosine": 0.2666
+          },
+          {
+            "corpus_id": "Chaney Gertman",
+            "rank": 16,
+            "cosine": 0.2593
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Vinie Relford",
+          "rank": 1,
+          "cosine": 0.2977,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_728",
+        "attribute": "Rings",
+        "attribute_content_words": [
+          "rings"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Eudora Cervero",
+            "rank": 33,
+            "cosine": 0.1096
+          },
+          {
+            "corpus_id": "Agnes Reap",
+            "rank": 46,
+            "cosine": 0.0668
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.2439,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_729",
+        "attribute": "Ketchup",
+        "attribute_content_words": [
+          "ketchup"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jacey Gnatek",
+            "rank": 1,
+            "cosine": 0.2767
+          },
+          {
+            "corpus_id": "Agnes Reap",
+            "rank": 15,
+            "cosine": 0.1996
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 2,
+          "cosine": 0.2498,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_734",
+        "attribute": "Maple Trees",
+        "attribute_content_words": [
+          "maple",
+          "trees"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Theola Laudermilk",
+            "rank": 2,
+            "cosine": 0.3627
+          },
+          {
+            "corpus_id": "Agnes Reap",
+            "rank": 8,
+            "cosine": 0.3134
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chaney Gertman",
+          "rank": 1,
+          "cosine": 0.3638,
+          "shares_content_word": true,
+          "shared_words": [
+            "trees"
+          ]
+        }
+      },
+      {
+        "query_id": "query_741",
+        "attribute": "Block Printing",
+        "attribute_content_words": [
+          "block",
+          "printing"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jerrie Roupe",
+            "rank": 15,
+            "cosine": 0.1367
+          },
+          {
+            "corpus_id": "Sheree Riddley",
+            "rank": 24,
+            "cosine": 0.1215
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.1908,
+          "shares_content_word": true,
+          "shared_words": [
+            "printing"
+          ]
+        }
+      },
+      {
+        "query_id": "query_749",
+        "attribute": "Red Foxes",
+        "attribute_content_words": [
+          "foxes"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Sheree Riddley",
+            "rank": 2,
+            "cosine": 0.3201
+          },
+          {
+            "corpus_id": "Eustace Comment",
+            "rank": 9,
+            "cosine": 0.2567
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Tarik Hollfelder",
+          "rank": 1,
+          "cosine": 0.3714,
+          "shares_content_word": true,
+          "shared_words": [
+            "foxes"
+          ]
+        }
+      },
+      {
+        "query_id": "query_757",
+        "attribute": "Lifeguards",
+        "attribute_content_words": [
+          "lifeguards"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Chadwick Frisella",
+            "rank": 5,
+            "cosine": 0.2269
+          },
+          {
+            "corpus_id": "Sheree Riddley",
+            "rank": 16,
+            "cosine": 0.1843
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Jerrod Dumpit",
+          "rank": 1,
+          "cosine": 0.247,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_760",
+        "attribute": "Vaporwave",
+        "attribute_content_words": [
+          "vaporwave"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 24,
+            "cosine": 0.1235
+          },
+          {
+            "corpus_id": "Mathew Weierke",
+            "rank": 25,
+            "cosine": 0.1218
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.2222,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_766",
+        "attribute": "Mousse",
+        "attribute_content_words": [
+          "mousse"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Gaetano Argel",
+            "rank": 6,
+            "cosine": 0.2655
+          },
+          {
+            "corpus_id": "Mathew Weierke",
+            "rank": 42,
+            "cosine": 0.1497
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.305,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_779",
+        "attribute": "Jupiter",
+        "attribute_content_words": [
+          "jupiter"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Aliza Uhlrich",
+            "rank": 1,
+            "cosine": 0.2789
+          },
+          {
+            "corpus_id": "Mathew Weierke",
+            "rank": 38,
+            "cosine": 0.1431
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Herminia Caranto",
+          "rank": 2,
+          "cosine": 0.2727,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_785",
+        "attribute": "Curries",
+        "attribute_content_words": [
+          "curries"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ruby Gaskin",
+            "rank": 4,
+            "cosine": 0.2906
+          },
+          {
+            "corpus_id": "Casimiro Steo",
+            "rank": 38,
+            "cosine": 0.1964
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Armand Schweda",
+          "rank": 1,
+          "cosine": 0.3491,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_791",
+        "attribute": "Visiting Zoos",
+        "attribute_content_words": [
+          "visiting",
+          "zoos"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Casimiro Steo",
+            "rank": 4,
+            "cosine": 0.2595
+          },
+          {
+            "corpus_id": "Riya Hayhoe",
+            "rank": 11,
+            "cosine": 0.2255
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Theola Laudermilk",
+          "rank": 1,
+          "cosine": 0.3134,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_794",
+        "attribute": "Jeans",
+        "attribute_content_words": [
+          "jeans"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Casimiro Steo",
+            "rank": 10,
+            "cosine": 0.1513
+          },
+          {
+            "corpus_id": "Eustace Comment",
+            "rank": 26,
+            "cosine": 0.1131
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Armand Schweda",
+          "rank": 1,
+          "cosine": 0.1989,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_802",
+        "attribute": "Law",
+        "attribute_content_words": [],
+        "gold": [
+          {
+            "corpus_id": "Chadwick Frisella",
+            "rank": 2,
+            "cosine": 0.1333
+          },
+          {
+            "corpus_id": "Casimiro Steo",
+            "rank": 4,
+            "cosine": 0.1185
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.1375,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_816",
+        "attribute": "Chips Ahoy!",
+        "attribute_content_words": [
+          "ahoy",
+          "chips"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Terrell Varadarajan",
+            "rank": 1,
+            "cosine": 0.3252
+          },
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 11,
+            "cosine": 0.2336
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 2,
+          "cosine": 0.307,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_818",
+        "attribute": "Grease Ants",
+        "attribute_content_words": [
+          "ants",
+          "grease"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Eudora Cervero",
+            "rank": 6,
+            "cosine": 0.3525
+          },
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 13,
+            "cosine": 0.3031
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Jacey Gnatek",
+          "rank": 1,
+          "cosine": 0.3838,
+          "shares_content_word": true,
+          "shared_words": [
+            "ants"
+          ]
+        }
+      },
+      {
+        "query_id": "query_819",
+        "attribute": "Rakes",
+        "attribute_content_words": [
+          "rakes"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jacey Gnatek",
+            "rank": 6,
+            "cosine": 0.3218
+          },
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 35,
+            "cosine": 0.2322
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Ruby Gaskin",
+          "rank": 1,
+          "cosine": 0.3741,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_820",
+        "attribute": "Heavy Metal Music",
+        "attribute_content_words": [
+          "heavy",
+          "metal",
+          "music"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 3,
+            "cosine": 0.2389
+          },
+          {
+            "corpus_id": "Elam Mejiamejia",
+            "rank": 39,
+            "cosine": 0.1165
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Dorathea Bastress",
+          "rank": 1,
+          "cosine": 0.2525,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_822",
+        "attribute": "Ancient Greece",
+        "attribute_content_words": [
+          "ancient",
+          "greece"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Aliza Uhlrich",
+            "rank": 2,
+            "cosine": 0.3093
+          },
+          {
+            "corpus_id": "Maryann Bohnsack",
+            "rank": 12,
+            "cosine": 0.2318
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Nathen Saadia",
+          "rank": 1,
+          "cosine": 0.3506,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_826",
+        "attribute": "Buckwheat",
+        "attribute_content_words": [
+          "buckwheat"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ruby Gaskin",
+            "rank": 2,
+            "cosine": 0.2471
+          },
+          {
+            "corpus_id": "Flo Zaugg",
+            "rank": 16,
+            "cosine": 0.1678
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Cristy Walford",
+          "rank": 1,
+          "cosine": 0.2482,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_830",
+        "attribute": "Dandelions",
+        "attribute_content_words": [
+          "dandelions"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Nathaniel Robens",
+            "rank": 2,
+            "cosine": 0.3248
+          },
+          {
+            "corpus_id": "Flo Zaugg",
+            "rank": 37,
+            "cosine": 0.226
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3412,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_835",
+        "attribute": "Red Onions",
+        "attribute_content_words": [
+          "onions"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Flo Zaugg",
+            "rank": 3,
+            "cosine": 0.2855
+          },
+          {
+            "corpus_id": "Eustace Comment",
+            "rank": 29,
+            "cosine": 0.1938
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Nathaniel Robens",
+          "rank": 1,
+          "cosine": 0.3233,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_839",
+        "attribute": "Handball",
+        "attribute_content_words": [
+          "handball"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jacey Gnatek",
+            "rank": 2,
+            "cosine": 0.1237
+          },
+          {
+            "corpus_id": "Flo Zaugg",
+            "rank": 12,
+            "cosine": 0.0954
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Armand Schweda",
+          "rank": 1,
+          "cosine": 0.147,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_851",
+        "attribute": "Documentary Series",
+        "attribute_content_words": [
+          "documentary",
+          "series"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Nathen Saadia",
+            "rank": 3,
+            "cosine": 0.152
+          },
+          {
+            "corpus_id": "Riya Hayhoe",
+            "rank": 4,
+            "cosine": 0.1508
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.1908,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_853",
+        "attribute": "Elevators",
+        "attribute_content_words": [
+          "elevators"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Nathen Saadia",
+            "rank": 13,
+            "cosine": 0.125
+          },
+          {
+            "corpus_id": "Cristy Walford",
+            "rank": 14,
+            "cosine": 0.1238
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Celia Marszalek",
+          "rank": 1,
+          "cosine": 0.1801,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_856",
+        "attribute": "Shower Curtains",
+        "attribute_content_words": [
+          "curtains",
+          "shower"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Darwyn Raio",
+            "rank": 6,
+            "cosine": 0.168
+          },
+          {
+            "corpus_id": "Nathen Saadia",
+            "rank": 7,
+            "cosine": 0.1626
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Laurine Bellizzi",
+          "rank": 1,
+          "cosine": 0.1926,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_858",
+        "attribute": "Sorbet",
+        "attribute_content_words": [
+          "sorbet"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jacey Gnatek",
+            "rank": 15,
+            "cosine": 0.2534
+          },
+          {
+            "corpus_id": "Nathen Saadia",
+            "rank": 24,
+            "cosine": 0.2305
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Pate Lindley",
+          "rank": 1,
+          "cosine": 0.3281,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_870",
+        "attribute": "Veggie Straws",
+        "attribute_content_words": [
+          "straws",
+          "veggie"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Chaney Gertman",
+            "rank": 3,
+            "cosine": 0.2736
+          },
+          {
+            "corpus_id": "Ruby Gaskin",
+            "rank": 16,
+            "cosine": 0.2257
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3159,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_875",
+        "attribute": "Immunology",
+        "attribute_content_words": [
+          "immunology"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Eudora Cervero",
+            "rank": 6,
+            "cosine": 0.1418
+          },
+          {
+            "corpus_id": "Ruby Gaskin",
+            "rank": 19,
+            "cosine": 0.0926
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Eustace Comment",
+          "rank": 1,
+          "cosine": 0.1808,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_881",
+        "attribute": "Buckets",
+        "attribute_content_words": [
+          "buckets"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Ruby Gaskin",
+            "rank": 1,
+            "cosine": 0.3076
+          },
+          {
+            "corpus_id": "Theola Laudermilk",
+            "rank": 15,
+            "cosine": 0.2317
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Pate Lindley",
+          "rank": 2,
+          "cosine": 0.2992,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_885",
+        "attribute": "Barre",
+        "attribute_content_words": [
+          "barre"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jerrie Roupe",
+            "rank": 19,
+            "cosine": 0.1473
+          },
+          {
+            "corpus_id": "Tarik Hollfelder",
+            "rank": 28,
+            "cosine": 0.1362
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Chaney Gertman",
+          "rank": 1,
+          "cosine": 0.2586,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_888",
+        "attribute": "Maned Wolves",
+        "attribute_content_words": [
+          "maned",
+          "wolves"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Cristy Walford",
+            "rank": 1,
+            "cosine": 0.2351
+          },
+          {
+            "corpus_id": "Jerrie Roupe",
+            "rank": 9,
+            "cosine": 0.1994
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Eustace Comment",
+          "rank": 2,
+          "cosine": 0.2222,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_898",
+        "attribute": "Cribbage",
+        "attribute_content_words": [
+          "cribbage"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jerrie Roupe",
+            "rank": 5,
+            "cosine": 0.2276
+          },
+          {
+            "corpus_id": "Theola Laudermilk",
+            "rank": 32,
+            "cosine": 0.1517
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Cristy Walford",
+          "rank": 1,
+          "cosine": 0.2839,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_900",
+        "attribute": "Aloe Vera",
+        "attribute_content_words": [
+          "aloe",
+          "vera"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Nathaniel Robens",
+            "rank": 2,
+            "cosine": 0.3554
+          },
+          {
+            "corpus_id": "Camisha Bogosian",
+            "rank": 7,
+            "cosine": 0.276
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3703,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_901",
+        "attribute": "Late Antiquity",
+        "attribute_content_words": [
+          "antiquity",
+          "late"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Tarik Hollfelder",
+            "rank": 5,
+            "cosine": 0.2956
+          },
+          {
+            "corpus_id": "Camisha Bogosian",
+            "rank": 11,
+            "cosine": 0.2517
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.3216,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_903",
+        "attribute": "Kickboxing",
+        "attribute_content_words": [
+          "kickboxing"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Chaney Gertman",
+            "rank": 3,
+            "cosine": 0.1588
+          },
+          {
+            "corpus_id": "Camisha Bogosian",
+            "rank": 21,
+            "cosine": 0.1005
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Ruby Gaskin",
+          "rank": 1,
+          "cosine": 0.2097,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_904",
+        "attribute": "Dragonflies",
+        "attribute_content_words": [
+          "dragonflies"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Camisha Bogosian",
+            "rank": 12,
+            "cosine": 0.2902
+          },
+          {
+            "corpus_id": "Cristy Walford",
+            "rank": 27,
+            "cosine": 0.2371
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Dorathea Bastress",
+          "rank": 1,
+          "cosine": 0.3486,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_905",
+        "attribute": "Tundra",
+        "attribute_content_words": [
+          "tundra"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Camisha Bogosian",
+            "rank": 6,
+            "cosine": 0.2206
+          },
+          {
+            "corpus_id": "Eustace Comment",
+            "rank": 34,
+            "cosine": 0.1252
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Nathen Saadia",
+          "rank": 1,
+          "cosine": 0.2604,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_909",
+        "attribute": "Watermelons",
+        "attribute_content_words": [
+          "watermelons"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jacey Gnatek",
+            "rank": 16,
+            "cosine": 0.3057
+          },
+          {
+            "corpus_id": "Camisha Bogosian",
+            "rank": 29,
+            "cosine": 0.2743
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Cristy Walford",
+          "rank": 1,
+          "cosine": 0.3959,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_910",
+        "attribute": "Crepes",
+        "attribute_content_words": [
+          "crepes"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Camisha Bogosian",
+            "rank": 16,
+            "cosine": 0.2933
+          },
+          {
+            "corpus_id": "Elam Mejiamejia",
+            "rank": 43,
+            "cosine": 0.2144
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.4274,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_919",
+        "attribute": "Drama Movies",
+        "attribute_content_words": [
+          "drama",
+          "movies"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Cristy Walford",
+            "rank": 2,
+            "cosine": 0.267
+          },
+          {
+            "corpus_id": "Gaetano Argel",
+            "rank": 27,
+            "cosine": 0.1508
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Wellington Hinn",
+          "rank": 1,
+          "cosine": 0.312,
+          "shares_content_word": true,
+          "shared_words": [
+            "drama",
+            "movies"
+          ]
+        }
+      },
+      {
+        "query_id": "query_930",
+        "attribute": "Uno",
+        "attribute_content_words": [],
+        "gold": [
+          {
+            "corpus_id": "Tarik Hollfelder",
+            "rank": 3,
+            "cosine": 0.2413
+          },
+          {
+            "corpus_id": "Nathaniel Robens",
+            "rank": 14,
+            "cosine": 0.1793
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.2892,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_931",
+        "attribute": "Milkshakes",
+        "attribute_content_words": [
+          "milkshakes"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Riya Hayhoe",
+            "rank": 10,
+            "cosine": 0.2682
+          },
+          {
+            "corpus_id": "Nathaniel Robens",
+            "rank": 28,
+            "cosine": 0.227
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Cristy Walford",
+          "rank": 1,
+          "cosine": 0.3419,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_934",
+        "attribute": "Mindfulness",
+        "attribute_content_words": [
+          "mindfulness"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Nathaniel Robens",
+            "rank": 1,
+            "cosine": 0.1744
+          },
+          {
+            "corpus_id": "Eustace Comment",
+            "rank": 2,
+            "cosine": 0.1619
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 3,
+          "cosine": 0.1501,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_941",
+        "attribute": "Egg Noodles",
+        "attribute_content_words": [
+          "noodles"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Nathaniel Robens",
+            "rank": 1,
+            "cosine": 0.3378
+          },
+          {
+            "corpus_id": "Aliza Uhlrich",
+            "rank": 10,
+            "cosine": 0.2561
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 2,
+          "cosine": 0.3094,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_943",
+        "attribute": "the Detroit Tigers",
+        "attribute_content_words": [
+          "detroit",
+          "tigers"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Theola Laudermilk",
+            "rank": 6,
+            "cosine": 0.1439
+          },
+          {
+            "corpus_id": "Nathaniel Robens",
+            "rank": 29,
+            "cosine": 0.0918
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.2511,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_949",
+        "attribute": "Mural Painting",
+        "attribute_content_words": [
+          "mural",
+          "painting"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Darwyn Raio",
+            "rank": 4,
+            "cosine": 0.2389
+          },
+          {
+            "corpus_id": "Tarik Hollfelder",
+            "rank": 9,
+            "cosine": 0.2094
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Aliza Uhlrich",
+          "rank": 1,
+          "cosine": 0.2987,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_950",
+        "attribute": "Werewolf",
+        "attribute_content_words": [
+          "werewolf"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Tarik Hollfelder",
+            "rank": 1,
+            "cosine": 0.2694
+          },
+          {
+            "corpus_id": "Eudora Cervero",
+            "rank": 17,
+            "cosine": 0.1828
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Jerrie Roupe",
+          "rank": 2,
+          "cosine": 0.2312,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_951",
+        "attribute": "Chrysanthemums",
+        "attribute_content_words": [
+          "chrysanthemums"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Jacey Gnatek",
+            "rank": 8,
+            "cosine": 0.3273
+          },
+          {
+            "corpus_id": "Tarik Hollfelder",
+            "rank": 11,
+            "cosine": 0.3166
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3848,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_952",
+        "attribute": "Lawyers",
+        "attribute_content_words": [
+          "lawyers"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Tarik Hollfelder",
+            "rank": 3,
+            "cosine": 0.1468
+          },
+          {
+            "corpus_id": "Elam Mejiamejia",
+            "rank": 44,
+            "cosine": 0.0564
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Gaetano Argel",
+          "rank": 1,
+          "cosine": 0.1827,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_956",
+        "attribute": "Garden Hoses",
+        "attribute_content_words": [
+          "garden",
+          "hoses"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Theola Laudermilk",
+            "rank": 2,
+            "cosine": 0.2619
+          },
+          {
+            "corpus_id": "Tarik Hollfelder",
+            "rank": 17,
+            "cosine": 0.2037
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Laurine Bellizzi",
+          "rank": 1,
+          "cosine": 0.2679,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_963",
+        "attribute": "Tubas",
+        "attribute_content_words": [
+          "tubas"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Riya Hayhoe",
+            "rank": 6,
+            "cosine": 0.2259
+          },
+          {
+            "corpus_id": "Jacey Gnatek",
+            "rank": 41,
+            "cosine": 0.1273
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Marcellus Meachum",
+          "rank": 1,
+          "cosine": 0.2707,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_968",
+        "attribute": "Boa Constrictors",
+        "attribute_content_words": [
+          "constrictors"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Riya Hayhoe",
+            "rank": 2,
+            "cosine": 0.3144
+          },
+          {
+            "corpus_id": "Theola Laudermilk",
+            "rank": 35,
+            "cosine": 0.1985
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Armand Schweda",
+          "rank": 1,
+          "cosine": 0.3294,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_971",
+        "attribute": "Basketball",
+        "attribute_content_words": [
+          "basketball"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Terrell Varadarajan",
+            "rank": 3,
+            "cosine": 0.1465
+          },
+          {
+            "corpus_id": "Chaney Gertman",
+            "rank": 22,
+            "cosine": 0.0915
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Cristy Walford",
+          "rank": 1,
+          "cosine": 0.1484,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_972",
+        "attribute": "Frilled Sharks",
+        "attribute_content_words": [
+          "frilled",
+          "sharks"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Chaney Gertman",
+            "rank": 3,
+            "cosine": 0.2741
+          },
+          {
+            "corpus_id": "Darwyn Raio",
+            "rank": 9,
+            "cosine": 0.2447
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Flor Lemaire",
+          "rank": 1,
+          "cosine": 0.3287,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_975",
+        "attribute": "Snowboarding",
+        "attribute_content_words": [
+          "snowboarding"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Chaney Gertman",
+            "rank": 9,
+            "cosine": 0.156
+          },
+          {
+            "corpus_id": "Elam Mejiamejia",
+            "rank": 41,
+            "cosine": 0.0721
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Linzy Recknor",
+          "rank": 1,
+          "cosine": 0.1885,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      },
+      {
+        "query_id": "query_980",
+        "attribute": "the Chicago Cubs",
+        "attribute_content_words": [
+          "chicago",
+          "cubs"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Cristy Walford",
+            "rank": 4,
+            "cosine": 0.183
+          },
+          {
+            "corpus_id": "Eustace Comment",
+            "rank": 9,
+            "cosine": 0.154
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Terrell Varadarajan",
+          "rank": 1,
+          "cosine": 0.2331,
+          "shares_content_word": true,
+          "shared_words": [
+            "chicago"
+          ]
+        }
+      },
+      {
+        "query_id": "query_995",
+        "attribute": "Challah",
+        "attribute_content_words": [
+          "challah"
+        ],
+        "gold": [
+          {
+            "corpus_id": "Celia Marszalek",
+            "rank": 2,
+            "cosine": 0.2546
+          },
+          {
+            "corpus_id": "Eustace Comment",
+            "rank": 31,
+            "cosine": 0.1469
+          }
+        ],
+        "top_wrong": {
+          "corpus_id": "Georgette Cagna",
+          "rank": 1,
+          "cosine": 0.3135,
+          "shares_content_word": false,
+          "shared_words": []
+        }
+      }
+    ]
+  },
+  "diagnostic_full_pool_summary": {
+    "corpus": "46 limit-small documents plus all 50000 full-corpus documents",
+    "n_queries": 200,
+    "same_query_sample": true,
+    "recall_at_2": {
+      "fraction": 0.0,
+      "percent": 0.0
+    },
+    "recall_at_10": {
+      "fraction": 0.0025,
+      "percent": 0.25
+    },
+    "fraction_top_wrong_shares_content_word": 0.39,
+    "n_top1_wrong": 200,
+    "fraction_top1_wrong_whose_top_wrong_shares_content_word": 0.39,
+    "better_gold_rank_mean": 7301.5,
+    "better_gold_rank_median": 4499.5
+  }
+}

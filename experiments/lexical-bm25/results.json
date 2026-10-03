@@ -1,0 +1,2026 @@
+{
+  "command": "/home/yangshen/miniconda3/bin/python3 /mnt/raid0nvme0/yangshen/meng/vector_search/limit/experiments/lexical-bm25/run_lexical_bm25.py",
+  "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:28:48) [GCC 14.3.0]",
+  "numpy": "2.4.3",
+  "definitions": {
+    "attribute": "The raw query span after the prefix 'Who likes ' and before the final '?'. Case is preserved.",
+    "attribute_occurs": "Case-sensitive Python substring test of that attribute against the document text. Titles are empty and are not searched.",
+    "irrelevant_doc": "A corpus document whose _id is not one of the query's two qrel corpus-ids.",
+    "tokenizer": "Lowercase, then maximal [a-z0-9]+ runs. Whitespace and punctuation are separators and are not tokens.",
+    "bm25": "score(q, d) = sum_t idf(t) * tf(t,d) * (k1 + 1) / (tf(t,d) + k1 * (1 - b + b * |d| / avgdl)), idf(t) = ln(1 + (N - df(t) + 0.5) / (df(t) + 0.5)), k1=1.5, b=0.75. Each query term type contributes once. Document length and df are computed inside the corpus being evaluated. Terms absent from the corpus contribute nothing.",
+    "substring_baseline": "score 1 when the raw attribute is a substring of the document text, else 0.",
+    "tie_break": "Sort by score descending, then by document _id ascending (byte/Unicode lexicographic).",
+    "recall": "Macro-average over the 1000 queries of |top-k intersect relevant| / 2, reported as a percentage (paper scale, 100 = perfect).",
+    "qrel_graph": "46 relevant people as nodes. Undirected edge if some query has that pair as its two relevant documents. density = |E| / C(46, 2). mean_queries_per_person averages, over people, the number of queries that list them."
+  },
+  "dataset_alignment": {
+    "query_ids_identical": true,
+    "query_texts_identical": false,
+    "relevant_pairs_identical": false,
+    "n_shared_query_texts": 552,
+    "n_shared_attributes": 552,
+    "n_shared_relevant_people": 0,
+    "n_limit_small_people_in_limit_corpus": 0,
+    "note": "These local files do not match the usual LIMIT construction in which limit-small is the 46 relevant documents of the same 1000 queries. Query strings, relevant people, and relevant pairs differ, so each split is evaluated with its own queries, corpus, and qrels."
+  },
+  "qrel_graph": {
+    "limit-small": {
+      "n_nodes": 46,
+      "n_edges": 1000,
+      "n_query_pair_instances": 1000,
+      "n_edges_with_multiple_queries": 0,
+      "density": 0.966183574879227,
+      "possible_edges": 1035,
+      "mean_queries_per_person": 43.47826086956522,
+      "min_queries_per_person": 37,
+      "max_queries_per_person": 45,
+      "mean_unique_partners_per_person": 43.47826086956522,
+      "definition": "Undirected simple graph on people who appear in at least one qrel. An edge exists when at least one query lists that pair as its two relevant documents. density = |E| / C(|V|, 2). mean_queries_per_person is the average, over people, of how many queries include that person."
+    },
+    "limit": {
+      "n_nodes": 46,
+      "n_edges": 1000,
+      "n_query_pair_instances": 1000,
+      "n_edges_with_multiple_queries": 0,
+      "density": 0.966183574879227,
+      "possible_edges": 1035,
+      "mean_queries_per_person": 43.47826086956522,
+      "min_queries_per_person": 37,
+      "max_queries_per_person": 45,
+      "mean_unique_partners_per_person": 43.47826086956522,
+      "definition": "Undirected simple graph on people who appear in at least one qrel. An edge exists when at least one query lists that pair as its two relevant documents. density = |E| / C(|V|, 2). mean_queries_per_person is the average, over people, of how many queries include that person."
+    }
+  },
+  "datasets": {
+    "limit-small": {
+      "dataset": "limit-small",
+      "n_docs": 46,
+      "n_queries": 1000,
+      "n_qrel_rows": 2000,
+      "empty_titles": 46,
+      "index": {
+        "vocab_size": 1394,
+        "avgdl_tokens": 73.91304347826087,
+        "mean_doc_chars": 589.7826086956521
+      },
+      "attribute_occurrence": {
+        "fraction_queries_attribute_in_both_relevant_docs": 1.0,
+        "fraction_queries_attribute_in_any_irrelevant_doc": 0.011,
+        "n_queries_attribute_in_both_relevant_docs": 1000,
+        "n_queries_attribute_in_any_irrelevant_doc": 11,
+        "n_queries_both_relevant_only_after_casefold": 0,
+        "n_queries_exact_substring_set_equals_relevant_set": 989,
+        "irrelevant_docs_containing_attribute": {
+          "min": 0,
+          "max": 6,
+          "mean": 0.028,
+          "std": 0.2986904752415115,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 1.009999999999991,
+          "histogram": {
+            "0": 989,
+            "1": 1,
+            "2": 7,
+            "3": 1,
+            "4": 1,
+            "6": 1
+          }
+        }
+      },
+      "token_overlap": {
+        "n_queries_all_attribute_tokens_set_equals_relevant_set": 974,
+        "n_queries_relevant_doc_missing_an_attribute_token": 0,
+        "n_queries_rarest_attribute_token_df_eq_2": 936,
+        "n_queries_doc_without_rarest_token_outranks_relevant": 0,
+        "irrelevant_docs_containing_all_attribute_tokens": {
+          "min": 0,
+          "max": 2,
+          "mean": 0.035,
+          "std": 0.22754120505965508,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 1.0,
+          "histogram": {
+            "0": 974,
+            "1": 17,
+            "2": 9
+          }
+        },
+        "rarest_attribute_token_df": {
+          "min": 2,
+          "max": 8,
+          "mean": 2.157,
+          "std": 0.6620808107776572,
+          "median": 2.0,
+          "p90": 2.0,
+          "p95": 4.0,
+          "p99": 6.0,
+          "histogram": {
+            "2": 936,
+            "3": 6,
+            "4": 41,
+            "5": 4,
+            "6": 10,
+            "7": 1,
+            "8": 2
+          }
+        },
+        "bm25_recall@2_single_attribute_token_percent": 99.3891797556719,
+        "bm25_recall@2_multi_attribute_token_percent": 98.82903981264637,
+        "n_single_attribute_token_queries": 573,
+        "n_multi_attribute_token_queries": 427
+      },
+      "bm25_recall_percent": {
+        "recall@2": 99.15,
+        "recall@10": 100.0,
+        "recall@20": 100.0
+      },
+      "substring_recall_percent": {
+        "recall@2": 99.5,
+        "recall@10": 100.0,
+        "recall@20": 100.0
+      },
+      "paper_bm25_recall_percent": {
+        "recall@2": 97.8,
+        "recall@10": 100.0,
+        "recall@20": 100.0
+      },
+      "bm25_minus_paper_percentage_points": {
+        "recall@2": 1.3500000000000085,
+        "recall@10": 0.0,
+        "recall@20": 0.0
+      },
+      "bm25_relevant_hit_counts": {
+        "@2": {
+          "0": 1,
+          "1": 15,
+          "2": 984
+        },
+        "@10": {
+          "2": 1000
+        },
+        "@20": {
+          "2": 1000
+        }
+      },
+      "substring_relevant_hit_counts": {
+        "@2": {
+          "0": 2,
+          "1": 6,
+          "2": 992
+        },
+        "@10": {
+          "2": 1000
+        },
+        "@20": {
+          "2": 1000
+        }
+      },
+      "bm25_recall_at_2_failure_examples": [
+        {
+          "query_id": "query_161",
+          "attribute": "Venus",
+          "attribute_tokens": [
+            "venus"
+          ],
+          "rarest_attribute_token": "venus",
+          "rarest_attribute_token_df": 3,
+          "relevant": [
+            {
+              "doc_id": "Flor Lemaire",
+              "rank": 2,
+              "score": 2.6067,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Riya Hayhoe",
+              "rank": 0,
+              "score": 3.687738,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 76
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Riya Hayhoe",
+              "score": 3.687738,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 76
+            },
+            {
+              "doc_id": "Georgette Cagna",
+              "score": 2.688498,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 69
+            },
+            {
+              "doc_id": "Flor Lemaire",
+              "score": 2.6067,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Ruby Gaskin",
+              "score": 0.011382,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 64
+            },
+            {
+              "doc_id": "Casimiro Steo",
+              "score": 0.011309,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 65
+            }
+          ],
+          "n_docs_with_exact_substring": 3,
+          "n_docs_with_all_attribute_tokens": 3
+        },
+        {
+          "query_id": "query_209",
+          "attribute": "Cucumbers",
+          "attribute_tokens": [
+            "cucumbers"
+          ],
+          "rarest_attribute_token": "cucumbers",
+          "rarest_attribute_token_df": 4,
+          "relevant": [
+            {
+              "doc_id": "Pate Lindley",
+              "rank": 3,
+              "score": 2.313289,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Jacey Gnatek",
+              "rank": 2,
+              "score": 2.313289,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 77
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Georgette Cagna",
+              "score": 2.429434,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 69
+            },
+            {
+              "doc_id": "Jerrod Dumpit",
+              "score": 2.399318,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 71
+            },
+            {
+              "doc_id": "Jacey Gnatek",
+              "score": 2.313289,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Pate Lindley",
+              "score": 2.313289,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Ruby Gaskin",
+              "score": 0.011382,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 64
+            }
+          ],
+          "n_docs_with_exact_substring": 4,
+          "n_docs_with_all_attribute_tokens": 4
+        },
+        {
+          "query_id": "query_338",
+          "attribute": "Oil Painting",
+          "attribute_tokens": [
+            "oil",
+            "painting"
+          ],
+          "rarest_attribute_token": "painting",
+          "rarest_attribute_token_df": 8,
+          "relevant": [
+            {
+              "doc_id": "Gladstone Oonk",
+              "rank": 2,
+              "score": 3.21991,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 79
+            },
+            {
+              "doc_id": "Amaris Grow",
+              "rank": 0,
+              "score": 4.107781,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 69
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Amaris Grow",
+              "score": 4.107781,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 69
+            },
+            {
+              "doc_id": "Flor Lemaire",
+              "score": 3.317876,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Gladstone Oonk",
+              "score": 3.21991,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 79
+            },
+            {
+              "doc_id": "Terrell Varadarajan",
+              "score": 3.109726,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 85
+            },
+            {
+              "doc_id": "Ovid Rahm",
+              "score": 1.762772,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 70
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 4
+        },
+        {
+          "query_id": "query_394",
+          "attribute": "Hip Hop Music",
+          "attribute_tokens": [
+            "hip",
+            "hop",
+            "music"
+          ],
+          "rarest_attribute_token": "hip",
+          "rarest_attribute_token_df": 4,
+          "relevant": [
+            {
+              "doc_id": "Ofelia Rosselot",
+              "rank": 2,
+              "score": 5.287132,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 76
+            },
+            {
+              "doc_id": "Cristy Walford",
+              "rank": 0,
+              "score": 5.625318,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 66
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Cristy Walford",
+              "score": 5.625318,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 66
+            },
+            {
+              "doc_id": "Shelvia Goike",
+              "score": 5.554264,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 68
+            },
+            {
+              "doc_id": "Ofelia Rosselot",
+              "score": 5.287132,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 76
+            },
+            {
+              "doc_id": "Eustace Comment",
+              "score": 4.847843,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 69
+            },
+            {
+              "doc_id": "Flo Zaugg",
+              "score": 1.0742,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 80
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 3
+        },
+        {
+          "query_id": "query_406",
+          "attribute": "Potato Bread",
+          "attribute_tokens": [
+            "potato",
+            "bread"
+          ],
+          "rarest_attribute_token": "potato",
+          "rarest_attribute_token_df": 3,
+          "relevant": [
+            {
+              "doc_id": "Tisha Ghent",
+              "rank": 2,
+              "score": 3.827436,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 82
+            },
+            {
+              "doc_id": "Linzy Recknor",
+              "rank": 0,
+              "score": 4.952344,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 74
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Linzy Recknor",
+              "score": 4.952344,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Eudora Cervero",
+              "score": 4.038329,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 73
+            },
+            {
+              "doc_id": "Tisha Ghent",
+              "score": 3.827436,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 82
+            },
+            {
+              "doc_id": "Chaney Gertman",
+              "score": 2.012307,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 75
+            },
+            {
+              "doc_id": "Shelvia Goike",
+              "score": 1.471469,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 68
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 3
+        },
+        {
+          "query_id": "query_472",
+          "attribute": "Hot Chocolate",
+          "attribute_tokens": [
+            "hot",
+            "chocolate"
+          ],
+          "rarest_attribute_token": "chocolate",
+          "rarest_attribute_token_df": 5,
+          "relevant": [
+            {
+              "doc_id": "Herminia Caranto",
+              "rank": 2,
+              "score": 3.917709,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Chadwick Frisella",
+              "rank": 1,
+              "score": 4.013651,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 73
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Aliza Uhlrich",
+              "score": 4.610306,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 81
+            },
+            {
+              "doc_id": "Chadwick Frisella",
+              "score": 4.013651,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 73
+            },
+            {
+              "doc_id": "Herminia Caranto",
+              "score": 3.917709,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Sheree Riddley",
+              "score": 2.154954,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Mathew Weierke",
+              "score": 2.05492,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 82
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 3
+        },
+        {
+          "query_id": "query_591",
+          "attribute": "Jelly",
+          "attribute_tokens": [
+            "jelly"
+          ],
+          "rarest_attribute_token": "jelly",
+          "rarest_attribute_token_df": 4,
+          "relevant": [
+            {
+              "doc_id": "Amaris Grow",
+              "rank": 0,
+              "score": 2.429434,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 69
+            },
+            {
+              "doc_id": "Terrell Varadarajan",
+              "rank": 3,
+              "score": 2.207743,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 85
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Amaris Grow",
+              "score": 2.429434,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 69
+            },
+            {
+              "doc_id": "Bronson Saelee",
+              "score": 2.313289,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Pate Lindley",
+              "score": 2.313289,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Terrell Varadarajan",
+              "score": 2.207743,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 85
+            },
+            {
+              "doc_id": "Ruby Gaskin",
+              "score": 0.011382,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 64
+            }
+          ],
+          "n_docs_with_exact_substring": 4,
+          "n_docs_with_all_attribute_tokens": 4
+        },
+        {
+          "query_id": "query_623",
+          "attribute": "The Digital Age",
+          "attribute_tokens": [
+            "the",
+            "digital",
+            "age"
+          ],
+          "rarest_attribute_token": "digital",
+          "rarest_attribute_token_df": 4,
+          "relevant": [
+            {
+              "doc_id": "Marcellus Meachum",
+              "rank": 1,
+              "score": 3.698585,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Jacey Gnatek",
+              "rank": 2,
+              "score": 3.609466,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 77
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Shelvia Goike",
+              "score": 4.316687,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 68
+            },
+            {
+              "doc_id": "Marcellus Meachum",
+              "score": 3.698585,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Jacey Gnatek",
+              "score": 3.609466,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Tisha Ghent",
+              "score": 2.342095,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 82
+            },
+            {
+              "doc_id": "Laurine Bellizzi",
+              "score": 1.83446,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 79
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 3
+        },
+        {
+          "query_id": "query_636",
+          "attribute": "Bread Puddings",
+          "attribute_tokens": [
+            "bread",
+            "puddings"
+          ],
+          "rarest_attribute_token": "puddings",
+          "rarest_attribute_token_df": 6,
+          "relevant": [
+            {
+              "doc_id": "Wellington Hinn",
+              "rank": 1,
+              "score": 3.354223,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 76
+            },
+            {
+              "doc_id": "Flo Zaugg",
+              "rank": 2,
+              "score": 3.275457,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 80
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Chadwick Frisella",
+              "score": 3.415829,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 73
+            },
+            {
+              "doc_id": "Wellington Hinn",
+              "score": 3.354223,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 76
+            },
+            {
+              "doc_id": "Flo Zaugg",
+              "score": 3.275457,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 80
+            },
+            {
+              "doc_id": "Linzy Recknor",
+              "score": 2.356334,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Ovid Rahm",
+              "score": 2.037583,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 70
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 3
+        },
+        {
+          "query_id": "query_660",
+          "attribute": "Baking Soda",
+          "attribute_tokens": [
+            "baking",
+            "soda"
+          ],
+          "rarest_attribute_token": "baking",
+          "rarest_attribute_token_df": 6,
+          "relevant": [
+            {
+              "doc_id": "Georgette Cagna",
+              "rank": 0,
+              "score": 3.595357,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 69
+            },
+            {
+              "doc_id": "Mathew Weierke",
+              "rank": 2,
+              "score": 3.324148,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 82
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Georgette Cagna",
+              "score": 3.595357,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 69
+            },
+            {
+              "doc_id": "Chaney Gertman",
+              "score": 3.464884,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 75
+            },
+            {
+              "doc_id": "Mathew Weierke",
+              "score": 3.324148,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 82
+            },
+            {
+              "doc_id": "Ovid Rahm",
+              "score": 2.037583,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 70
+            },
+            {
+              "doc_id": "Armand Schweda",
+              "score": 2.024954,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 71
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 3
+        },
+        {
+          "query_id": "query_691",
+          "attribute": "Black Tea",
+          "attribute_tokens": [
+            "black",
+            "tea"
+          ],
+          "rarest_attribute_token": "tea",
+          "rarest_attribute_token_df": 8,
+          "relevant": [
+            {
+              "doc_id": "Laurine Bellizzi",
+              "rank": 2,
+              "score": 3.034594,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 79
+            },
+            {
+              "doc_id": "Ruby Gaskin",
+              "rank": 1,
+              "score": 3.329524,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 64
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Marcellus Meachum",
+              "score": 3.73025,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Ruby Gaskin",
+              "score": 3.329524,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 64
+            },
+            {
+              "doc_id": "Laurine Bellizzi",
+              "score": 3.034594,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 79
+            },
+            {
+              "doc_id": "Flo Zaugg",
+              "score": 3.016779,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 80
+            },
+            {
+              "doc_id": "Elam Mejiamejia",
+              "score": 2.066076,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 69
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 4
+        },
+        {
+          "query_id": "query_699",
+          "attribute": "Soy Milk",
+          "attribute_tokens": [
+            "soy",
+            "milk"
+          ],
+          "rarest_attribute_token": "soy",
+          "rarest_attribute_token_df": 4,
+          "relevant": [
+            {
+              "doc_id": "Laurine Bellizzi",
+              "rank": 2,
+              "score": 4.066081,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 79
+            },
+            {
+              "doc_id": "Cristy Walford",
+              "rank": 0,
+              "score": 4.404188,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 66
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Cristy Walford",
+              "score": 4.404188,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 66
+            },
+            {
+              "doc_id": "Jerrod Dumpit",
+              "score": 4.267699,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 71
+            },
+            {
+              "doc_id": "Laurine Bellizzi",
+              "score": 4.066081,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 79
+            },
+            {
+              "doc_id": "Geneva Durben",
+              "score": 2.429434,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 69
+            },
+            {
+              "doc_id": "Amaris Grow",
+              "score": 1.902858,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 69
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 3
+        }
+      ]
+    },
+    "limit": {
+      "dataset": "limit",
+      "n_docs": 50000,
+      "n_queries": 1000,
+      "n_qrel_rows": 2000,
+      "empty_titles": 50000,
+      "index": {
+        "vocab_size": 50676,
+        "avgdl_tokens": 75.53354,
+        "mean_doc_chars": 598.32846
+      },
+      "attribute_occurrence": {
+        "fraction_queries_attribute_in_both_relevant_docs": 1.0,
+        "fraction_queries_attribute_in_any_irrelevant_doc": 0.064,
+        "n_queries_attribute_in_both_relevant_docs": 1000,
+        "n_queries_attribute_in_any_irrelevant_doc": 64,
+        "n_queries_both_relevant_only_after_casefold": 0,
+        "n_queries_exact_substring_set_equals_relevant_set": 936,
+        "irrelevant_docs_containing_attribute": {
+          "min": 0,
+          "max": 18122,
+          "mean": 51.823,
+          "std": 703.2588013462752,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 1.0,
+          "p99": 80.20999999997707,
+          "histogram": {
+            "0": 936,
+            "1": 27,
+            "2": 9,
+            "3": 1,
+            "4": 1,
+            "6": 4,
+            "9": 1,
+            "10": 1,
+            "11": 1,
+            "12": 1,
+            "14": 1,
+            "15": 1,
+            "17": 1,
+            "20": 1,
+            "42": 1,
+            "48": 1,
+            "50": 1,
+            "55": 1,
+            "2576": 1,
+            "2600": 1,
+            "2613": 1,
+            "2668": 1,
+            "2672": 1,
+            "2675": 1,
+            "2707": 1,
+            "5148": 1,
+            "9663": 1,
+            "18122": 1
+          }
+        }
+      },
+      "token_overlap": {
+        "n_queries_all_attribute_tokens_set_equals_relevant_set": 901,
+        "n_queries_relevant_doc_missing_an_attribute_token": 0,
+        "n_queries_rarest_attribute_token_df_eq_2": 841,
+        "n_queries_doc_without_rarest_token_outranks_relevant": 0,
+        "irrelevant_docs_containing_all_attribute_tokens": {
+          "min": 0,
+          "max": 5053,
+          "mean": 50.492,
+          "std": 304.47980218070296,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 143.5499999999986,
+          "p99": 1736.7299999999993,
+          "histogram": {
+            "0": 901,
+            "1": 25,
+            "2": 5,
+            "4": 2,
+            "5": 1,
+            "6": 2,
+            "8": 2,
+            "9": 1,
+            "10": 1,
+            "25": 1,
+            "121": 1,
+            "123": 1,
+            "133": 1,
+            "135": 1,
+            "137": 1,
+            "138": 2,
+            "139": 1,
+            "142": 1,
+            "173": 1,
+            "234": 1,
+            "235": 1,
+            "252": 1,
+            "253": 1,
+            "261": 1,
+            "262": 1,
+            "263": 1,
+            "270": 1,
+            "274": 1,
+            "279": 1,
+            "282": 1,
+            "302": 1,
+            "370": 1,
+            "383": 1,
+            "402": 1,
+            "404": 1,
+            "409": 1,
+            "419": 1,
+            "449": 1,
+            "478": 1,
+            "480": 1,
+            "495": 1,
+            "498": 1,
+            "514": 1,
+            "526": 1,
+            "534": 1,
+            "616": 1,
+            "683": 1,
+            "721": 1,
+            "725": 1,
+            "771": 1,
+            "785": 1,
+            "956": 1,
+            "982": 1,
+            "1189": 1,
+            "1391": 1,
+            "1395": 1,
+            "1418": 1,
+            "1736": 1,
+            "1809": 1,
+            "1837": 1,
+            "1969": 1,
+            "2110": 1,
+            "2600": 1,
+            "2668": 1,
+            "2669": 1,
+            "2675": 1,
+            "2707": 1,
+            "5053": 1
+          }
+        },
+        "rarest_attribute_token_df": {
+          "min": 2,
+          "max": 9775,
+          "mean": 213.303,
+          "std": 921.9033578369265,
+          "median": 2.0,
+          "p90": 4.0,
+          "p95": 2617.25,
+          "p99": 5163.01,
+          "histogram": {
+            "2": 841,
+            "3": 38,
+            "4": 32,
+            "5": 3,
+            "6": 8,
+            "7": 1,
+            "8": 6,
+            "9": 1,
+            "10": 6,
+            "11": 2,
+            "12": 1,
+            "14": 1,
+            "2544": 1,
+            "2547": 1,
+            "2574": 1,
+            "2593": 2,
+            "2597": 1,
+            "2599": 1,
+            "2602": 1,
+            "2611": 1,
+            "2617": 1,
+            "2622": 1,
+            "2627": 1,
+            "2630": 1,
+            "2632": 2,
+            "2636": 1,
+            "2646": 2,
+            "2648": 1,
+            "2653": 1,
+            "2656": 1,
+            "2657": 1,
+            "2661": 1,
+            "2670": 1,
+            "2671": 1,
+            "2675": 1,
+            "2677": 1,
+            "2681": 1,
+            "2684": 1,
+            "2686": 1,
+            "2687": 2,
+            "2688": 2,
+            "2696": 1,
+            "2705": 1,
+            "2706": 1,
+            "2709": 1,
+            "2717": 1,
+            "2724": 1,
+            "2728": 1,
+            "2735": 1,
+            "2736": 1,
+            "2764": 1,
+            "5045": 1,
+            "5055": 1,
+            "5147": 2,
+            "5150": 1,
+            "5163": 1,
+            "5164": 2,
+            "5169": 1,
+            "5193": 1,
+            "5204": 1,
+            "5218": 1,
+            "7463": 1,
+            "7534": 1,
+            "7616": 1,
+            "9775": 1
+          }
+        },
+        "bm25_recall@2_single_attribute_token_percent": 96.8476357267951,
+        "bm25_recall@2_multi_attribute_token_percent": 87.06293706293707,
+        "n_single_attribute_token_queries": 571,
+        "n_multi_attribute_token_queries": 429
+      },
+      "bm25_recall_percent": {
+        "recall@2": 92.65,
+        "recall@10": 94.6,
+        "recall@100": 96.3
+      },
+      "substring_recall_percent": {
+        "recall@2": 96.35,
+        "recall@10": 98.3,
+        "recall@100": 99.05
+      },
+      "paper_bm25_recall_percent": {
+        "recall@2": 85.7,
+        "recall@10": 90.4,
+        "recall@100": 93.6
+      },
+      "bm25_minus_paper_percentage_points": {
+        "recall@2": 6.950000000000003,
+        "recall@10": 4.199999999999989,
+        "recall@100": 2.700000000000003
+      },
+      "bm25_relevant_hit_counts": {
+        "@2": {
+          "0": 57,
+          "1": 33,
+          "2": 910
+        },
+        "@10": {
+          "0": 47,
+          "1": 14,
+          "2": 939
+        },
+        "@100": {
+          "0": 26,
+          "1": 22,
+          "2": 952
+        }
+      },
+      "substring_relevant_hit_counts": {
+        "@2": {
+          "0": 22,
+          "1": 29,
+          "2": 949
+        },
+        "@10": {
+          "0": 14,
+          "1": 6,
+          "2": 980
+        },
+        "@100": {
+          "0": 9,
+          "1": 1,
+          "2": 990
+        }
+      },
+      "bm25_recall_at_2_failure_examples": [
+        {
+          "query_id": "query_2",
+          "attribute": "Stand-up Comedy",
+          "attribute_tokens": [
+            "stand",
+            "up",
+            "comedy"
+          ],
+          "rarest_attribute_token": "stand",
+          "rarest_attribute_token_df": 4,
+          "relevant": [
+            {
+              "doc_id": "Olinda Posso",
+              "rank": 1,
+              "score": 21.369305,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Ula Yann",
+              "rank": 2,
+              "score": 20.177611,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 87
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Judi Wion",
+              "score": 21.754757,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Olinda Posso",
+              "score": 21.369305,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Ula Yann",
+              "score": 20.177611,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 87
+            },
+            {
+              "doc_id": "Juliana Helmold",
+              "score": 18.254463,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 79
+            },
+            {
+              "doc_id": "Edward Kadar",
+              "score": 3.265686,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 58
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 3
+        },
+        {
+          "query_id": "query_26",
+          "attribute": "Risk",
+          "attribute_tokens": [
+            "risk"
+          ],
+          "rarest_attribute_token": "risk",
+          "rarest_attribute_token_df": 3,
+          "relevant": [
+            {
+              "doc_id": "Olinda Posso",
+              "rank": 1,
+              "score": 9.484186,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Juliana Helmold",
+              "rank": 2,
+              "score": 9.373466,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 79
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Mathilda Risk",
+              "score": 9.832615,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 71
+            },
+            {
+              "doc_id": "Olinda Posso",
+              "score": 9.484186,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Juliana Helmold",
+              "score": 9.373466,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 79
+            },
+            {
+              "doc_id": "Brande Tjoa",
+              "score": 1.1e-05,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 56
+            },
+            {
+              "doc_id": "Edward Kadar",
+              "score": 1.1e-05,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 58
+            }
+          ],
+          "n_docs_with_exact_substring": 8,
+          "n_docs_with_all_attribute_tokens": 3
+        },
+        {
+          "query_id": "query_31",
+          "attribute": "Hot Chocolate",
+          "attribute_tokens": [
+            "hot",
+            "chocolate"
+          ],
+          "rarest_attribute_token": "chocolate",
+          "rarest_attribute_token_df": 5164,
+          "relevant": [
+            {
+              "doc_id": "Olinda Posso",
+              "rank": 597,
+              "score": 3.860631,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Karyn Geyser",
+              "rank": 144,
+              "score": 4.077359,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 68
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Evelina Licitra",
+              "score": 5.722469,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 69
+            },
+            {
+              "doc_id": "Yael Gab",
+              "score": 5.599911,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Alver Trujano",
+              "score": 5.011845,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Primus Chesin",
+              "score": 5.011845,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Jolie Gabelmann",
+              "score": 4.927554,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 73
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 958
+        },
+        {
+          "query_id": "query_38",
+          "attribute": "Green Peppercorns",
+          "attribute_tokens": [
+            "green",
+            "peppercorns"
+          ],
+          "rarest_attribute_token": "peppercorns",
+          "rarest_attribute_token_df": 2636,
+          "relevant": [
+            {
+              "doc_id": "Olinda Posso",
+              "rank": 85,
+              "score": 5.824864,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Lorie Dineen",
+              "rank": 33,
+              "score": 6.002107,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 72
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Arianna Hallberg",
+              "score": 6.30928,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 64
+            },
+            {
+              "doc_id": "Moriah Triscari",
+              "score": 6.229576,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 66
+            },
+            {
+              "doc_id": "Kaiden Dandrow",
+              "score": 6.190475,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 67
+            },
+            {
+              "doc_id": "Noel Yoshimi",
+              "score": 6.190475,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 67
+            },
+            {
+              "doc_id": "Rhoda Haener",
+              "score": 6.190475,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 67
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 140
+        },
+        {
+          "query_id": "query_44",
+          "attribute": "Apple Juice",
+          "attribute_tokens": [
+            "apple",
+            "juice"
+          ],
+          "rarest_attribute_token": "apple",
+          "rarest_attribute_token_df": 5147,
+          "relevant": [
+            {
+              "doc_id": "Olinda Posso",
+              "rank": 308,
+              "score": 4.507114,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Shalonda Revelez",
+              "rank": 505,
+              "score": 4.279634,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 86
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Robb Puza",
+              "score": 6.537647,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Glennie Northcote",
+              "score": 6.118331,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 90
+            },
+            {
+              "doc_id": "Elmira Ruefer",
+              "score": 5.825471,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 65
+            },
+            {
+              "doc_id": "Pearle Vanveghel",
+              "score": 5.764996,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 67
+            },
+            {
+              "doc_id": "Tavon Brohm",
+              "score": 5.764996,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 67
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 516
+        },
+        {
+          "query_id": "query_47",
+          "attribute": "Black Tea",
+          "attribute_tokens": [
+            "black",
+            "tea"
+          ],
+          "rarest_attribute_token": "tea",
+          "rarest_attribute_token_df": 5045,
+          "relevant": [
+            {
+              "doc_id": "Wynona Meskell",
+              "rank": 1320,
+              "score": 3.390096,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 84
+            },
+            {
+              "doc_id": "Julia Matsil",
+              "rank": 12,
+              "score": 4.534037,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 76
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Channing Schlimmer",
+              "score": 5.077193,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 76
+            },
+            {
+              "doc_id": "Matie Matsushima",
+              "score": 4.97162,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 81
+            },
+            {
+              "doc_id": "Art Louder",
+              "score": 4.806675,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 64
+            },
+            {
+              "doc_id": "Manford Ebben",
+              "score": 4.689079,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 69
+            },
+            {
+              "doc_id": "Hailey Coyner",
+              "score": 4.666267,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 70
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 1393
+        },
+        {
+          "query_id": "query_51",
+          "attribute": "Sage",
+          "attribute_tokens": [
+            "sage"
+          ],
+          "rarest_attribute_token": "sage",
+          "rarest_attribute_token_df": 7,
+          "relevant": [
+            {
+              "doc_id": "Wynona Meskell",
+              "rank": 6,
+              "score": 8.382112,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 84
+            },
+            {
+              "doc_id": "Tyrone Datu",
+              "rank": 0,
+              "score": 9.515422,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 63
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Tyrone Datu",
+              "score": 9.515422,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 63
+            },
+            {
+              "doc_id": "Sage Schnitkey",
+              "score": 8.994248,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 72
+            },
+            {
+              "doc_id": "Sage Ita",
+              "score": 8.832982,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 75
+            },
+            {
+              "doc_id": "Sage Dibbles",
+              "score": 8.626747,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 79
+            },
+            {
+              "doc_id": "Sage Faella",
+              "score": 8.626747,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 79
+            }
+          ],
+          "n_docs_with_exact_substring": 17,
+          "n_docs_with_all_attribute_tokens": 7
+        },
+        {
+          "query_id": "query_58",
+          "attribute": "Moon Pies",
+          "attribute_tokens": [
+            "moon",
+            "pies"
+          ],
+          "rarest_attribute_token": "moon",
+          "rarest_attribute_token_df": 2764,
+          "relevant": [
+            {
+              "doc_id": "Wynona Meskell",
+              "rank": 5,
+              "score": 5.887916,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 84
+            },
+            {
+              "doc_id": "Dulce Pardieck",
+              "rank": 194,
+              "score": 5.06186,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 79
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Clarice Coraci",
+              "score": 6.219501,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 73
+            },
+            {
+              "doc_id": "Gorge Stlouis",
+              "score": 6.156385,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 75
+            },
+            {
+              "doc_id": "Victoriano Meierer",
+              "score": 6.094572,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 77
+            },
+            {
+              "doc_id": "Conley Provino",
+              "score": 5.887916,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 84
+            },
+            {
+              "doc_id": "Mora Decatur",
+              "score": 5.887916,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 84
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 272
+        },
+        {
+          "query_id": "query_61",
+          "attribute": "Love",
+          "attribute_tokens": [
+            "love"
+          ],
+          "rarest_attribute_token": "love",
+          "rarest_attribute_token_df": 3,
+          "relevant": [
+            {
+              "doc_id": "Wynona Meskell",
+              "rank": 2,
+              "score": 9.107656,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 84
+            },
+            {
+              "doc_id": "Chaka Laham",
+              "rank": 0,
+              "score": 9.655258,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 74
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Chaka Laham",
+              "score": 9.655258,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Love Hudnell",
+              "score": 9.655258,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 74
+            },
+            {
+              "doc_id": "Wynona Meskell",
+              "score": 9.107656,
+              "exact_attribute_substring": true,
+              "relevant": true,
+              "doc_len_tokens": 84
+            },
+            {
+              "doc_id": "Brande Tjoa",
+              "score": 1.1e-05,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 56
+            },
+            {
+              "doc_id": "Edward Kadar",
+              "score": 1.1e-05,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 58
+            }
+          ],
+          "n_docs_with_exact_substring": 52,
+          "n_docs_with_all_attribute_tokens": 3
+        },
+        {
+          "query_id": "query_64",
+          "attribute": "Apple Cider",
+          "attribute_tokens": [
+            "apple",
+            "cider"
+          ],
+          "rarest_attribute_token": "cider",
+          "rarest_attribute_token_df": 2677,
+          "relevant": [
+            {
+              "doc_id": "Wynona Meskell",
+              "rank": 2499,
+              "score": 4.950974,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 84
+            },
+            {
+              "doc_id": "Burl Corlis",
+              "rank": 224,
+              "score": 5.445088,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 68
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Elmira Ruefer",
+              "score": 6.523485,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 65
+            },
+            {
+              "doc_id": "Marilee Thackery",
+              "score": 6.488676,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 66
+            },
+            {
+              "doc_id": "Misti Horii",
+              "score": 6.488676,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 66
+            },
+            {
+              "doc_id": "Jaiden Trotter",
+              "score": 6.454248,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 67
+            },
+            {
+              "doc_id": "Joann Tomaszycki",
+              "score": 6.454248,
+              "exact_attribute_substring": true,
+              "relevant": false,
+              "doc_len_tokens": 67
+            }
+          ],
+          "n_docs_with_exact_substring": 2677,
+          "n_docs_with_all_attribute_tokens": 2677
+        },
+        {
+          "query_id": "query_65",
+          "attribute": "Egg Noodles",
+          "attribute_tokens": [
+            "egg",
+            "noodles"
+          ],
+          "rarest_attribute_token": "egg",
+          "rarest_attribute_token_df": 2657,
+          "relevant": [
+            {
+              "doc_id": "Wynona Meskell",
+              "rank": 132,
+              "score": 5.578933,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 84
+            },
+            {
+              "doc_id": "Saniyah Jankowski",
+              "rank": 115,
+              "score": 5.675499,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 81
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Denise Bodapati",
+              "score": 6.174229,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 67
+            },
+            {
+              "doc_id": "Lawanda Bornman",
+              "score": 6.174229,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 67
+            },
+            {
+              "doc_id": "Hector Freece",
+              "score": 6.135717,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 68
+            },
+            {
+              "doc_id": "Bridger Keizur",
+              "score": 6.097682,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 69
+            },
+            {
+              "doc_id": "Burgess Smolens",
+              "score": 6.097682,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 69
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 135
+        },
+        {
+          "query_id": "query_73",
+          "attribute": "White Rice",
+          "attribute_tokens": [
+            "white",
+            "rice"
+          ],
+          "rarest_attribute_token": "rice",
+          "rarest_attribute_token_df": 7616,
+          "relevant": [
+            {
+              "doc_id": "Wynona Meskell",
+              "rank": 225,
+              "score": 3.75174,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 84
+            },
+            {
+              "doc_id": "Dillie Newett",
+              "rank": 436,
+              "score": 3.395128,
+              "exact_attribute_substring": true,
+              "doc_len_tokens": 71
+            }
+          ],
+          "bm25_top5": [
+            {
+              "doc_id": "Kraig Mondi",
+              "score": 4.791225,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 72
+            },
+            {
+              "doc_id": "Flora Hammaker",
+              "score": 4.770614,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 73
+            },
+            {
+              "doc_id": "Jacques Smallacombe",
+              "score": 4.670162,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 78
+            },
+            {
+              "doc_id": "Goldia Seubert",
+              "score": 4.631157,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 80
+            },
+            {
+              "doc_id": "Kyra Zadok",
+              "score": 4.631157,
+              "exact_attribute_substring": false,
+              "relevant": false,
+              "doc_len_tokens": 80
+            }
+          ],
+          "n_docs_with_exact_substring": 2,
+          "n_docs_with_all_attribute_tokens": 1811
+        }
+      ]
+    }
+  }
+}
