@@ -1,0 +1,20 @@
+{
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "device": "cuda",
+  "n_docs": 46,
+  "n_queries": 1000,
+  "n_chunks": 2072,
+  "whole-doc": {
+    "recall@2": 16.2,
+    "recall@10": 48.05,
+    "recall@20": 69.45,
+    "both-in-top2": 2.3
+  },
+  "chunk-max": {
+    "recall@2": 98.1,
+    "recall@10": 100.0,
+    "recall@20": 100.0,
+    "both-in-top2": 96.3
+  },
+  "seconds": 2.7
+}
