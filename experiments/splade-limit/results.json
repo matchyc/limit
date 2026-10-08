@@ -1,0 +1,83 @@
+{
+  "model": "naver/splade-cocondenser-ensembledistil",
+  "device": "cuda",
+  "seconds": 84.7,
+  "limit": {
+    "docs": 50000,
+    "queries": 1000,
+    "bm25": {
+      "recall@2": 92.65,
+      "recall@10": 94.6,
+      "recall@20": 95.15,
+      "recall@100": 96.3,
+      "both-in-top2": 91.0,
+      "mean-better-gold-rank": 11.84,
+      "median-better-gold-rank": 1.0
+    },
+    "splade-whole": {
+      "recall@2": 33.8,
+      "recall@10": 58.65,
+      "recall@20": 68.95,
+      "recall@100": 83.55,
+      "both-in-top2": 23.3,
+      "mean-better-gold-rank": 142.33,
+      "median-better-gold-rank": 3.0
+    }
+  },
+  "limit-small-from-splade-gloss": {
+    "docs": 46,
+    "queries": 1000,
+    "bm25": {
+      "recall@2": 99.15,
+      "recall@10": 100.0,
+      "recall@20": 100.0,
+      "both-in-top2": 98.4,
+      "mean-better-gold-rank": 1.01,
+      "median-better-gold-rank": 1.0,
+      "both-in-top10": 100.0
+    },
+    "splade-whole": {
+      "recall@2": 92.05,
+      "recall@10": 99.35,
+      "recall@20": 99.7,
+      "both-in-top2": 86.8,
+      "mean-better-gold-rank": 1.11,
+      "median-better-gold-rank": 1.0,
+      "both-in-top10": 98.7
+    },
+    "splade-chunk-max": {
+      "recall@2": 99.75,
+      "recall@10": 100.0,
+      "recall@20": 100.0,
+      "both-in-top2": 99.5,
+      "mean-better-gold-rank": 1.0,
+      "median-better-gold-rank": 1.0,
+      "both-in-top10": 100.0
+    }
+  },
+  "paper": {
+    "bm25-small": {
+      "recall@2": 97.8,
+      "recall@10": 100.0
+    },
+    "bm25-full": {
+      "recall@2": 85.7,
+      "recall@10": 90.4,
+      "recall@100": 93.6
+    },
+    "gte-moderncolbert-small": {
+      "recall@2": 83.5,
+      "recall@10": 97.6
+    },
+    "gte-moderncolbert-full": {
+      "recall@2": 23.1,
+      "recall@10": 34.6,
+      "recall@100": 54.8
+    },
+    "promptriever-4096-full": {
+      "recall@2": 3.0,
+      "recall@10": 6.8,
+      "recall@100": 18.9
+    }
+  }
+}
