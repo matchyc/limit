@@ -1,0 +1,1586 @@
+{
+  "model": "naver/splade-cocondenser-ensembledistil",
+  "n-queries-better-gold-rank-gt-2": 557,
+  "n-queries-better-gold-rank-gt-10": 321,
+  "cases": [
+    {
+      "query-id": "query_0",
+      "query": "Who likes Birch Trees?",
+      "attribute": "Birch Trees",
+      "gold-ranks": [
+        8,
+        3
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Reece Birchenough",
+          "score": 16.4678,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Kenneth Birchman",
+          "score": 14.8626,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Wynona Meskell",
+          "score": 14.7836,
+          "is-gold": true,
+          "matching-likes-items": [
+            "Birch Trees"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Willow Miyagawa",
+          "score": 14.6172,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Willow Camey",
+          "score": 13.8636,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Treena Arjona",
+          "score": 13.8193,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Willow Birkhoff",
+          "score": 13.7175,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Olinda Posso",
+          "score": 13.4785,
+          "is-gold": true,
+          "matching-likes-items": [
+            "Birch Trees"
+          ],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 8,
+          "id": "Olinda Posso",
+          "score": 13.4785,
+          "matching-likes-items": [
+            "Birch Trees"
+          ]
+        },
+        {
+          "rank": 3,
+          "id": "Wynona Meskell",
+          "score": 14.7836,
+          "matching-likes-items": [
+            "Birch Trees"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 2,
+      "top10-with-attribute-as-substring": 2
+    },
+    {
+      "query-id": "query_417",
+      "query": "Who likes Go?",
+      "attribute": "Go",
+      "gold-ranks": [
+        41094,
+        2537
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Goebel Goetten",
+          "score": 15.9847,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Adolph Goy",
+          "score": 15.3746,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Tango Dancing"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Johney Gole",
+          "score": 15.2827,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Tango Dancing"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Callum Goll",
+          "score": 15.2481,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Tango Dancing"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Gorden Cutt",
+          "score": 15.1727,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Goebel Ishibashi",
+          "score": 15.1203,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Goebel Adamyan",
+          "score": 15.0693,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Snapdragons"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Cathryn Goerl",
+          "score": 15.0459,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Tango Dancing",
+            "Gorges"
+          ],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 41094,
+          "id": "Treva Penix",
+          "score": 8.0807,
+          "matching-likes-items": [
+            "the Chicago White Sox",
+            "Bongos",
+            "Go"
+          ]
+        },
+        {
+          "rank": 2537,
+          "id": "Judi Wion",
+          "score": 9.619,
+          "matching-likes-items": [
+            "Go"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 1
+    },
+    {
+      "query-id": "query_730",
+      "query": "Who likes Honey?",
+      "attribute": "Honey",
+      "gold-ranks": [
+        3617,
+        1856
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Charley Decesaris",
+          "score": 17.7476,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Honey Bees"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Drusilla Ramirezsanchez",
+          "score": 17.7286,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Honey Bees"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Ellamae Sifferman",
+          "score": 17.5048,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Honey Bees"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Laci Beeby",
+          "score": 17.4594,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Honey Bees"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Robyn Beels",
+          "score": 17.4011,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Honey Bees"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Donal Beeles",
+          "score": 17.3959,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Honey Bees"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Samir Kalmbacher",
+          "score": 17.3782,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Honey Bees"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Alexandr Rokke",
+          "score": 17.362,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Honey Bees"
+          ],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 3617,
+          "id": "Aubra Hokenson",
+          "score": 12.624,
+          "matching-likes-items": [
+            "Honey"
+          ]
+        },
+        {
+          "rank": 1856,
+          "id": "Alaina Shabaz",
+          "score": 13.9633,
+          "matching-likes-items": [
+            "Honey"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 10
+    },
+    {
+      "query-id": "query_967",
+      "query": "Who likes Snow?",
+      "attribute": "Snow",
+      "gold-ranks": [
+        7110,
+        7640
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Cleora Snowden",
+          "score": 18.6441,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Winter Seiberlich",
+          "score": 17.6753,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Snow Leopards",
+            "Snowboarding"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Maralyn Winterer",
+          "score": 17.5681,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Making Snow Angels"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Algie Bigaouette",
+          "score": 17.5118,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Snow Leopards",
+            "Making Snow Angels"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Dortha Snowberger",
+          "score": 17.4289,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Felipe Snowball",
+          "score": 17.2522,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Brennen Snowbarger",
+          "score": 17.0539,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Taniyah Grulkowski",
+          "score": 16.9322,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Snow Leopards"
+          ],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 7110,
+          "id": "Ninnie Przybilla",
+          "score": 12.2869,
+          "matching-likes-items": [
+            "Snow"
+          ]
+        },
+        {
+          "rank": 7640,
+          "id": "Daphne Nosker",
+          "score": 12.1076,
+          "matching-likes-items": [
+            "Snow"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 6
+    },
+    {
+      "query-id": "query_999",
+      "query": "Who likes Horses?",
+      "attribute": "Horses",
+      "gold-ranks": [
+        5,
+        11
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Marius Horsely",
+          "score": 18.0502,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Cydney Horsey",
+          "score": 17.469,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Mordechai Horsefield",
+          "score": 17.3245,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Margaretha Stallions",
+          "score": 15.6588,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Vicie Dopp",
+          "score": 14.9469,
+          "is-gold": true,
+          "matching-likes-items": [
+            "Horses"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Colter Hiremath",
+          "score": 12.7853,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Colt Bynaker",
+          "score": 12.6526,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Burl Corlis",
+          "score": 12.578,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Seahorses"
+          ],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 5,
+          "id": "Vicie Dopp",
+          "score": 14.9469,
+          "matching-likes-items": [
+            "Horses"
+          ]
+        },
+        {
+          "rank": 11,
+          "id": "Georgine Armwood",
+          "score": 12.5117,
+          "matching-likes-items": [
+            "Horses"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 1,
+      "top10-with-attribute-as-substring": 1
+    },
+    {
+      "query-id": "query_937",
+      "query": "Who likes Art History?",
+      "attribute": "Art History",
+      "gold-ranks": [
+        20107,
+        23281
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Arta Burfitt",
+          "score": 17.5714,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Arta Hukill",
+          "score": 17.5194,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Artis Frerichs",
+          "score": 17.4623,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Art Thick",
+          "score": 17.1292,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Artis Sotoramirez",
+          "score": 16.7926,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Arta Lakha",
+          "score": 16.7903,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Artis Fitzsimonds",
+          "score": 16.5642,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Art Actis",
+          "score": 16.4079,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 20107,
+          "id": "Deryl Falsey",
+          "score": 10.2927,
+          "matching-likes-items": [
+            "Art History"
+          ]
+        },
+        {
+          "rank": 23281,
+          "id": "Lorie Dineen",
+          "score": 9.8616,
+          "matching-likes-items": [
+            "Art History"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 0
+    },
+    {
+      "query-id": "query_338",
+      "query": "Who likes Psychology?",
+      "attribute": "Psychology",
+      "gold-ranks": [
+        7183,
+        10453
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Sheryll Manzoni",
+          "score": 11.1607,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Lurline Nardini",
+          "score": 11.0214,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Carl Liggin",
+          "score": 11.0204,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Breanna Braine",
+          "score": 10.999,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Immanuel Bellemore",
+          "score": 10.8869,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Austyn Mulryan",
+          "score": 10.8599,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Noe Gonzalezramire",
+          "score": 10.8521,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Kem Laureta",
+          "score": 10.8443,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 7183,
+          "id": "Tyrone Datu",
+          "score": 8.9845,
+          "matching-likes-items": [
+            "Psychology"
+          ]
+        },
+        {
+          "rank": 10453,
+          "id": "Dulce Pardieck",
+          "score": 8.8348,
+          "matching-likes-items": [
+            "Psychology"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 0
+    },
+    {
+      "query-id": "query_420",
+      "query": "Who likes Performing Arts Studies?",
+      "attribute": "Performing Arts Studies",
+      "gold-ranks": [
+        6157,
+        7916
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Arta Burfitt",
+          "score": 13.8769,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Art Actis",
+          "score": 13.6944,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Arta Hukill",
+          "score": 13.3792,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Leaner Baiza",
+          "score": 13.2663,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Semaj Buccieri",
+          "score": 13.2661,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Lemuel Nuthals",
+          "score": 13.0503,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Art Thick",
+          "score": 12.8054,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Art Louder",
+          "score": 12.7731,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 6157,
+          "id": "Treva Penix",
+          "score": 9.4394,
+          "matching-likes-items": [
+            "Performing Arts Studies"
+          ]
+        },
+        {
+          "rank": 7916,
+          "id": "Kallie Pavlovski",
+          "score": 9.2909,
+          "matching-likes-items": [
+            "Performing Arts Studies"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 0
+    },
+    {
+      "query-id": "query_907",
+      "query": "Who likes Historians?",
+      "attribute": "Historians",
+      "gold-ranks": [
+        6130,
+        48926
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Arlo Erdeljac",
+          "score": 12.3589,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Barry Rossmeisl",
+          "score": 12.2969,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Karl Schoettmer",
+          "score": 11.8732,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Vivian Baskaran",
+          "score": 11.8448,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Paralee Dinelli",
+          "score": 11.8362,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Cathi Rosloniec",
+          "score": 11.8253,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Ernst Brownstein",
+          "score": 11.8207,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Woodrow Burgtorf",
+          "score": 11.7739,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 6130,
+          "id": "Brent Connell",
+          "score": 9.1045,
+          "matching-likes-items": [
+            "Historians"
+          ]
+        },
+        {
+          "rank": 48926,
+          "id": "Georgine Armwood",
+          "score": 7.195,
+          "matching-likes-items": [
+            "Historians"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 0
+    },
+    {
+      "query-id": "query_609",
+      "query": "Who likes Saxophones?",
+      "attribute": "Saxophones",
+      "gold-ranks": [
+        5562,
+        6380
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Austen Saxman",
+          "score": 15.8631,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Melvin Saxberg",
+          "score": 14.842,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Evander Schlabs",
+          "score": 13.8893,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Diann Ferriss",
+          "score": 13.827,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Milton Jeffcoats",
+          "score": 13.8213,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Jaycee Rowlee",
+          "score": 13.7332,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Fulton Stroinski",
+          "score": 13.6461,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Davy Schimanski",
+          "score": 13.4998,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 5562,
+          "id": "Thor Flandez",
+          "score": 10.5616,
+          "matching-likes-items": [
+            "Saxophones"
+          ]
+        },
+        {
+          "rank": 6380,
+          "id": "Kallie Pavlovski",
+          "score": 10.4573,
+          "matching-likes-items": [
+            "Saxophones"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 0
+    },
+    {
+      "query-id": "query_407",
+      "query": "Who likes Musicians?",
+      "attribute": "Musicians",
+      "gold-ranks": [
+        35285,
+        5145
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Thaddeus Brocchini",
+          "score": 14.8497,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Bridgett Reistroffer",
+          "score": 14.6109,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Girtha Schlotterback",
+          "score": 14.4669,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Halbert Rodriguezriver",
+          "score": 14.4437,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Marland Lobaina",
+          "score": 14.3735,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Noreen Wittstruck",
+          "score": 14.3307,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Abe Villanueba",
+          "score": 14.3118,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Evander Schlabs",
+          "score": 14.3091,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 35285,
+          "id": "Treva Penix",
+          "score": 9.3512,
+          "matching-likes-items": [
+            "Musicians"
+          ]
+        },
+        {
+          "rank": 5145,
+          "id": "Kanye Goehner",
+          "score": 12.0266,
+          "matching-likes-items": [
+            "Musicians"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 0
+    },
+    {
+      "query-id": "query_248",
+      "query": "Who likes Iron?",
+      "attribute": "Iron",
+      "gold-ranks": [
+        4636,
+        8209
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Everette Ironhawk",
+          "score": 16.8821,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Tammi Ironcloud",
+          "score": 16.5021,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Clarence Bleyer",
+          "score": 16.3033,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Soldering Irons"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Jenna Gancarz",
+          "score": 16.2834,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Ironing Boards"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Jacqulyn Obenauf",
+          "score": 16.2745,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Ironing Boards"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Hank Gramazio",
+          "score": 16.2125,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Ironing Boards"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Najee Abner",
+          "score": 16.2085,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Ironing Boards"
+          ],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Faron Vaillant",
+          "score": 16.0902,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Ironing Boards"
+          ],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 4636,
+          "id": "Jamar Brugger",
+          "score": 11.6745,
+          "matching-likes-items": [
+            "Iron"
+          ]
+        },
+        {
+          "rank": 8209,
+          "id": "Lorie Dineen",
+          "score": 9.9772,
+          "matching-likes-items": [
+            "Iron"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 8
+    },
+    {
+      "query-id": "query_404",
+      "query": "Who likes Forests?",
+      "attribute": "Forests",
+      "gold-ranks": [
+        6116,
+        3608
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Forest Antisdel",
+          "score": 21.3271,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Izaiah Foresta",
+          "score": 20.5708,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Forest Janeiro",
+          "score": 19.9335,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Forest Stoyanova",
+          "score": 19.532,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Forest Edrich",
+          "score": 19.3474,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Forest Chouteau",
+          "score": 19.3328,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Forest Bodapati",
+          "score": 18.7687,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Forest Zirbel",
+          "score": 18.1979,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 6116,
+          "id": "Mattie Puddy",
+          "score": 12.2723,
+          "matching-likes-items": [
+            "Forests"
+          ]
+        },
+        {
+          "rank": 3608,
+          "id": "Shalonda Revelez",
+          "score": 13.4858,
+          "matching-likes-items": [
+            "Forests"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 0
+    },
+    {
+      "query-id": "query_429",
+      "query": "Who likes Limes?",
+      "attribute": "Limes",
+      "gold-ranks": [
+        4007,
+        3503
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Shardae Pusey",
+          "score": 19.4267,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Giuliana Sensabaugh",
+          "score": 19.1171,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Press Want",
+          "score": 19.0725,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Craig Muwwakkil",
+          "score": 18.934,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Willard Schlabs",
+          "score": 18.824,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Amalie Belzner",
+          "score": 18.8236,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Aydan Kloepfer",
+          "score": 18.8185,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Tevin Sallstrom",
+          "score": 18.8146,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 4007,
+          "id": "Treva Penix",
+          "score": 12.8909,
+          "matching-likes-items": [
+            "Limes"
+          ]
+        },
+        {
+          "rank": 3503,
+          "id": "Kaydence Retuta",
+          "score": 13.328,
+          "matching-likes-items": [
+            "Limes"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 0
+    },
+    {
+      "query-id": "query_475",
+      "query": "Who likes Sunglasses?",
+      "attribute": "Sunglasses",
+      "gold-ranks": [
+        3072,
+        4267
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Jordan Traicoff",
+          "score": 18.9767,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Titus Sultzbaugh",
+          "score": 18.841,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Randolf Seinfeld",
+          "score": 18.8242,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Mauro Deffinbaugh",
+          "score": 18.483,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Lazaro Pequeno",
+          "score": 18.412,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Lonny Dolittle",
+          "score": 18.4015,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Soledad Freundt",
+          "score": 18.3903,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Kourtney Wellbrock",
+          "score": 18.3705,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 3072,
+          "id": "Jerod Office",
+          "score": 13.7516,
+          "matching-likes-items": [
+            "Sunglasses"
+          ]
+        },
+        {
+          "rank": 4267,
+          "id": "Trevion Malasig",
+          "score": 12.7474,
+          "matching-likes-items": [
+            "Sunglasses"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 0
+    },
+    {
+      "query-id": "query_531",
+      "query": "Who likes Drama Literature?",
+      "attribute": "Drama Literature",
+      "gold-ranks": [
+        2910,
+        7173
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Rosamond Brownley",
+          "score": 19.5531,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 2,
+          "id": "Sharde Diguardi",
+          "score": 19.4921,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 3,
+          "id": "Latifah Desciscio",
+          "score": 19.4143,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 4,
+          "id": "Dwaine Streitmatter",
+          "score": 19.354,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 5,
+          "id": "Taryn Hollensteiner",
+          "score": 19.3534,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 6,
+          "id": "Jeraldine Crichlow",
+          "score": 19.3029,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 7,
+          "id": "Sharron Battenfeld",
+          "score": 19.2542,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        },
+        {
+          "rank": 8,
+          "id": "Melvina Hallgren",
+          "score": 19.2036,
+          "is-gold": false,
+          "matching-likes-items": [],
+          "n-likes": 45
+        }
+      ],
+      "golds": [
+        {
+          "rank": 2910,
+          "id": "Kanye Goehner",
+          "score": 13.7739,
+          "matching-likes-items": [
+            "Drama Literature"
+          ]
+        },
+        {
+          "rank": 7173,
+          "id": "Georgine Armwood",
+          "score": 10.7765,
+          "matching-likes-items": [
+            "Drama Literature"
+          ]
+        }
+      ],
+      "top10-with-exact-attribute": 0,
+      "top10-with-attribute-as-substring": 0
+    }
+  ]
+}
