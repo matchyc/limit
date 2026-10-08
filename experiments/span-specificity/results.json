@@ -1,0 +1,2339 @@
+{
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "device": "cuda",
+  "docs": 46,
+  "queries": 1000,
+  "chunks": 2070,
+  "glosses": 126,
+  "templates": [
+    {
+      "name": "who-likes",
+      "pattern": "Who likes {x}?"
+    },
+    {
+      "name": "who-enjoys",
+      "pattern": "Who enjoys {x}?"
+    },
+    {
+      "name": "person-enjoys",
+      "pattern": "A person who enjoys {x}"
+    },
+    {
+      "name": "someone-likes",
+      "pattern": "Someone who likes {x}"
+    },
+    {
+      "name": "find-person",
+      "pattern": "Find a person who likes {x}"
+    },
+    {
+      "name": "which-person",
+      "pattern": "Which person likes {x}?"
+    }
+  ],
+  "deltas": [
+    0.0,
+    0.01,
+    0.02,
+    0.05,
+    0.1
+  ],
+  "taus": [
+    0.5,
+    0.7,
+    0.8,
+    0.9,
+    0.95
+  ],
+  "seconds": 7.5,
+  "original": {
+    "whole-doc": {
+      "recall@2": 16.2,
+      "recall@10": 48.05,
+      "recall@20": 69.45,
+      "both-in-top2": 2.3,
+      "mean-better-gold-rank": 8.07,
+      "median-better-gold-rank": 5.0,
+      "both-in-top10": 23.2
+    },
+    "whole-doc-max-template": {
+      "recall@2": 16.6,
+      "recall@10": 47.75,
+      "recall@20": 68.25,
+      "both-in-top2": 2.8,
+      "mean-better-gold-rank": 8.39,
+      "median-better-gold-rank": 5.0,
+      "both-in-top10": 24.3
+    },
+    "bm25": {
+      "recall@2": 99.15,
+      "recall@10": 100.0,
+      "recall@20": 100.0,
+      "both-in-top2": 98.4,
+      "mean-better-gold-rank": 1.01,
+      "median-better-gold-rank": 1.0,
+      "both-in-top10": 100.0
+    },
+    "bm25-max-template": {
+      "recall@2": 98.25,
+      "recall@10": 100.0,
+      "recall@20": 100.0,
+      "both-in-top2": 97.0,
+      "mean-better-gold-rank": 1.02,
+      "median-better-gold-rank": 1.0,
+      "both-in-top10": 100.0
+    },
+    "chunk-max": {
+      "recall@2": 98.15,
+      "recall@10": 100.0,
+      "recall@20": 100.0,
+      "both-in-top2": 96.4,
+      "mean-better-gold-rank": 1.01,
+      "median-better-gold-rank": 1.0,
+      "both-in-top10": 100.0
+    },
+    "chunk-max-max-template": {
+      "recall@2": 97.85,
+      "recall@10": 100.0,
+      "recall@20": 100.0,
+      "both-in-top2": 95.7,
+      "mean-better-gold-rank": 1.0,
+      "median-better-gold-rank": 1.0,
+      "both-in-top10": 100.0
+    },
+    "per-template-chunk": {
+      "who-likes": {
+        "recall@2": 98.15,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 96.4,
+        "mean-better-gold-rank": 1.01,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      },
+      "who-enjoys": {
+        "recall@2": 97.8,
+        "recall@10": 99.9,
+        "recall@20": 100.0,
+        "both-in-top2": 95.9,
+        "mean-better-gold-rank": 1.01,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 99.8
+      },
+      "person-enjoys": {
+        "recall@2": 96.85,
+        "recall@10": 99.95,
+        "recall@20": 100.0,
+        "both-in-top2": 93.9,
+        "mean-better-gold-rank": 1.01,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 99.9
+      },
+      "someone-likes": {
+        "recall@2": 98.3,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 96.6,
+        "mean-better-gold-rank": 1.0,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      },
+      "find-person": {
+        "recall@2": 98.35,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 96.7,
+        "mean-better-gold-rank": 1.0,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      },
+      "which-person": {
+        "recall@2": 97.8,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 95.6,
+        "mean-better-gold-rank": 1.0,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      }
+    },
+    "score-band": {
+      "0.00": {
+        "recall@2": 98.15,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 96.4,
+        "mean-better-gold-rank": 1.01,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      },
+      "0.01": {
+        "recall@2": 86.7,
+        "recall@10": 99.75,
+        "recall@20": 99.9,
+        "both-in-top2": 81.2,
+        "mean-better-gold-rank": 1.3,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 99.5
+      },
+      "0.02": {
+        "recall@2": 87.15,
+        "recall@10": 99.9,
+        "recall@20": 99.9,
+        "both-in-top2": 80.0,
+        "mean-better-gold-rank": 1.24,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 99.8
+      },
+      "0.05": {
+        "recall@2": 93.75,
+        "recall@10": 99.9,
+        "recall@20": 100.0,
+        "both-in-top2": 88.3,
+        "mean-better-gold-rank": 1.09,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 99.8
+      },
+      "0.10": {
+        "recall@2": 97.25,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 94.8,
+        "mean-better-gold-rank": 1.02,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      }
+    },
+    "score-band-max-template": {
+      "0.00": {
+        "recall@2": 97.85,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 95.7,
+        "mean-better-gold-rank": 1.0,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      },
+      "0.01": {
+        "recall@2": 86.95,
+        "recall@10": 99.75,
+        "recall@20": 99.95,
+        "both-in-top2": 82.4,
+        "mean-better-gold-rank": 1.29,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 99.5
+      },
+      "0.02": {
+        "recall@2": 87.6,
+        "recall@10": 99.9,
+        "recall@20": 100.0,
+        "both-in-top2": 80.1,
+        "mean-better-gold-rank": 1.23,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 99.8
+      },
+      "0.05": {
+        "recall@2": 93.2,
+        "recall@10": 99.95,
+        "recall@20": 100.0,
+        "both-in-top2": 87.4,
+        "mean-better-gold-rank": 1.09,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 99.9
+      },
+      "0.10": {
+        "recall@2": 96.5,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 93.1,
+        "mean-better-gold-rank": 1.01,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      }
+    },
+    "span": {
+      "0.50": {
+        "recall@2": 37.8,
+        "recall@10": 74.95,
+        "recall@20": 89.45,
+        "both-in-top2": 17.2,
+        "mean-better-gold-rank": 4.26,
+        "median-better-gold-rank": 2.0,
+        "both-in-top10": 60.8
+      },
+      "0.70": {
+        "recall@2": 94.3,
+        "recall@10": 96.35,
+        "recall@20": 97.5,
+        "both-in-top2": 92.6,
+        "mean-better-gold-rank": 1.78,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 96.3
+      },
+      "0.80": {
+        "recall@2": 98.15,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 96.4,
+        "mean-better-gold-rank": 1.01,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      },
+      "0.90": {
+        "recall@2": 98.15,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 96.4,
+        "mean-better-gold-rank": 1.01,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      },
+      "0.95": {
+        "recall@2": 98.15,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 96.4,
+        "mean-better-gold-rank": 1.01,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      }
+    },
+    "span-max-template": {
+      "0.50": {
+        "recall@2": 31.9,
+        "recall@10": 71.9,
+        "recall@20": 87.75,
+        "both-in-top2": 13.7,
+        "mean-better-gold-rank": 4.82,
+        "median-better-gold-rank": 2.0,
+        "both-in-top10": 57.0
+      },
+      "0.70": {
+        "recall@2": 94.0,
+        "recall@10": 96.25,
+        "recall@20": 96.75,
+        "both-in-top2": 91.9,
+        "mean-better-gold-rank": 1.93,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 96.2
+      },
+      "0.80": {
+        "recall@2": 97.85,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 95.7,
+        "mean-better-gold-rank": 1.0,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      },
+      "0.90": {
+        "recall@2": 97.85,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 95.7,
+        "mean-better-gold-rank": 1.0,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      },
+      "0.95": {
+        "recall@2": 97.85,
+        "recall@10": 100.0,
+        "recall@20": 100.0,
+        "both-in-top2": 95.7,
+        "mean-better-gold-rank": 1.0,
+        "median-better-gold-rank": 1.0,
+        "both-in-top10": 100.0
+      }
+    }
+  },
+  "gloss": {
+    "n": 126,
+    "whole-doc": {
+      "recall@2": 7.94,
+      "recall@10": 31.75,
+      "recall@20": 57.54,
+      "both-in-top2": 0.0,
+      "mean-better-gold-rank": 12.16,
+      "median-better-gold-rank": 10.5,
+      "both-in-top10": 13.49
+    },
+    "whole-doc-max-template": {
+      "recall@2": 7.94,
+      "recall@10": 30.16,
+      "recall@20": 52.38,
+      "both-in-top2": 0.0,
+      "mean-better-gold-rank": 12.79,
+      "median-better-gold-rank": 10.0,
+      "both-in-top10": 8.73
+    },
+    "bm25": {
+      "recall@2": 3.57,
+      "recall@10": 24.21,
+      "recall@20": 47.22,
+      "both-in-top2": 0.0,
+      "mean-better-gold-rank": 14.97,
+      "median-better-gold-rank": 13.0,
+      "both-in-top10": 7.14
+    },
+    "bm25-max-template": {
+      "recall@2": 3.97,
+      "recall@10": 24.6,
+      "recall@20": 45.63,
+      "both-in-top2": 0.0,
+      "mean-better-gold-rank": 15.05,
+      "median-better-gold-rank": 13.5,
+      "both-in-top10": 7.14
+    },
+    "chunk-max": {
+      "recall@2": 24.21,
+      "recall@10": 62.7,
+      "recall@20": 77.38,
+      "both-in-top2": 11.11,
+      "mean-better-gold-rank": 7.83,
+      "median-better-gold-rank": 3.0,
+      "both-in-top10": 50.0
+    },
+    "chunk-max-max-template": {
+      "recall@2": 23.41,
+      "recall@10": 59.92,
+      "recall@20": 77.38,
+      "both-in-top2": 11.9,
+      "mean-better-gold-rank": 8.13,
+      "median-better-gold-rank": 3.0,
+      "both-in-top10": 45.24
+    },
+    "per-template-chunk": {
+      "who-likes": {
+        "recall@2": 24.21,
+        "recall@10": 62.7,
+        "recall@20": 77.38,
+        "both-in-top2": 11.11,
+        "mean-better-gold-rank": 7.83,
+        "median-better-gold-rank": 3.0,
+        "both-in-top10": 50.0
+      },
+      "who-enjoys": {
+        "recall@2": 25.79,
+        "recall@10": 61.51,
+        "recall@20": 76.19,
+        "both-in-top2": 11.9,
+        "mean-better-gold-rank": 8.12,
+        "median-better-gold-rank": 3.0,
+        "both-in-top10": 48.41
+      },
+      "person-enjoys": {
+        "recall@2": 24.6,
+        "recall@10": 58.33,
+        "recall@20": 77.78,
+        "both-in-top2": 11.11,
+        "mean-better-gold-rank": 8.22,
+        "median-better-gold-rank": 4.0,
+        "both-in-top10": 42.86
+      },
+      "someone-likes": {
+        "recall@2": 23.81,
+        "recall@10": 59.92,
+        "recall@20": 78.97,
+        "both-in-top2": 11.9,
+        "mean-better-gold-rank": 7.75,
+        "median-better-gold-rank": 4.0,
+        "both-in-top10": 44.44
+      },
+      "find-person": {
+        "recall@2": 24.21,
+        "recall@10": 59.52,
+        "recall@20": 76.98,
+        "both-in-top2": 10.32,
+        "mean-better-gold-rank": 8.3,
+        "median-better-gold-rank": 4.0,
+        "both-in-top10": 46.83
+      },
+      "which-person": {
+        "recall@2": 24.6,
+        "recall@10": 59.92,
+        "recall@20": 77.78,
+        "both-in-top2": 11.9,
+        "mean-better-gold-rank": 8.1,
+        "median-better-gold-rank": 3.5,
+        "both-in-top10": 46.03
+      }
+    },
+    "score-band": {
+      "0.00": {
+        "recall@2": 24.21,
+        "recall@10": 62.3,
+        "recall@20": 76.98,
+        "both-in-top2": 11.11,
+        "mean-better-gold-rank": 8.08,
+        "median-better-gold-rank": 3.0,
+        "both-in-top10": 50.0
+      },
+      "0.01": {
+        "recall@2": 21.03,
+        "recall@10": 54.37,
+        "recall@20": 73.41,
+        "both-in-top2": 9.52,
+        "mean-better-gold-rank": 8.0,
+        "median-better-gold-rank": 5.0,
+        "both-in-top10": 35.71
+      },
+      "0.02": {
+        "recall@2": 21.43,
+        "recall@10": 60.32,
+        "recall@20": 74.6,
+        "both-in-top2": 9.52,
+        "mean-better-gold-rank": 7.93,
+        "median-better-gold-rank": 4.5,
+        "both-in-top10": 42.06
+      },
+      "0.05": {
+        "recall@2": 22.22,
+        "recall@10": 59.52,
+        "recall@20": 75.79,
+        "both-in-top2": 9.52,
+        "mean-better-gold-rank": 7.21,
+        "median-better-gold-rank": 4.0,
+        "both-in-top10": 42.06
+      },
+      "0.10": {
+        "recall@2": 24.21,
+        "recall@10": 61.51,
+        "recall@20": 77.38,
+        "both-in-top2": 11.11,
+        "mean-better-gold-rank": 7.3,
+        "median-better-gold-rank": 3.5,
+        "both-in-top10": 45.24
+      }
+    },
+    "score-band-max-template": {
+      "0.00": {
+        "recall@2": 23.41,
+        "recall@10": 59.92,
+        "recall@20": 77.38,
+        "both-in-top2": 11.9,
+        "mean-better-gold-rank": 8.13,
+        "median-better-gold-rank": 3.0,
+        "both-in-top10": 45.24
+      },
+      "0.01": {
+        "recall@2": 21.03,
+        "recall@10": 51.59,
+        "recall@20": 70.63,
+        "both-in-top2": 7.94,
+        "mean-better-gold-rank": 9.46,
+        "median-better-gold-rank": 6.0,
+        "both-in-top10": 37.3
+      },
+      "0.02": {
+        "recall@2": 19.44,
+        "recall@10": 54.37,
+        "recall@20": 72.62,
+        "both-in-top2": 5.56,
+        "mean-better-gold-rank": 8.56,
+        "median-better-gold-rank": 4.0,
+        "both-in-top10": 36.51
+      },
+      "0.05": {
+        "recall@2": 21.83,
+        "recall@10": 56.75,
+        "recall@20": 75.0,
+        "both-in-top2": 8.73,
+        "mean-better-gold-rank": 7.89,
+        "median-better-gold-rank": 4.0,
+        "both-in-top10": 38.89
+      },
+      "0.10": {
+        "recall@2": 21.83,
+        "recall@10": 59.13,
+        "recall@20": 77.38,
+        "both-in-top2": 9.52,
+        "mean-better-gold-rank": 7.73,
+        "median-better-gold-rank": 4.0,
+        "both-in-top10": 42.86
+      }
+    },
+    "span": {
+      "0.50": {
+        "recall@2": 12.3,
+        "recall@10": 39.68,
+        "recall@20": 62.3,
+        "both-in-top2": 3.97,
+        "mean-better-gold-rank": 11.64,
+        "median-better-gold-rank": 9.5,
+        "both-in-top10": 24.6
+      },
+      "0.70": {
+        "recall@2": 23.02,
+        "recall@10": 62.7,
+        "recall@20": 76.59,
+        "both-in-top2": 10.32,
+        "mean-better-gold-rank": 8.1,
+        "median-better-gold-rank": 3.0,
+        "both-in-top10": 50.0
+      },
+      "0.80": {
+        "recall@2": 24.21,
+        "recall@10": 62.7,
+        "recall@20": 77.38,
+        "both-in-top2": 11.11,
+        "mean-better-gold-rank": 7.83,
+        "median-better-gold-rank": 3.0,
+        "both-in-top10": 50.0
+      },
+      "0.90": {
+        "recall@2": 24.21,
+        "recall@10": 62.7,
+        "recall@20": 77.38,
+        "both-in-top2": 11.11,
+        "mean-better-gold-rank": 7.83,
+        "median-better-gold-rank": 3.0,
+        "both-in-top10": 50.0
+      },
+      "0.95": {
+        "recall@2": 24.21,
+        "recall@10": 62.7,
+        "recall@20": 77.38,
+        "both-in-top2": 11.11,
+        "mean-better-gold-rank": 7.83,
+        "median-better-gold-rank": 3.0,
+        "both-in-top10": 50.0
+      }
+    },
+    "span-max-template": {
+      "0.50": {
+        "recall@2": 13.49,
+        "recall@10": 37.3,
+        "recall@20": 59.92,
+        "both-in-top2": 3.97,
+        "mean-better-gold-rank": 12.44,
+        "median-better-gold-rank": 10.0,
+        "both-in-top10": 22.22
+      },
+      "0.70": {
+        "recall@2": 22.22,
+        "recall@10": 59.92,
+        "recall@20": 76.59,
+        "both-in-top2": 11.11,
+        "mean-better-gold-rank": 8.37,
+        "median-better-gold-rank": 3.5,
+        "both-in-top10": 44.44
+      },
+      "0.80": {
+        "recall@2": 23.41,
+        "recall@10": 59.92,
+        "recall@20": 77.38,
+        "both-in-top2": 11.9,
+        "mean-better-gold-rank": 8.13,
+        "median-better-gold-rank": 3.0,
+        "both-in-top10": 45.24
+      },
+      "0.90": {
+        "recall@2": 23.41,
+        "recall@10": 59.92,
+        "recall@20": 77.38,
+        "both-in-top2": 11.9,
+        "mean-better-gold-rank": 8.13,
+        "median-better-gold-rank": 3.0,
+        "both-in-top10": 45.24
+      },
+      "0.95": {
+        "recall@2": 23.41,
+        "recall@10": 59.92,
+        "recall@20": 77.38,
+        "both-in-top2": 11.9,
+        "mean-better-gold-rank": 8.13,
+        "median-better-gold-rank": 3.0,
+        "both-in-top10": 45.24
+      }
+    }
+  },
+  "planted": {
+    "original-who-likes": {
+      "t=1": {
+        "chunk-max": {
+          "recall@2": 58.65,
+          "recall@10": 100.0,
+          "recall@20": 100.0,
+          "both-in-top2": 18.0,
+          "mean-better-gold-rank": 1.51,
+          "median-better-gold-rank": 2.0,
+          "both-in-top10": 100.0
+        },
+        "whole-doc": {
+          "recall@2": 8.9,
+          "recall@10": 45.2,
+          "recall@20": 67.75,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 9.07,
+          "median-better-gold-rank": 6.0,
+          "both-in-top10": 20.6
+        },
+        "score-band": {
+          "0.00": {
+            "recall@2": 58.65,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 18.0,
+            "mean-better-gold-rank": 1.51,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 100.0
+          },
+          "0.01": {
+            "recall@2": 47.8,
+            "recall@10": 99.55,
+            "recall@20": 99.9,
+            "both-in-top2": 10.7,
+            "mean-better-gold-rank": 1.85,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.1
+          },
+          "0.02": {
+            "recall@2": 47.85,
+            "recall@10": 99.9,
+            "recall@20": 99.9,
+            "both-in-top2": 13.3,
+            "mean-better-gold-rank": 1.79,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.8
+          },
+          "0.05": {
+            "recall@2": 54.7,
+            "recall@10": 99.9,
+            "recall@20": 100.0,
+            "both-in-top2": 19.2,
+            "mean-better-gold-rank": 1.65,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.8
+          },
+          "0.10": {
+            "recall@2": 58.25,
+            "recall@10": 99.95,
+            "recall@20": 100.0,
+            "both-in-top2": 18.6,
+            "mean-better-gold-rank": 1.54,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.9
+          }
+        },
+        "span": {
+          "0.50": {
+            "recall@2": 13.8,
+            "recall@10": 58.95,
+            "recall@20": 83.05,
+            "both-in-top2": 0.6,
+            "mean-better-gold-rank": 7.17,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 41.7
+          },
+          "0.70": {
+            "recall@2": 55.95,
+            "recall@10": 96.35,
+            "recall@20": 97.35,
+            "both-in-top2": 16.5,
+            "mean-better-gold-rank": 2.31,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 96.3
+          },
+          "0.80": {
+            "recall@2": 58.65,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 18.0,
+            "mean-better-gold-rank": 1.51,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 100.0
+          },
+          "0.90": {
+            "recall@2": 58.65,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 18.0,
+            "mean-better-gold-rank": 1.51,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 100.0
+          },
+          "0.95": {
+            "recall@2": 58.65,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 18.0,
+            "mean-better-gold-rank": 1.51,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 100.0
+          }
+        },
+        "bm25": {
+          "recall@2": 49.7,
+          "recall@10": 100.0,
+          "recall@20": 100.0,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 2.01,
+          "median-better-gold-rank": 2.0,
+          "both-in-top10": 100.0
+        },
+        "median-gap-worse-gold-minus-best-copy": -0.0392,
+        "copies-above-worse-gold": 818,
+        "queries-gold-and-best-copy-within-delta-pct": {
+          "0.00": 0.0,
+          "0.01": 11.4,
+          "0.02": 24.7,
+          "0.05": 55.8,
+          "0.10": 88.2
+        }
+      },
+      "t=2": {
+        "chunk-max": {
+          "recall@2": 26.7,
+          "recall@10": 100.0,
+          "recall@20": 100.0,
+          "both-in-top2": 4.0,
+          "mean-better-gold-rank": 2.29,
+          "median-better-gold-rank": 3.0,
+          "both-in-top10": 100.0
+        },
+        "whole-doc": {
+          "recall@2": 0.0,
+          "recall@10": 42.25,
+          "recall@20": 66.3,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 10.07,
+          "median-better-gold-rank": 7.0,
+          "both-in-top10": 18.1
+        },
+        "score-band": {
+          "0.00": {
+            "recall@2": 26.7,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 4.0,
+            "mean-better-gold-rank": 2.29,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 100.0
+          },
+          "0.01": {
+            "recall@2": 28.4,
+            "recall@10": 99.3,
+            "recall@20": 99.9,
+            "both-in-top2": 5.9,
+            "mean-better-gold-rank": 2.66,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 98.6
+          },
+          "0.02": {
+            "recall@2": 33.15,
+            "recall@10": 99.75,
+            "recall@20": 99.9,
+            "both-in-top2": 11.2,
+            "mean-better-gold-rank": 2.48,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.5
+          },
+          "0.05": {
+            "recall@2": 37.75,
+            "recall@10": 99.9,
+            "recall@20": 100.0,
+            "both-in-top2": 7.8,
+            "mean-better-gold-rank": 2.07,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.8
+          },
+          "0.10": {
+            "recall@2": 31.65,
+            "recall@10": 99.95,
+            "recall@20": 100.0,
+            "both-in-top2": 5.3,
+            "mean-better-gold-rank": 2.2,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.9
+          }
+        },
+        "span": {
+          "0.50": {
+            "recall@2": 10.0,
+            "recall@10": 37.5,
+            "recall@20": 69.0,
+            "both-in-top2": 3.4,
+            "mean-better-gold-rank": 11.19,
+            "median-better-gold-rank": 9.0,
+            "both-in-top10": 21.1
+          },
+          "0.70": {
+            "recall@2": 94.3,
+            "recall@10": 96.3,
+            "recall@20": 97.25,
+            "both-in-top2": 92.6,
+            "mean-better-gold-rank": 1.82,
+            "median-better-gold-rank": 1.0,
+            "both-in-top10": 96.3
+          },
+          "0.80": {
+            "recall@2": 98.15,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 96.4,
+            "mean-better-gold-rank": 1.01,
+            "median-better-gold-rank": 1.0,
+            "both-in-top10": 100.0
+          },
+          "0.90": {
+            "recall@2": 98.15,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 96.4,
+            "mean-better-gold-rank": 1.01,
+            "median-better-gold-rank": 1.0,
+            "both-in-top10": 100.0
+          },
+          "0.95": {
+            "recall@2": 42.85,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 24.0,
+            "mean-better-gold-rank": 2.0,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 100.0
+          }
+        },
+        "bm25": {
+          "recall@2": 0.0,
+          "recall@10": 100.0,
+          "recall@20": 100.0,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 3.01,
+          "median-better-gold-rank": 3.0,
+          "both-in-top10": 100.0
+        },
+        "median-gap-worse-gold-minus-best-copy": -0.0692,
+        "copies-above-worse-gold": 959,
+        "queries-gold-and-best-copy-within-delta-pct": {
+          "0.00": 0.0,
+          "0.01": 5.4,
+          "0.02": 10.1,
+          "0.05": 31.5,
+          "0.10": 74.5
+        }
+      },
+      "t=5": {
+        "chunk-max": {
+          "recall@2": 1.9,
+          "recall@10": 99.95,
+          "recall@20": 100.0,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 5.07,
+          "median-better-gold-rank": 6.0,
+          "both-in-top10": 99.9
+        },
+        "whole-doc": {
+          "recall@2": 0.0,
+          "recall@10": 31.0,
+          "recall@20": 60.2,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 13.07,
+          "median-better-gold-rank": 10.0,
+          "both-in-top10": 9.6
+        },
+        "score-band": {
+          "0.00": {
+            "recall@2": 1.9,
+            "recall@10": 99.95,
+            "recall@20": 100.0,
+            "both-in-top2": 0.0,
+            "mean-better-gold-rank": 5.07,
+            "median-better-gold-rank": 6.0,
+            "both-in-top10": 99.9
+          },
+          "0.01": {
+            "recall@2": 12.55,
+            "recall@10": 94.4,
+            "recall@20": 99.9,
+            "both-in-top2": 2.4,
+            "mean-better-gold-rank": 4.19,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 90.6
+          },
+          "0.02": {
+            "recall@2": 27.5,
+            "recall@10": 97.35,
+            "recall@20": 99.9,
+            "both-in-top2": 9.4,
+            "mean-better-gold-rank": 3.42,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 95.3
+          },
+          "0.05": {
+            "recall@2": 40.75,
+            "recall@10": 99.3,
+            "recall@20": 99.95,
+            "both-in-top2": 18.8,
+            "mean-better-gold-rank": 2.45,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 98.6
+          },
+          "0.10": {
+            "recall@2": 21.75,
+            "recall@10": 99.8,
+            "recall@20": 100.0,
+            "both-in-top2": 4.5,
+            "mean-better-gold-rank": 3.38,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 99.6
+          }
+        },
+        "span": {
+          "0.50": {
+            "recall@2": 6.4,
+            "recall@10": 14.25,
+            "recall@20": 23.55,
+            "both-in-top2": 2.0,
+            "mean-better-gold-rank": 24.17,
+            "median-better-gold-rank": 27.0,
+            "both-in-top10": 7.7
+          },
+          "0.70": {
+            "recall@2": 93.6,
+            "recall@10": 95.6,
+            "recall@20": 96.8,
+            "both-in-top2": 91.3,
+            "mean-better-gold-rank": 1.88,
+            "median-better-gold-rank": 1.0,
+            "both-in-top10": 94.9
+          },
+          "0.80": {
+            "recall@2": 98.15,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 96.4,
+            "mean-better-gold-rank": 1.01,
+            "median-better-gold-rank": 1.0,
+            "both-in-top10": 100.0
+          },
+          "0.90": {
+            "recall@2": 98.1,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 96.3,
+            "mean-better-gold-rank": 1.01,
+            "median-better-gold-rank": 1.0,
+            "both-in-top10": 100.0
+          },
+          "0.95": {
+            "recall@2": 45.4,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 24.5,
+            "mean-better-gold-rank": 2.27,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 100.0
+          }
+        },
+        "bm25": {
+          "recall@2": 0.0,
+          "recall@10": 100.0,
+          "recall@20": 100.0,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 6.01,
+          "median-better-gold-rank": 6.0,
+          "both-in-top10": 100.0
+        },
+        "median-gap-worse-gold-minus-best-copy": -0.1137,
+        "copies-above-worse-gold": 1000,
+        "queries-gold-and-best-copy-within-delta-pct": {
+          "0.00": 0.0,
+          "0.01": 0.1,
+          "0.02": 0.7,
+          "0.05": 4.2,
+          "0.10": 36.3
+        }
+      }
+    },
+    "original-max-template": {
+      "t=1": {
+        "chunk-max": {
+          "recall@2": 55.1,
+          "recall@10": 100.0,
+          "recall@20": 100.0,
+          "both-in-top2": 10.5,
+          "mean-better-gold-rank": 1.63,
+          "median-better-gold-rank": 2.0,
+          "both-in-top10": 100.0
+        },
+        "whole-doc": {
+          "recall@2": 8.85,
+          "recall@10": 45.05,
+          "recall@20": 66.4,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 9.39,
+          "median-better-gold-rank": 6.0,
+          "both-in-top10": 21.6
+        },
+        "score-band": {
+          "0.00": {
+            "recall@2": 55.1,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 10.5,
+            "mean-better-gold-rank": 1.63,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 100.0
+          },
+          "0.01": {
+            "recall@2": 46.6,
+            "recall@10": 99.5,
+            "recall@20": 99.95,
+            "both-in-top2": 6.9,
+            "mean-better-gold-rank": 1.92,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.0
+          },
+          "0.02": {
+            "recall@2": 46.1,
+            "recall@10": 99.75,
+            "recall@20": 100.0,
+            "both-in-top2": 9.0,
+            "mean-better-gold-rank": 1.83,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.5
+          },
+          "0.05": {
+            "recall@2": 52.65,
+            "recall@10": 99.95,
+            "recall@20": 100.0,
+            "both-in-top2": 15.4,
+            "mean-better-gold-rank": 1.73,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.9
+          },
+          "0.10": {
+            "recall@2": 54.65,
+            "recall@10": 99.95,
+            "recall@20": 100.0,
+            "both-in-top2": 11.6,
+            "mean-better-gold-rank": 1.65,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.9
+          }
+        },
+        "span": {
+          "0.50": {
+            "recall@2": 11.3,
+            "recall@10": 55.65,
+            "recall@20": 80.35,
+            "both-in-top2": 0.3,
+            "mean-better-gold-rank": 8.05,
+            "median-better-gold-rank": 5.0,
+            "both-in-top10": 38.7
+          },
+          "0.70": {
+            "recall@2": 52.7,
+            "recall@10": 96.25,
+            "recall@20": 96.75,
+            "both-in-top2": 9.6,
+            "mean-better-gold-rank": 2.58,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 96.2
+          },
+          "0.80": {
+            "recall@2": 55.1,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 10.5,
+            "mean-better-gold-rank": 1.63,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 100.0
+          },
+          "0.90": {
+            "recall@2": 55.1,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 10.5,
+            "mean-better-gold-rank": 1.63,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 100.0
+          },
+          "0.95": {
+            "recall@2": 55.1,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 10.5,
+            "mean-better-gold-rank": 1.63,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 100.0
+          }
+        },
+        "bm25": {
+          "recall@2": 49.7,
+          "recall@10": 100.0,
+          "recall@20": 100.0,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 2.01,
+          "median-better-gold-rank": 2.0,
+          "both-in-top10": 100.0
+        },
+        "median-gap-worse-gold-minus-best-copy": -0.0544,
+        "copies-above-worse-gold": 894,
+        "queries-gold-and-best-copy-within-delta-pct": {
+          "0.00": 0.0,
+          "0.01": 9.4,
+          "0.02": 18.1,
+          "0.05": 44.8,
+          "0.10": 82.2
+        },
+        "bm25-max-template": {
+          "recall@2": 49.1,
+          "recall@10": 100.0,
+          "recall@20": 100.0,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 2.03,
+          "median-better-gold-rank": 2.0,
+          "both-in-top10": 100.0
+        }
+      },
+      "t=2": {
+        "chunk-max": {
+          "recall@2": 19.65,
+          "recall@10": 100.0,
+          "recall@20": 100.0,
+          "both-in-top2": 1.6,
+          "mean-better-gold-rank": 2.47,
+          "median-better-gold-rank": 3.0,
+          "both-in-top10": 100.0
+        },
+        "whole-doc": {
+          "recall@2": 0.0,
+          "recall@10": 41.95,
+          "recall@20": 64.65,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 10.39,
+          "median-better-gold-rank": 7.0,
+          "both-in-top10": 18.4
+        },
+        "score-band": {
+          "0.00": {
+            "recall@2": 19.65,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 1.6,
+            "mean-better-gold-rank": 2.47,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 100.0
+          },
+          "0.01": {
+            "recall@2": 24.45,
+            "recall@10": 99.1,
+            "recall@20": 99.95,
+            "both-in-top2": 5.6,
+            "mean-better-gold-rank": 2.76,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 98.7
+          },
+          "0.02": {
+            "recall@2": 33.05,
+            "recall@10": 99.7,
+            "recall@20": 100.0,
+            "both-in-top2": 12.7,
+            "mean-better-gold-rank": 2.48,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.4
+          },
+          "0.05": {
+            "recall@2": 37.25,
+            "recall@10": 99.8,
+            "recall@20": 100.0,
+            "both-in-top2": 8.9,
+            "mean-better-gold-rank": 2.09,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.6
+          },
+          "0.10": {
+            "recall@2": 27.7,
+            "recall@10": 99.95,
+            "recall@20": 100.0,
+            "both-in-top2": 2.9,
+            "mean-better-gold-rank": 2.31,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.9
+          }
+        },
+        "span": {
+          "0.50": {
+            "recall@2": 8.75,
+            "recall@10": 32.35,
+            "recall@20": 63.5,
+            "both-in-top2": 3.2,
+            "mean-better-gold-rank": 12.51,
+            "median-better-gold-rank": 11.0,
+            "both-in-top10": 17.9
+          },
+          "0.70": {
+            "recall@2": 94.0,
+            "recall@10": 96.25,
+            "recall@20": 96.75,
+            "both-in-top2": 91.9,
+            "mean-better-gold-rank": 1.97,
+            "median-better-gold-rank": 1.0,
+            "both-in-top10": 96.2
+          },
+          "0.80": {
+            "recall@2": 97.85,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 95.7,
+            "mean-better-gold-rank": 1.0,
+            "median-better-gold-rank": 1.0,
+            "both-in-top10": 100.0
+          },
+          "0.90": {
+            "recall@2": 97.85,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 95.7,
+            "mean-better-gold-rank": 1.0,
+            "median-better-gold-rank": 1.0,
+            "both-in-top10": 100.0
+          },
+          "0.95": {
+            "recall@2": 37.4,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 21.8,
+            "mean-better-gold-rank": 2.13,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 100.0
+          }
+        },
+        "bm25": {
+          "recall@2": 0.0,
+          "recall@10": 100.0,
+          "recall@20": 100.0,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 3.01,
+          "median-better-gold-rank": 3.0,
+          "both-in-top10": 100.0
+        },
+        "median-gap-worse-gold-minus-best-copy": -0.0823,
+        "copies-above-worse-gold": 984,
+        "queries-gold-and-best-copy-within-delta-pct": {
+          "0.00": 0.0,
+          "0.01": 2.9,
+          "0.02": 5.9,
+          "0.05": 21.1,
+          "0.10": 65.3
+        },
+        "bm25-max-template": {
+          "recall@2": 0.0,
+          "recall@10": 99.9,
+          "recall@20": 100.0,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 3.05,
+          "median-better-gold-rank": 3.0,
+          "both-in-top10": 99.8
+        }
+      },
+      "t=5": {
+        "chunk-max": {
+          "recall@2": 1.3,
+          "recall@10": 99.9,
+          "recall@20": 100.0,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 5.3,
+          "median-better-gold-rank": 6.0,
+          "both-in-top10": 99.8
+        },
+        "whole-doc": {
+          "recall@2": 0.0,
+          "recall@10": 30.85,
+          "recall@20": 58.95,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 13.39,
+          "median-better-gold-rank": 10.0,
+          "both-in-top10": 10.0
+        },
+        "score-band": {
+          "0.00": {
+            "recall@2": 1.3,
+            "recall@10": 99.9,
+            "recall@20": 100.0,
+            "both-in-top2": 0.0,
+            "mean-better-gold-rank": 5.3,
+            "median-better-gold-rank": 6.0,
+            "both-in-top10": 99.8
+          },
+          "0.01": {
+            "recall@2": 12.0,
+            "recall@10": 94.25,
+            "recall@20": 99.9,
+            "both-in-top2": 1.6,
+            "mean-better-gold-rank": 4.19,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 89.9
+          },
+          "0.02": {
+            "recall@2": 31.15,
+            "recall@10": 97.45,
+            "recall@20": 100.0,
+            "both-in-top2": 10.3,
+            "mean-better-gold-rank": 3.22,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 95.5
+          },
+          "0.05": {
+            "recall@2": 46.75,
+            "recall@10": 99.35,
+            "recall@20": 100.0,
+            "both-in-top2": 22.5,
+            "mean-better-gold-rank": 2.14,
+            "median-better-gold-rank": 1.0,
+            "both-in-top10": 98.8
+          },
+          "0.10": {
+            "recall@2": 29.85,
+            "recall@10": 99.8,
+            "recall@20": 100.0,
+            "both-in-top2": 7.6,
+            "mean-better-gold-rank": 2.9,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.6
+          }
+        },
+        "span": {
+          "0.50": {
+            "recall@2": 5.5,
+            "recall@10": 13.0,
+            "recall@20": 20.85,
+            "both-in-top2": 1.7,
+            "mean-better-gold-rank": 25.86,
+            "median-better-gold-rank": 29.0,
+            "both-in-top10": 6.4
+          },
+          "0.70": {
+            "recall@2": 93.3,
+            "recall@10": 95.5,
+            "recall@20": 96.05,
+            "both-in-top2": 90.6,
+            "mean-better-gold-rank": 2.02,
+            "median-better-gold-rank": 1.0,
+            "both-in-top10": 94.8
+          },
+          "0.80": {
+            "recall@2": 97.85,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 95.7,
+            "mean-better-gold-rank": 1.0,
+            "median-better-gold-rank": 1.0,
+            "both-in-top10": 100.0
+          },
+          "0.90": {
+            "recall@2": 97.8,
+            "recall@10": 100.0,
+            "recall@20": 100.0,
+            "both-in-top2": 95.6,
+            "mean-better-gold-rank": 1.0,
+            "median-better-gold-rank": 1.0,
+            "both-in-top10": 100.0
+          },
+          "0.95": {
+            "recall@2": 41.95,
+            "recall@10": 99.95,
+            "recall@20": 100.0,
+            "both-in-top2": 21.4,
+            "mean-better-gold-rank": 2.4,
+            "median-better-gold-rank": 2.0,
+            "both-in-top10": 99.9
+          }
+        },
+        "bm25": {
+          "recall@2": 0.0,
+          "recall@10": 100.0,
+          "recall@20": 100.0,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 6.01,
+          "median-better-gold-rank": 6.0,
+          "both-in-top10": 100.0
+        },
+        "median-gap-worse-gold-minus-best-copy": -0.1267,
+        "copies-above-worse-gold": 1000,
+        "queries-gold-and-best-copy-within-delta-pct": {
+          "0.00": 0.0,
+          "0.01": 0.0,
+          "0.02": 0.5,
+          "0.05": 2.6,
+          "0.10": 24.3
+        },
+        "bm25-max-template": {
+          "recall@2": 0.0,
+          "recall@10": 48.3,
+          "recall@20": 100.0,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 8.39,
+          "median-better-gold-rank": 7.0,
+          "both-in-top10": 41.5
+        }
+      }
+    },
+    "gloss-who-likes": {
+      "t=1": {
+        "chunk-max": {
+          "recall@2": 16.67,
+          "recall@10": 61.11,
+          "recall@20": 76.59,
+          "both-in-top2": 3.17,
+          "mean-better-gold-rank": 8.17,
+          "median-better-gold-rank": 4.0,
+          "both-in-top10": 47.62
+        },
+        "whole-doc": {
+          "recall@2": 4.76,
+          "recall@10": 29.76,
+          "recall@20": 54.37,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 13.02,
+          "median-better-gold-rank": 11.5,
+          "both-in-top10": 10.32
+        },
+        "score-band": {
+          "0.00": {
+            "recall@2": 16.67,
+            "recall@10": 60.71,
+            "recall@20": 76.19,
+            "both-in-top2": 3.17,
+            "mean-better-gold-rank": 8.43,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 47.62
+          },
+          "0.01": {
+            "recall@2": 15.87,
+            "recall@10": 52.38,
+            "recall@20": 71.83,
+            "both-in-top2": 1.59,
+            "mean-better-gold-rank": 8.6,
+            "median-better-gold-rank": 5.5,
+            "both-in-top10": 34.13
+          },
+          "0.02": {
+            "recall@2": 16.27,
+            "recall@10": 57.14,
+            "recall@20": 73.81,
+            "both-in-top2": 2.38,
+            "mean-better-gold-rank": 8.49,
+            "median-better-gold-rank": 5.0,
+            "both-in-top10": 38.1
+          },
+          "0.05": {
+            "recall@2": 15.08,
+            "recall@10": 58.73,
+            "recall@20": 74.21,
+            "both-in-top2": 1.59,
+            "mean-better-gold-rank": 7.71,
+            "median-better-gold-rank": 5.0,
+            "both-in-top10": 41.27
+          },
+          "0.10": {
+            "recall@2": 16.27,
+            "recall@10": 60.71,
+            "recall@20": 76.19,
+            "both-in-top2": 3.17,
+            "mean-better-gold-rank": 7.94,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 44.44
+          }
+        },
+        "span": {
+          "0.50": {
+            "recall@2": 6.75,
+            "recall@10": 27.38,
+            "recall@20": 52.78,
+            "both-in-top2": 0.0,
+            "mean-better-gold-rank": 14.82,
+            "median-better-gold-rank": 13.0,
+            "both-in-top10": 15.08
+          },
+          "0.70": {
+            "recall@2": 15.87,
+            "recall@10": 61.11,
+            "recall@20": 75.79,
+            "both-in-top2": 3.17,
+            "mean-better-gold-rank": 8.45,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 46.83
+          },
+          "0.80": {
+            "recall@2": 16.67,
+            "recall@10": 61.11,
+            "recall@20": 76.59,
+            "both-in-top2": 3.17,
+            "mean-better-gold-rank": 8.17,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 47.62
+          },
+          "0.90": {
+            "recall@2": 16.67,
+            "recall@10": 61.11,
+            "recall@20": 76.59,
+            "both-in-top2": 3.17,
+            "mean-better-gold-rank": 8.17,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 47.62
+          },
+          "0.95": {
+            "recall@2": 16.67,
+            "recall@10": 61.11,
+            "recall@20": 76.59,
+            "both-in-top2": 3.17,
+            "mean-better-gold-rank": 8.17,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 47.62
+          }
+        },
+        "bm25": {
+          "recall@2": 3.17,
+          "recall@10": 23.41,
+          "recall@20": 44.44,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 15.56,
+          "median-better-gold-rank": 13.0,
+          "both-in-top10": 5.56
+        },
+        "median-gap-worse-gold-minus-best-copy": -0.0173,
+        "copies-above-worse-gold": 77,
+        "queries-gold-and-best-copy-within-delta-pct": {
+          "0.00": 0.0,
+          "0.01": 13.49,
+          "0.02": 24.6,
+          "0.05": 52.38,
+          "0.10": 82.54
+        }
+      },
+      "t=2": {
+        "chunk-max": {
+          "recall@2": 11.9,
+          "recall@10": 60.71,
+          "recall@20": 76.19,
+          "both-in-top2": 1.59,
+          "mean-better-gold-rank": 8.6,
+          "median-better-gold-rank": 4.5,
+          "both-in-top10": 46.83
+        },
+        "whole-doc": {
+          "recall@2": 1.19,
+          "recall@10": 27.38,
+          "recall@20": 52.38,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 13.92,
+          "median-better-gold-rank": 12.5,
+          "both-in-top10": 8.73
+        },
+        "score-band": {
+          "0.00": {
+            "recall@2": 11.9,
+            "recall@10": 60.32,
+            "recall@20": 75.79,
+            "both-in-top2": 1.59,
+            "mean-better-gold-rank": 8.86,
+            "median-better-gold-rank": 4.5,
+            "both-in-top10": 46.83
+          },
+          "0.01": {
+            "recall@2": 14.29,
+            "recall@10": 49.6,
+            "recall@20": 68.65,
+            "both-in-top2": 2.38,
+            "mean-better-gold-rank": 9.1,
+            "median-better-gold-rank": 6.0,
+            "both-in-top10": 29.37
+          },
+          "0.02": {
+            "recall@2": 14.29,
+            "recall@10": 55.16,
+            "recall@20": 72.62,
+            "both-in-top2": 3.17,
+            "mean-better-gold-rank": 8.98,
+            "median-better-gold-rank": 6.0,
+            "both-in-top10": 34.13
+          },
+          "0.05": {
+            "recall@2": 12.3,
+            "recall@10": 57.14,
+            "recall@20": 73.41,
+            "both-in-top2": 1.59,
+            "mean-better-gold-rank": 8.35,
+            "median-better-gold-rank": 5.0,
+            "both-in-top10": 38.1
+          },
+          "0.10": {
+            "recall@2": 11.9,
+            "recall@10": 59.52,
+            "recall@20": 75.79,
+            "both-in-top2": 1.59,
+            "mean-better-gold-rank": 8.44,
+            "median-better-gold-rank": 5.0,
+            "both-in-top10": 43.65
+          }
+        },
+        "span": {
+          "0.50": {
+            "recall@2": 7.54,
+            "recall@10": 21.43,
+            "recall@20": 42.46,
+            "both-in-top2": 1.59,
+            "mean-better-gold-rank": 17.98,
+            "median-better-gold-rank": 18.0,
+            "both-in-top10": 11.11
+          },
+          "0.70": {
+            "recall@2": 23.02,
+            "recall@10": 62.7,
+            "recall@20": 76.59,
+            "both-in-top2": 10.32,
+            "mean-better-gold-rank": 8.11,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 50.0
+          },
+          "0.80": {
+            "recall@2": 24.21,
+            "recall@10": 62.7,
+            "recall@20": 77.38,
+            "both-in-top2": 11.11,
+            "mean-better-gold-rank": 7.83,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 50.0
+          },
+          "0.90": {
+            "recall@2": 24.21,
+            "recall@10": 62.7,
+            "recall@20": 77.38,
+            "both-in-top2": 11.11,
+            "mean-better-gold-rank": 7.83,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 50.0
+          },
+          "0.95": {
+            "recall@2": 15.08,
+            "recall@10": 60.71,
+            "recall@20": 76.19,
+            "both-in-top2": 3.17,
+            "mean-better-gold-rank": 8.44,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 46.83
+          }
+        },
+        "bm25": {
+          "recall@2": 2.78,
+          "recall@10": 21.43,
+          "recall@20": 42.46,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 16.14,
+          "median-better-gold-rank": 14.0,
+          "both-in-top10": 4.76
+        },
+        "median-gap-worse-gold-minus-best-copy": -0.0355,
+        "copies-above-worse-gold": 89,
+        "queries-gold-and-best-copy-within-delta-pct": {
+          "0.00": 0.0,
+          "0.01": 13.49,
+          "0.02": 19.84,
+          "0.05": 43.65,
+          "0.10": 81.75
+        }
+      },
+      "t=5": {
+        "chunk-max": {
+          "recall@2": 7.94,
+          "recall@10": 53.57,
+          "recall@20": 74.6,
+          "both-in-top2": 0.79,
+          "mean-better-gold-rank": 9.96,
+          "median-better-gold-rank": 7.0,
+          "both-in-top10": 36.51
+        },
+        "whole-doc": {
+          "recall@2": 0.79,
+          "recall@10": 18.65,
+          "recall@20": 45.24,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 16.64,
+          "median-better-gold-rank": 15.5,
+          "both-in-top10": 2.38
+        },
+        "score-band": {
+          "0.00": {
+            "recall@2": 7.94,
+            "recall@10": 53.17,
+            "recall@20": 74.21,
+            "both-in-top2": 0.79,
+            "mean-better-gold-rank": 10.25,
+            "median-better-gold-rank": 7.0,
+            "both-in-top10": 36.51
+          },
+          "0.01": {
+            "recall@2": 13.49,
+            "recall@10": 40.87,
+            "recall@20": 66.67,
+            "both-in-top2": 3.17,
+            "mean-better-gold-rank": 10.25,
+            "median-better-gold-rank": 7.0,
+            "both-in-top10": 20.63
+          },
+          "0.02": {
+            "recall@2": 12.3,
+            "recall@10": 47.62,
+            "recall@20": 69.84,
+            "both-in-top2": 3.17,
+            "mean-better-gold-rank": 10.21,
+            "median-better-gold-rank": 7.0,
+            "both-in-top10": 22.22
+          },
+          "0.05": {
+            "recall@2": 11.11,
+            "recall@10": 47.62,
+            "recall@20": 71.43,
+            "both-in-top2": 0.79,
+            "mean-better-gold-rank": 9.79,
+            "median-better-gold-rank": 7.0,
+            "both-in-top10": 26.98
+          },
+          "0.10": {
+            "recall@2": 7.94,
+            "recall@10": 51.19,
+            "recall@20": 72.22,
+            "both-in-top2": 0.79,
+            "mean-better-gold-rank": 10.26,
+            "median-better-gold-rank": 7.0,
+            "both-in-top10": 31.75
+          }
+        },
+        "span": {
+          "0.50": {
+            "recall@2": 4.76,
+            "recall@10": 15.87,
+            "recall@20": 30.56,
+            "both-in-top2": 0.79,
+            "mean-better-gold-rank": 24.3,
+            "median-better-gold-rank": 23.5,
+            "both-in-top10": 8.73
+          },
+          "0.70": {
+            "recall@2": 23.02,
+            "recall@10": 62.7,
+            "recall@20": 76.59,
+            "both-in-top2": 10.32,
+            "mean-better-gold-rank": 8.1,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 50.0
+          },
+          "0.80": {
+            "recall@2": 24.21,
+            "recall@10": 62.7,
+            "recall@20": 77.38,
+            "both-in-top2": 11.11,
+            "mean-better-gold-rank": 7.83,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 50.0
+          },
+          "0.90": {
+            "recall@2": 24.21,
+            "recall@10": 62.7,
+            "recall@20": 77.38,
+            "both-in-top2": 11.11,
+            "mean-better-gold-rank": 7.83,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 50.0
+          },
+          "0.95": {
+            "recall@2": 14.68,
+            "recall@10": 59.52,
+            "recall@20": 75.79,
+            "both-in-top2": 3.97,
+            "mean-better-gold-rank": 8.69,
+            "median-better-gold-rank": 5.0,
+            "both-in-top10": 45.24
+          }
+        },
+        "bm25": {
+          "recall@2": 2.78,
+          "recall@10": 17.46,
+          "recall@20": 37.7,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 17.9,
+          "median-better-gold-rank": 17.0,
+          "both-in-top10": 2.38
+        },
+        "median-gap-worse-gold-minus-best-copy": -0.0571,
+        "copies-above-worse-gold": 95,
+        "queries-gold-and-best-copy-within-delta-pct": {
+          "0.00": 0.0,
+          "0.01": 7.94,
+          "0.02": 11.9,
+          "0.05": 34.13,
+          "0.10": 76.98
+        }
+      }
+    },
+    "gloss-max-template": {
+      "t=1": {
+        "chunk-max": {
+          "recall@2": 18.25,
+          "recall@10": 59.92,
+          "recall@20": 76.59,
+          "both-in-top2": 4.76,
+          "mean-better-gold-rank": 8.52,
+          "median-better-gold-rank": 4.0,
+          "both-in-top10": 45.24
+        },
+        "whole-doc": {
+          "recall@2": 4.76,
+          "recall@10": 27.38,
+          "recall@20": 51.59,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 13.63,
+          "median-better-gold-rank": 11.0,
+          "both-in-top10": 7.94
+        },
+        "score-band": {
+          "0.00": {
+            "recall@2": 18.25,
+            "recall@10": 59.92,
+            "recall@20": 76.59,
+            "both-in-top2": 4.76,
+            "mean-better-gold-rank": 8.52,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 45.24
+          },
+          "0.01": {
+            "recall@2": 14.68,
+            "recall@10": 48.81,
+            "recall@20": 69.84,
+            "both-in-top2": 1.59,
+            "mean-better-gold-rank": 10.1,
+            "median-better-gold-rank": 5.5,
+            "both-in-top10": 32.54
+          },
+          "0.02": {
+            "recall@2": 14.29,
+            "recall@10": 52.38,
+            "recall@20": 72.22,
+            "both-in-top2": 1.59,
+            "mean-better-gold-rank": 9.22,
+            "median-better-gold-rank": 5.0,
+            "both-in-top10": 34.92
+          },
+          "0.05": {
+            "recall@2": 18.25,
+            "recall@10": 54.76,
+            "recall@20": 74.21,
+            "both-in-top2": 4.76,
+            "mean-better-gold-rank": 8.55,
+            "median-better-gold-rank": 4.5,
+            "both-in-top10": 37.3
+          },
+          "0.10": {
+            "recall@2": 17.86,
+            "recall@10": 58.33,
+            "recall@20": 76.59,
+            "both-in-top2": 4.76,
+            "mean-better-gold-rank": 8.27,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 42.06
+          }
+        },
+        "span": {
+          "0.50": {
+            "recall@2": 6.35,
+            "recall@10": 25.79,
+            "recall@20": 49.6,
+            "both-in-top2": 0.0,
+            "mean-better-gold-rank": 15.79,
+            "median-better-gold-rank": 14.0,
+            "both-in-top10": 15.08
+          },
+          "0.70": {
+            "recall@2": 17.06,
+            "recall@10": 59.52,
+            "recall@20": 76.59,
+            "both-in-top2": 3.97,
+            "mean-better-gold-rank": 8.77,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 44.44
+          },
+          "0.80": {
+            "recall@2": 18.25,
+            "recall@10": 59.92,
+            "recall@20": 76.59,
+            "both-in-top2": 4.76,
+            "mean-better-gold-rank": 8.52,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 45.24
+          },
+          "0.90": {
+            "recall@2": 18.25,
+            "recall@10": 59.92,
+            "recall@20": 76.59,
+            "both-in-top2": 4.76,
+            "mean-better-gold-rank": 8.52,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 45.24
+          },
+          "0.95": {
+            "recall@2": 18.25,
+            "recall@10": 59.92,
+            "recall@20": 76.59,
+            "both-in-top2": 4.76,
+            "mean-better-gold-rank": 8.52,
+            "median-better-gold-rank": 4.0,
+            "both-in-top10": 45.24
+          }
+        },
+        "bm25": {
+          "recall@2": 3.17,
+          "recall@10": 23.41,
+          "recall@20": 44.44,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 15.56,
+          "median-better-gold-rank": 13.0,
+          "both-in-top10": 5.56
+        },
+        "median-gap-worse-gold-minus-best-copy": -0.0298,
+        "copies-above-worse-gold": 85,
+        "queries-gold-and-best-copy-within-delta-pct": {
+          "0.00": 0.0,
+          "0.01": 12.7,
+          "0.02": 25.4,
+          "0.05": 49.21,
+          "0.10": 79.37
+        },
+        "bm25-max-template": {
+          "recall@2": 1.98,
+          "recall@10": 21.83,
+          "recall@20": 44.05,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 16.05,
+          "median-better-gold-rank": 14.5,
+          "both-in-top10": 3.97
+        }
+      },
+      "t=2": {
+        "chunk-max": {
+          "recall@2": 10.32,
+          "recall@10": 57.94,
+          "recall@20": 75.79,
+          "both-in-top2": 1.59,
+          "mean-better-gold-rank": 8.98,
+          "median-better-gold-rank": 5.0,
+          "both-in-top10": 42.86
+        },
+        "whole-doc": {
+          "recall@2": 0.79,
+          "recall@10": 25.0,
+          "recall@20": 48.81,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 14.52,
+          "median-better-gold-rank": 12.0,
+          "both-in-top10": 6.35
+        },
+        "score-band": {
+          "0.00": {
+            "recall@2": 10.32,
+            "recall@10": 57.94,
+            "recall@20": 75.79,
+            "both-in-top2": 1.59,
+            "mean-better-gold-rank": 8.98,
+            "median-better-gold-rank": 5.0,
+            "both-in-top10": 42.86
+          },
+          "0.01": {
+            "recall@2": 10.71,
+            "recall@10": 47.22,
+            "recall@20": 67.06,
+            "both-in-top2": 0.0,
+            "mean-better-gold-rank": 10.58,
+            "median-better-gold-rank": 6.0,
+            "both-in-top10": 30.16
+          },
+          "0.02": {
+            "recall@2": 11.51,
+            "recall@10": 50.4,
+            "recall@20": 69.84,
+            "both-in-top2": 2.38,
+            "mean-better-gold-rank": 9.68,
+            "median-better-gold-rank": 5.0,
+            "both-in-top10": 34.13
+          },
+          "0.05": {
+            "recall@2": 11.9,
+            "recall@10": 52.78,
+            "recall@20": 72.22,
+            "both-in-top2": 1.59,
+            "mean-better-gold-rank": 9.09,
+            "median-better-gold-rank": 5.0,
+            "both-in-top10": 34.13
+          },
+          "0.10": {
+            "recall@2": 10.71,
+            "recall@10": 56.75,
+            "recall@20": 75.79,
+            "both-in-top2": 1.59,
+            "mean-better-gold-rank": 8.81,
+            "median-better-gold-rank": 5.0,
+            "both-in-top10": 40.48
+          }
+        },
+        "span": {
+          "0.50": {
+            "recall@2": 7.54,
+            "recall@10": 20.24,
+            "recall@20": 39.68,
+            "both-in-top2": 1.59,
+            "mean-better-gold-rank": 18.89,
+            "median-better-gold-rank": 20.0,
+            "both-in-top10": 9.52
+          },
+          "0.70": {
+            "recall@2": 22.22,
+            "recall@10": 59.92,
+            "recall@20": 76.59,
+            "both-in-top2": 11.11,
+            "mean-better-gold-rank": 8.39,
+            "median-better-gold-rank": 3.5,
+            "both-in-top10": 44.44
+          },
+          "0.80": {
+            "recall@2": 23.41,
+            "recall@10": 59.92,
+            "recall@20": 77.38,
+            "both-in-top2": 11.9,
+            "mean-better-gold-rank": 8.13,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 45.24
+          },
+          "0.90": {
+            "recall@2": 23.41,
+            "recall@10": 59.92,
+            "recall@20": 77.38,
+            "both-in-top2": 11.9,
+            "mean-better-gold-rank": 8.13,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 45.24
+          },
+          "0.95": {
+            "recall@2": 12.7,
+            "recall@10": 57.94,
+            "recall@20": 75.79,
+            "both-in-top2": 2.38,
+            "mean-better-gold-rank": 8.81,
+            "median-better-gold-rank": 5.0,
+            "both-in-top10": 42.86
+          }
+        },
+        "bm25": {
+          "recall@2": 2.78,
+          "recall@10": 21.43,
+          "recall@20": 42.46,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 16.14,
+          "median-better-gold-rank": 14.0,
+          "both-in-top10": 4.76
+        },
+        "median-gap-worse-gold-minus-best-copy": -0.0482,
+        "copies-above-worse-gold": 99,
+        "queries-gold-and-best-copy-within-delta-pct": {
+          "0.00": 0.0,
+          "0.01": 15.08,
+          "0.02": 20.63,
+          "0.05": 39.68,
+          "0.10": 76.19
+        },
+        "bm25-max-template": {
+          "recall@2": 0.0,
+          "recall@10": 19.84,
+          "recall@20": 40.87,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 17.05,
+          "median-better-gold-rank": 15.5,
+          "both-in-top10": 3.97
+        }
+      },
+      "t=5": {
+        "chunk-max": {
+          "recall@2": 5.95,
+          "recall@10": 51.59,
+          "recall@20": 73.41,
+          "both-in-top2": 0.79,
+          "mean-better-gold-rank": 10.46,
+          "median-better-gold-rank": 7.0,
+          "both-in-top10": 34.92
+        },
+        "whole-doc": {
+          "recall@2": 0.4,
+          "recall@10": 17.86,
+          "recall@20": 42.06,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 17.17,
+          "median-better-gold-rank": 15.0,
+          "both-in-top10": 2.38
+        },
+        "score-band": {
+          "0.00": {
+            "recall@2": 5.95,
+            "recall@10": 51.59,
+            "recall@20": 73.41,
+            "both-in-top2": 0.79,
+            "mean-better-gold-rank": 10.46,
+            "median-better-gold-rank": 7.0,
+            "both-in-top10": 34.92
+          },
+          "0.01": {
+            "recall@2": 8.33,
+            "recall@10": 40.08,
+            "recall@20": 64.29,
+            "both-in-top2": 0.79,
+            "mean-better-gold-rank": 11.74,
+            "median-better-gold-rank": 7.5,
+            "both-in-top10": 19.84
+          },
+          "0.02": {
+            "recall@2": 10.71,
+            "recall@10": 45.24,
+            "recall@20": 68.25,
+            "both-in-top2": 2.38,
+            "mean-better-gold-rank": 10.73,
+            "median-better-gold-rank": 7.0,
+            "both-in-top10": 25.4
+          },
+          "0.05": {
+            "recall@2": 11.51,
+            "recall@10": 45.63,
+            "recall@20": 68.65,
+            "both-in-top2": 1.59,
+            "mean-better-gold-rank": 10.5,
+            "median-better-gold-rank": 7.0,
+            "both-in-top10": 26.19
+          },
+          "0.10": {
+            "recall@2": 5.56,
+            "recall@10": 50.0,
+            "recall@20": 72.62,
+            "both-in-top2": 0.79,
+            "mean-better-gold-rank": 10.63,
+            "median-better-gold-rank": 7.5,
+            "both-in-top10": 30.95
+          }
+        },
+        "span": {
+          "0.50": {
+            "recall@2": 5.56,
+            "recall@10": 15.08,
+            "recall@20": 30.16,
+            "both-in-top2": 0.79,
+            "mean-better-gold-rank": 25.3,
+            "median-better-gold-rank": 27.0,
+            "both-in-top10": 7.14
+          },
+          "0.70": {
+            "recall@2": 22.22,
+            "recall@10": 59.92,
+            "recall@20": 76.59,
+            "both-in-top2": 11.11,
+            "mean-better-gold-rank": 8.37,
+            "median-better-gold-rank": 3.5,
+            "both-in-top10": 44.44
+          },
+          "0.80": {
+            "recall@2": 23.41,
+            "recall@10": 59.92,
+            "recall@20": 77.38,
+            "both-in-top2": 11.9,
+            "mean-better-gold-rank": 8.13,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 45.24
+          },
+          "0.90": {
+            "recall@2": 23.41,
+            "recall@10": 59.92,
+            "recall@20": 77.38,
+            "both-in-top2": 11.9,
+            "mean-better-gold-rank": 8.13,
+            "median-better-gold-rank": 3.0,
+            "both-in-top10": 45.24
+          },
+          "0.95": {
+            "recall@2": 14.29,
+            "recall@10": 57.14,
+            "recall@20": 75.4,
+            "both-in-top2": 3.97,
+            "mean-better-gold-rank": 9.04,
+            "median-better-gold-rank": 5.0,
+            "both-in-top10": 42.86
+          }
+        },
+        "bm25": {
+          "recall@2": 2.78,
+          "recall@10": 17.46,
+          "recall@20": 37.7,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 17.9,
+          "median-better-gold-rank": 17.0,
+          "both-in-top10": 2.38
+        },
+        "median-gap-worse-gold-minus-best-copy": -0.065,
+        "copies-above-worse-gold": 104,
+        "queries-gold-and-best-copy-within-delta-pct": {
+          "0.00": 0.0,
+          "0.01": 6.35,
+          "0.02": 9.52,
+          "0.05": 35.71,
+          "0.10": 63.49
+        },
+        "bm25-max-template": {
+          "recall@2": 0.79,
+          "recall@10": 12.3,
+          "recall@20": 36.11,
+          "both-in-top2": 0.0,
+          "mean-better-gold-rank": 19.93,
+          "median-better-gold-rank": 18.5,
+          "both-in-top10": 0.0
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "chunk-cosine-offdiag-sample": {
+      "n": 200000,
+      "mean": 0.25,
+      "median": 0.2422,
+      "p10": 0.142,
+      "p90": 0.3538
+    },
+    "gold-winning-chunk-vs-best-copy": {
+      "n": 1000,
+      "mean": 0.5965,
+      "median": 0.6019,
+      "p10": 0.5204,
+      "p90": 0.6682
+    },
+    "two-golds-winning-chunks": {
+      "n": 1000,
+      "mean": 0.5827,
+      "median": 0.5888,
+      "p10": 0.4859,
+      "p90": 0.6706
+    },
+    "two-copies": {
+      "n": 1000,
+      "mean": 0.9442,
+      "median": 0.9447,
+      "p10": 0.9349,
+      "p90": 0.953
+    },
+    "score-gap-worse-gold-minus-best-copy": {
+      "n": 1000,
+      "mean": -0.1166,
+      "median": -0.1137,
+      "p10": -0.1685,
+      "p90": -0.0675
+    },
+    "top1-chunk-contains-attribute": {
+      "hits": 994,
+      "queries": 1000
+    }
+  }
+}
