@@ -1,0 +1,157 @@
+{
+  "query": "Who likes Art History?",
+  "golds": [
+    {
+      "id": "Deryl Falsey",
+      "rank": 27000,
+      "score": 0.2592,
+      "hits": [
+        "Art History"
+      ]
+    },
+    {
+      "id": "Lorie Dineen",
+      "rank": 33694,
+      "score": 0.2395,
+      "hits": [
+        "Art History"
+      ]
+    }
+  ],
+  "top12": [
+    {
+      "rank": 1,
+      "id": "Landen Boutwell",
+      "score": 0.4957,
+      "is_gold": false,
+      "hits": [],
+      "artish": [
+        "Baroque Art",
+        "Hearts",
+        "Gothic Art"
+      ]
+    },
+    {
+      "rank": 2,
+      "id": "Williard Niemi",
+      "score": 0.4789,
+      "is_gold": false,
+      "hits": [],
+      "artish": []
+    },
+    {
+      "rank": 3,
+      "id": "Arta Burfitt",
+      "score": 0.4679,
+      "is_gold": false,
+      "hits": [],
+      "artish": [
+        "Baroque Art",
+        "Gothic Art"
+      ]
+    },
+    {
+      "rank": 4,
+      "id": "Norman Muncie",
+      "score": 0.461,
+      "is_gold": false,
+      "hits": [],
+      "artish": [
+        "Art Nouveau",
+        "Historical Fiction",
+        "Artic Wolves",
+        "Rococo Art",
+        "Byzantine Art"
+      ]
+    },
+    {
+      "rank": 5,
+      "id": "Ana Obernuefemann",
+      "score": 0.4601,
+      "is_gold": false,
+      "hits": [],
+      "artish": [
+        "Artic Loons",
+        "Gothic Art"
+      ]
+    },
+    {
+      "rank": 6,
+      "id": "Dorotha Ludwigson",
+      "score": 0.4566,
+      "is_gold": false,
+      "hits": [],
+      "artish": [
+        "Gothic Art",
+        "Rococo Art",
+        "Bartenders"
+      ]
+    },
+    {
+      "rank": 7,
+      "id": "Art Liem",
+      "score": 0.4561,
+      "is_gold": false,
+      "hits": [],
+      "artish": []
+    },
+    {
+      "rank": 8,
+      "id": "Pasquale Folckemer",
+      "score": 0.4526,
+      "is_gold": false,
+      "hits": [],
+      "artish": [
+        "Artic Loons",
+        "Bartenders",
+        "Gothic Art"
+      ]
+    },
+    {
+      "rank": 9,
+      "id": "Dedric Marcuse",
+      "score": 0.4523,
+      "is_gold": false,
+      "hits": [],
+      "artish": [
+        "Baroque Art",
+        "Byzantine Art"
+      ]
+    },
+    {
+      "rank": 10,
+      "id": "Cathrine Broocks",
+      "score": 0.4521,
+      "is_gold": false,
+      "hits": [],
+      "artish": [
+        "Graffiti Art",
+        "Byzantine Art"
+      ]
+    },
+    {
+      "rank": 11,
+      "id": "Abril Codilla",
+      "score": 0.4515,
+      "is_gold": false,
+      "hits": [],
+      "artish": [
+        "Historical Fiction",
+        "Earthworms",
+        "Milky Quartz"
+      ]
+    },
+    {
+      "rank": 12,
+      "id": "Esau Camposgarcia",
+      "score": 0.4511,
+      "is_gold": false,
+      "hits": [],
+      "artish": [
+        "Art Nouveau",
+        "Historical Fiction",
+        "Rococo Art"
+      ]
+    }
+  ]
+}
