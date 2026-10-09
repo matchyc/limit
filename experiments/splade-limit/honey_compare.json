@@ -1,0 +1,340 @@
+{
+  "query-id": "query_730",
+  "query": "Who likes Honey?",
+  "golds": [
+    "Aubra Hokenson",
+    "Alaina Shabaz"
+  ],
+  "bm25": {
+    "top10": [
+      {
+        "rank": 1,
+        "id": "Roman Quijije",
+        "score": 3.2282,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 2,
+        "id": "Aspen Petherbridge",
+        "score": 3.1863,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 3,
+        "id": "Deante Giberti",
+        "score": 3.1863,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 4,
+        "id": "Janay Wickam",
+        "score": 3.1863,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 5,
+        "id": "Joshua Schlienz",
+        "score": 3.1863,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 6,
+        "id": "Lashawn Zieroth",
+        "score": 3.1658,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 7,
+        "id": "Lauren Krchmar",
+        "score": 3.1658,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 8,
+        "id": "Lauretta Pillitteri",
+        "score": 3.1658,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 9,
+        "id": "Maia Brisco",
+        "score": 3.1658,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 10,
+        "id": "Metha Calhoon",
+        "score": 3.1658,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      }
+    ],
+    "golds": [
+      {
+        "rank": 1528,
+        "id": "Aubra Hokenson",
+        "score": 2.904,
+        "matching-likes-items": [
+          "Honey"
+        ]
+      },
+      {
+        "rank": 1512,
+        "id": "Alaina Shabaz",
+        "score": 2.904,
+        "matching-likes-items": [
+          "Honey"
+        ]
+      }
+    ]
+  },
+  "minilm-whole": {
+    "top10": [
+      {
+        "rank": 1,
+        "id": "Valentina Nickleberry",
+        "score": 0.3979,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 2,
+        "id": "Junius Bridgeford",
+        "score": 0.3932,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 3,
+        "id": "Garland Sardinha",
+        "score": 0.3858,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 4,
+        "id": "Luann Muschamp",
+        "score": 0.3847,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 5,
+        "id": "Johathan Reen",
+        "score": 0.3845,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 6,
+        "id": "Harmon Malaski",
+        "score": 0.3793,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 7,
+        "id": "Deangelo Weghorst",
+        "score": 0.3775,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 8,
+        "id": "Hayleigh Danzig",
+        "score": 0.3766,
+        "is-gold": false,
+        "matching-likes-items": []
+      },
+      {
+        "rank": 9,
+        "id": "Alanna Schenberg",
+        "score": 0.3763,
+        "is-gold": false,
+        "matching-likes-items": []
+      },
+      {
+        "rank": 10,
+        "id": "Sondra Otuafi",
+        "score": 0.3727,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      }
+    ],
+    "golds": [
+      {
+        "rank": 3989,
+        "id": "Aubra Hokenson",
+        "score": 0.2757,
+        "matching-likes-items": [
+          "Honey"
+        ]
+      },
+      {
+        "rank": 3964,
+        "id": "Alaina Shabaz",
+        "score": 0.2758,
+        "matching-likes-items": [
+          "Honey"
+        ]
+      }
+    ]
+  },
+  "splade-whole": {
+    "top10": [
+      {
+        "rank": 1,
+        "id": "Charley Decesaris",
+        "score": 17.7476,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 2,
+        "id": "Drusilla Ramirezsanchez",
+        "score": 17.7286,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 3,
+        "id": "Ellamae Sifferman",
+        "score": 17.5048,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 4,
+        "id": "Laci Beeby",
+        "score": 17.4594,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 5,
+        "id": "Robyn Beels",
+        "score": 17.4011,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 6,
+        "id": "Donal Beeles",
+        "score": 17.3959,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 7,
+        "id": "Samir Kalmbacher",
+        "score": 17.3782,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 8,
+        "id": "Alexandr Rokke",
+        "score": 17.362,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 9,
+        "id": "Windy Youngbauer",
+        "score": 17.3415,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      },
+      {
+        "rank": 10,
+        "id": "Bascom Kersaint",
+        "score": 17.3235,
+        "is-gold": false,
+        "matching-likes-items": [
+          "Honey Bees"
+        ]
+      }
+    ],
+    "golds": [
+      {
+        "rank": 3617,
+        "id": "Aubra Hokenson",
+        "score": 12.6241,
+        "matching-likes-items": [
+          "Honey"
+        ]
+      },
+      {
+        "rank": 1856,
+        "id": "Alaina Shabaz",
+        "score": 13.9633,
+        "matching-likes-items": [
+          "Honey"
+        ]
+      }
+    ]
+  }
+}
