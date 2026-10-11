@@ -19,6 +19,8 @@
 
 5 万篇上，同一套整篇 SPLADE 掉到 R@2 33.8。仍高于论文里的 ColBERT 和单向量，低于 BM25。较好那篇标注文档的中位名次是 3，平均名次是 142：一部分查询仍然进前几名，另一部分被同词或近邻扩展冲到很后面。
 
+SPLADE-v3：`naver/splade-v3`（BERT）Hugging Face gated，没有 token。同论文公开权重 `naver/splade-v3-distilbert` 数字在 `experiments/splade-v3/`。small 整篇 R@2 92.45（++ 是 92.05）。50k 整篇 R@2 **38.9**、R@10 62.55、R@100 82.35，both@2 23.9；较好 gold 中位名次 2、平均 54.7（++ 是 3 和 142）。比 ++ 好一截，仍远低于 BM25 92.65。v3 的蒸馏/多负例没有改掉 LIMIT 上的扩展和人名切分。
+
 失败不是单一机制。`experiments/splade-limit/classify_failures.py` 把「两篇 gold 都没进 top-2」的 767 条查询按 top-1 假阳性分类（见 `failure_taxonomy.md`）：
 
 | top-1 标签 | n | 占失败查询 | 例子 |
