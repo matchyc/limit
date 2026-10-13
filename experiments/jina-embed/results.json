@@ -1,0 +1,409 @@
+{
+  "env": "experiments/zero-shot-embed/.venv",
+  "model": "jinaai/jina-embeddings-v5-text-small-retrieval",
+  "dim": 1024,
+  "device": "cuda",
+  "seconds": 114.7,
+  "note": "Jina v5-text-small (Feb 2026) retrieval-merged checkpoint, also the Text Embeddings Inference (TEI) weights. Queries use prompt Query:, documents Document:.",
+  "limit-small": {
+    "docs": 46,
+    "queries": 1000,
+    "bm25": {
+      "recall@2": 99.15,
+      "recall@10": 100.0,
+      "recall@20": 100.0,
+      "recall@100": 100.0,
+      "both-in-top2": 98.4,
+      "mean-better-gold-rank": 1.01,
+      "median-better-gold-rank": 1.0
+    },
+    "jina-retrieval": {
+      "recall@2": 16.55,
+      "recall@10": 46.8,
+      "recall@20": 68.45,
+      "recall@100": 100.0,
+      "both-in-top2": 4.0,
+      "mean-better-gold-rank": 8.76,
+      "median-better-gold-rank": 6.0
+    }
+  },
+  "limit": {
+    "docs": 50000,
+    "queries": 1000,
+    "bm25": {
+      "recall@2": 92.65,
+      "recall@10": 94.6,
+      "recall@20": 95.15,
+      "recall@100": 96.3,
+      "both-in-top2": 91.0,
+      "mean-better-gold-rank": 11.84,
+      "median-better-gold-rank": 1.0
+    },
+    "jina-retrieval": {
+      "recall@2": 0.8,
+      "recall@10": 1.55,
+      "recall@20": 1.7,
+      "recall@100": 3.75,
+      "both-in-top2": 0.1,
+      "mean-better-gold-rank": 8216.31,
+      "median-better-gold-rank": 4981.5
+    }
+  },
+  "cases": [
+    {
+      "query": "Who likes Art History?",
+      "attribute": "Art History",
+      "gold-ranks": [
+        14682,
+        26691
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Kristofer Artale",
+          "score": 0.5267,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 2,
+          "id": "Arta Lakha",
+          "score": 0.4663,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 3,
+          "id": "Artelia Pillen",
+          "score": 0.4443,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 4,
+          "id": "Art Liem",
+          "score": 0.4438,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 5,
+          "id": "Artelia Cochlin",
+          "score": 0.441,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 6,
+          "id": "Arta Hukill",
+          "score": 0.4403,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 7,
+          "id": "Bart Huisingh",
+          "score": 0.4397,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 8,
+          "id": "Arthor Pitter",
+          "score": 0.4388,
+          "is-gold": false,
+          "matching-likes-items": []
+        }
+      ]
+    },
+    {
+      "query": "Who likes Honey?",
+      "attribute": "Honey",
+      "gold-ranks": [
+        720,
+        8507
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Berlin Honeyfield",
+          "score": 0.4811,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 2,
+          "id": "Elsie Honig",
+          "score": 0.446,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 3,
+          "id": "Sherry Hornseth",
+          "score": 0.4375,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Honey Bees"
+          ]
+        },
+        {
+          "rank": 4,
+          "id": "Clemmie Honigford",
+          "score": 0.4357,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 5,
+          "id": "Letty Honegger",
+          "score": 0.4351,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 6,
+          "id": "Garrett Penyak",
+          "score": 0.4317,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Honey Bees"
+          ]
+        },
+        {
+          "rank": 7,
+          "id": "Hoke Vant",
+          "score": 0.4273,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Honey Bees"
+          ]
+        },
+        {
+          "rank": 8,
+          "id": "Eileen Honeck",
+          "score": 0.4225,
+          "is-gold": false,
+          "matching-likes-items": []
+        }
+      ]
+    },
+    {
+      "query": "Who likes Psychology?",
+      "attribute": "Psychology",
+      "gold-ranks": [
+        5373,
+        17411
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Emilio Psomas",
+          "score": 0.3865,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 2,
+          "id": "Laisha Pinsky",
+          "score": 0.3684,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 3,
+          "id": "Betty Psaras",
+          "score": 0.3536,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 4,
+          "id": "Nicola Pasion",
+          "score": 0.3471,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 5,
+          "id": "Fanny Re",
+          "score": 0.3449,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 6,
+          "id": "Lorelai Toale",
+          "score": 0.3442,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 7,
+          "id": "Patrica Melichar",
+          "score": 0.3424,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 8,
+          "id": "Dori Mccrory",
+          "score": 0.3418,
+          "is-gold": false,
+          "matching-likes-items": []
+        }
+      ]
+    },
+    {
+      "query": "Who likes Go?",
+      "attribute": "Go",
+      "gold-ranks": [
+        22037,
+        2448
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Goebel Goetten",
+          "score": 0.4926,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 2,
+          "id": "Karl Goerl",
+          "score": 0.4779,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 3,
+          "id": "Antony Goelz",
+          "score": 0.4777,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 4,
+          "id": "Dasia Goetz",
+          "score": 0.4763,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 5,
+          "id": "Kenneth Goza",
+          "score": 0.4713,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Bongo Drums"
+          ]
+        },
+        {
+          "rank": 6,
+          "id": "Nicholaus Goekler",
+          "score": 0.4683,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 7,
+          "id": "Indiana Goelz",
+          "score": 0.4612,
+          "is-gold": false,
+          "matching-likes-items": [
+            "The Golden Age of Piracy",
+            "Gothic Art"
+          ]
+        },
+        {
+          "rank": 8,
+          "id": "Roselyn Goitom",
+          "score": 0.4603,
+          "is-gold": false,
+          "matching-likes-items": [
+            "Disc Golf"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "Who likes Birch Trees?",
+      "attribute": "Birch Trees",
+      "gold-ranks": [
+        31669,
+        25223
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "id": "Kenneth Birchman",
+          "score": 0.4798,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 2,
+          "id": "Silvester Birkenholz",
+          "score": 0.4671,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 3,
+          "id": "Birtha Linwood",
+          "score": 0.4508,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 4,
+          "id": "Willow Birkhoff",
+          "score": 0.4487,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 5,
+          "id": "Birtha Deer",
+          "score": 0.4482,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 6,
+          "id": "Cherrie Birck",
+          "score": 0.4479,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 7,
+          "id": "Reece Birchenough",
+          "score": 0.4479,
+          "is-gold": false,
+          "matching-likes-items": []
+        },
+        {
+          "rank": 8,
+          "id": "Bird Birtcher",
+          "score": 0.447,
+          "is-gold": false,
+          "matching-likes-items": []
+        }
+      ]
+    }
+  ],
+  "baselines": {
+    "qwen3-0.6b-small-r@2": 14.45,
+    "qwen3-0.6b-50k-r@2": 0.95,
+    "minilm-small-r@2": 16.2,
+    "promptriever-small-r@2": 54.3,
+    "splade++-small-r@2": 92.05,
+    "bm25-50k-r@2": 92.65,
+    "splade-v3-distilbert-50k-r@2": 38.9,
+    "promptriever-4096-50k-r@2": 3.0,
+    "e5-mistral-50k-r@2": 1.3,
+    "colbert-50k-r@2": 23.1
+  }
+}

@@ -277,7 +277,7 @@ def write_report(res: dict, path: Path) -> None:
         "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
         f"| BM25 | {full['bm25']['recall@2']} | {full['bm25']['recall@10']} | {full['bm25']['recall@20']} | {full['bm25']['recall@100']} | {full['bm25']['both-in-top2']} | {full['bm25']['median-better-gold-rank']} / {full['bm25']['mean-better-gold-rank']} |",
         f"| Jina v5-text-small retrieval | {jr_f['recall@2']} | {jr_f['recall@10']} | {jr_f['recall@20']} | {jr_f['recall@100']} | {jr_f['both-in-top2']} | {jr_f['median-better-gold-rank']} / {jr_f['mean-better-gold-rank']} |",
-        f"| Qwen3-Emb 0.6B (prior) | {b['qwen3-0.6b-50k-r@2']} | — | — | — | — | — |",
+        f"| Qwen3-Emb 0.6B (prior) | {b['qwen3-0.6b-50k-r@2']} | 1.8 | 2.2 | 3.85 | 0.2 | 6999.0 / 10432.02 |",
         f"| SPLADE-v3 DistilBERT (prior) | {b['splade-v3-distilbert-50k-r@2']} | — | — | — | — | — |",
         f"| paper Promptriever 4096 | {b['promptriever-4096-50k-r@2']} | — | — | — | — | — |",
         f"| paper E5-Mistral 7B | {b['e5-mistral-50k-r@2']} | — | — | — | — | — |",
@@ -285,14 +285,27 @@ def write_report(res: dict, path: Path) -> None:
         "",
         "## Cases (50k)",
         "",
+        "Top-8 is almost entirely name-surface matches. Golds sit thousands of ranks down.",
+        "",
     ]
     for case in res["cases"] or []:
         top1 = case["top8"][0]
+        names = ", ".join(h["id"] for h in case["top8"][:4])
         lines.append(
             f"- `{case['query']}` golds {case['gold-ranks']}; "
-            f"top1 `{top1['id']}` gold={top1['is-gold']} hits={top1['matching-likes-items']}"
+            f"top `{names}` gold={top1['is-gold']}"
         )
-    lines.append("")
+    lines.extend([
+        "",
+        "## Takeaway",
+        "",
+        "Jina v5-text-small is the current small Jina retrieval model (677M, distilled from "
+        "Qwen3-Embedding-4B). The TEI serving weights are this merged retrieval checkpoint. "
+        "On LIMIT it does not beat MiniLM on the 46-doc set, and on 50k it collapses like "
+        "Qwen3-0.6B / E5-Mistral: dense cosine latches onto person-name substrings instead "
+        "of a buried exact like. Single-vector LLM embeddings do not fix LIMIT.",
+        "",
+    ])
     path.write_text("\n".join(lines) + "\n")
 
 
