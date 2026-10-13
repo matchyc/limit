@@ -21,6 +21,8 @@
 
 SPLADE-v3：`naver/splade-v3`（BERT）Hugging Face gated，没有 token。同论文公开权重 `naver/splade-v3-distilbert` 数字在 `experiments/splade-v3/`。small 整篇 R@2 92.45（++ 是 92.05）。50k 整篇 R@2 **38.9**、R@10 62.55、R@100 82.35，both@2 23.9；较好 gold 中位名次 2、平均 54.7（++ 是 3 和 142）。比 ++ 好一截，仍远低于 BM25 92.65。v3 的蒸馏/多负例没有改掉 LIMIT 上的扩展和人名切分。
 
+小 LLM embedding：`Qwen/Qwen3-Embedding-0.6B`（1024 维，decoder-only），环境是已有的 `experiments/zero-shot-embed/.venv`。数字在 `experiments/llm-embed/`。small 默认 query prompt R@2 **14.45**（MiniLM 16.2，论文 Promptriever 54.3）。50k R@2 **0.95**、R@100 3.85，较好 gold 中位名次 6999。加一条「匹配 likes 列表里的原词」指令几乎不变（0.90）。和论文里 E5-Mistral 1.3、GritLM 2.4、Promptriever 3.0 同一档：单向量 LLM embedding 解不了名单淹没，也仍会把 Go→Goebel、Birch→Birr、Honey→Honey Bees。
+
 失败不是单一机制。`experiments/splade-limit/classify_failures.py` 把「两篇 gold 都没进 top-2」的 767 条查询按 top-1 假阳性分类（见 `failure_taxonomy.md`）：
 
 | top-1 标签 | n | 占失败查询 | 例子 |
